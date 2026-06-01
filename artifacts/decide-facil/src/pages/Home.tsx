@@ -95,15 +95,14 @@ export default function Home() {
       <main>
         {/* 1. Hero Section */}
         <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6"
+            className="text-amber-400 font-semibold text-xs uppercase tracking-[0.2em] mb-6"
           >
-            <Activity className="w-4 h-4" />
-            <span>Claridad Mental Instantánea</span>
-          </motion.div>
+            Para personas mentalmente saturadas que quieren recuperar claridad mental
+          </motion.p>
 
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
@@ -111,32 +110,38 @@ export default function Home() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-5xl md:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.1] mb-6"
           >
-            Toma decisiones sin parálisis, sin culpa y con absoluta claridad.
+            Cómo tomar decisiones sin paralizarte,{" "}
+            <span className="text-amber-400">sin culpa</span>{" "}
+            y sin sentir que el destino del mundo depende de ello
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl text-slate-400 max-w-2xl mb-10"
+            className="text-lg text-slate-300 max-w-2xl mb-10"
           >
-            Una herramienta diseñada para reducir la complejidad exterior y la fatiga mental, 
-            ayudándote a elegir el camino correcto en menos de 5 minutos.
+            Decide Fácil es la herramienta que reduce tus opciones, elimina la parálisis y te
+            devuelve la confianza en tu propio juicio. En minutos, no en horas.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col items-center gap-3"
           >
             <Button 
               onClick={openCheckout}
               size="lg" 
-              className="bg-white text-background hover:bg-slate-200 text-lg px-8 h-14 rounded-full font-bold shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all"
+              className="bg-orange-500 hover:bg-orange-400 text-white text-lg px-8 h-14 rounded-xl font-bold shadow-[0_0_40px_rgba(249,115,22,0.35)] hover:shadow-[0_0_60px_rgba(249,115,22,0.5)] transition-all"
               data-testid="button-hero-cta"
             >
-              ¡Quiero Decidir Sin Estrés Ahora! <ArrowRight className="ml-2 w-5 h-5" />
+              Quiero Decidir con Claridad Ahora <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            <p className="text-slate-400 text-sm italic">
+              "Porque estoy listo para dejar de darle vueltas a todo"
+            </p>
           </motion.div>
 
           {/* Product Mockup */}
