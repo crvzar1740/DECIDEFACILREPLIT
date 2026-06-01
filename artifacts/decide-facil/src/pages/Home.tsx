@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mockupImg from "@assets/Mockup04_1780280421469.png";
+import heroMockupImg from "@assets/new-project_1780281624708.png";
 
 const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;
@@ -57,7 +58,7 @@ const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => vo
           </p>
 
           <Button 
-            className="w-full mt-4 bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+            className="w-full mt-4 bg-orange-500 hover:bg-orange-400 text-white font-semibold shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-all"
             size="lg"
             onClick={onClose}
             data-testid="button-go-to-checkout"
@@ -153,7 +154,7 @@ export default function Home() {
           >
             <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
             <img
-              src={mockupImg}
+              src={heroMockupImg}
               alt="Decide Fácil en múltiples dispositivos"
               className="w-full h-auto object-cover"
               data-testid="img-hero-mockup"
@@ -469,7 +470,7 @@ export default function Home() {
           <Button 
             onClick={openCheckout}
             size="lg" 
-            className="bg-white text-background hover:bg-slate-200 text-lg px-8 h-14 rounded-full font-bold shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.3)] transition-all mb-8"
+            className="bg-orange-500 hover:bg-orange-400 text-white text-lg px-8 h-14 rounded-xl font-bold shadow-[0_0_40px_rgba(249,115,22,0.35)] hover:shadow-[0_0_60px_rgba(249,115,22,0.5)] transition-all mb-8"
             data-testid="button-final-cta"
           >
             ¡Quiero Decidir Sin Estrés Ahora!
