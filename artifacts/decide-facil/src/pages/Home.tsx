@@ -271,7 +271,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                title: "Asistente de Filtrado de Opciones",
+                title: "Asistente de Decisiones",
                 desc: "Elimina el ruido exterior y reduce tus alternativas a un máximo manejable de 2 o 3 opciones viables.",
                 benefit: "Reduce el tiempo de decisión de horas a minutos.",
                 icon: Sliders
@@ -289,7 +289,7 @@ export default function Home() {
                 icon: Activity
               },
               {
-                title: "Módulo de Validación sin Culpa",
+                title: "Contenido Educativo Normalizador",
                 desc: "Soporte psicológico que te ayuda a confiar en tu elección y cerrar el ciclo.",
                 benefit: "Elimina el arrepentimiento y la duda posterior.",
                 icon: ShieldCheck
