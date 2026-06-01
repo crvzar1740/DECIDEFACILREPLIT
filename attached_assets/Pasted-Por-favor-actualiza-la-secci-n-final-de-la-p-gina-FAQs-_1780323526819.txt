@@ -1,0 +1,41 @@
+Por favor, actualiza la sección final de la página (FAQs, Garantía y Cierre) con los nuevos textos e iconos, pero asegúrate de MANTENER ESTRICTAMENTE EL DISEÑO OSCURO ORIGINAL de toda la web (fondo azul noche/oscuro, tarjetas oscuras con bordes sutiles y textos claros). Actualmente se puso un fondo blanco y un bloque azul claro que rompen con la estética general de la página. 
+
+Aplica los siguientes cambios manteniendo el tema oscuro integrado:
+
+---
+
+1. SECCIÓN: PREGUNTAS FRECUENTES (FAQ)
+- Fondo: Debe ser el fondo oscuro de la página.
+- Estructura: Acordeones/tarjetas desplegables con fondo oscuro y texto blanco.
+- Lista completa de preguntas a incluir:
+  * ¿Esto realmente funciona para alguien con saturación mental severa?
+  * ¿Cuánto tiempo necesito dedicarle al día?
+  * ¿Qué pasa si tengo una recaída y vuelvo a paralizarme?
+  * ¿Es diferente a una app de productividad?
+  * ¿Necesito conocimientos técnicos para usarlo?
+  * ¿Qué pasa si no me funciona?
+  * ¿Tengo acceso de por vida?
+
+---
+
+2. SECCIÓN: GARANTÍA DE 7 DÍAS — CERO RIESGO
+- Fondo: El contenedor o tarjeta de la garantía debe ser oscuro con bordes suaves, adaptado al tema oscuro.
+- Icono: Escudo dorado en la parte superior central.
+- Título principal: Garantía de 7 Días — Cero Riesgo
+- Texto descriptivo: Prueba Decide Fácil durante 7 días completos. Si no sientes que tu capacidad de decisión ha mejorado, si no notas menos ansiedad al elegir, o simplemente no te gusta, te devolvemos el 100% de tu dinero. Sin preguntas, sin complicaciones.
+- Texto final (en azul celeste/naranja): Tu única decisión difícil hoy es no intentarlo.
+
+---
+
+3. SECCIÓN DE CIERRE (CTA FINAL)
+- Fondo: Elimina el fondo azul claro actual y cámbialo por el fondo oscuro unificado de la página para que la transición al footer sea invisible y fluida.
+- Título principal: ¿Listo para dejar de darle vueltas a todo?
+- Subtítulo: Cada día que pasa sin un sistema es un día más de parálisis, culpa y agotamiento mental. Decide Fácil te da las herramientas para cambiar eso hoy.
+- Botón principal (CTA): Mantén el botón grande naranja con la flecha que dice "Sí, Quiero Decidir con Claridad →"
+- Texto pequeño abajo del botón: "*Porque mi paz mental no puede esperar más*"
+- Iconos de confianza abajo en texto gris claro: (Icono) Garantía 7 días   (Icono) Acceso inmediato   (Icono) Pago único
+
+---
+
+4. PIE DE PÁGINA (FOOTER)
+- Mantén el fondo oscuro actual con el logo "Decide Fácil / Tu Asistente Personal de Decisiones" a la izquierda, los enlaces de "Soporte, Política de Privacidad, Términos" al centro/derecha, y el copyright "© 2026 Decide Fácil. Todos los derechos reservados." abajo del todo.

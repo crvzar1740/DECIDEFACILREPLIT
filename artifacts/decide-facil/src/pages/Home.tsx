@@ -15,7 +15,10 @@ import {
   Lock,
   X,
   Sliders,
-  CheckCircle2
+  CheckCircle2,
+  Zap,
+  CreditCard,
+  Shield
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import mockupImg from "@assets/Mockup04_1780280421469.png";
@@ -474,95 +477,169 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8. FAQ Accordion */}
-        <section className="py-24 px-6 max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-10 text-center">Preguntas Frecuentes</h2>
-          <div className="space-y-4">
-            {[
-              {
-                q: "¿Cómo funciona la reducción de opciones?",
-                a: "El sistema utiliza un enfoque estructurado para descartar las variables secundarias que saturan tu mente. Al enfocarte únicamente en los criterios esenciales, el camino correcto se vuelve evidente por sí mismo."
-              },
-              {
-                q: "¿Cuánto tiempo tardaré en ver resultados?",
-                a: "Los resultados son inmediatos. Desde el primer uso del asistente podrás destrabar ese dilema que te quita el sueño en menos de 5 minutos."
-              }
-            ].map((faq, i) => (
-              <div 
-                key={i} 
-                className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden"
-              >
-                <button 
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/5 transition-colors"
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  data-testid={`faq-toggle-${i}`}
+        {/* FAQ Accordion */}
+        <section className="py-24 px-6 bg-black/30 border-y border-white/5">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Preguntas Frecuentes</h2>
+            </motion.div>
+            <div className="space-y-3">
+              {[
+                {
+                  q: "¿Esto realmente funciona para alguien con saturación mental severa?",
+                  a: "Sí. Decide Fácil fue diseñado específicamente para personas con alta carga mental. Las herramientas no requieren concentración prolongada — cada módulo está pensado para ser usado en 5 minutos o menos, incluso en tus peores días."
+                },
+                {
+                  q: "¿Cuánto tiempo necesito dedicarle al día?",
+                  a: "Menos de 5 minutos por decisión. El sistema está diseñado para encajar en tu rutina sin agregar más carga. Muchos usuarios lo usan entre reuniones o en momentos de bloqueo."
+                },
+                {
+                  q: "¿Qué pasa si tengo una recaída y vuelvo a paralizarme?",
+                  a: "Es completamente normal. El acceso es de por vida, así que siempre tendrás el sistema disponible cuando lo necesites. Además, el Contenido Educativo Normalizador te explica por qué ocurren las recaídas y cómo salir de ellas rápidamente."
+                },
+                {
+                  q: "¿Es diferente a una app de productividad?",
+                  a: "Completamente. Las apps de productividad agregan más listas y tareas. Decide Fácil reduce tus opciones y te ayuda a actuar con lo que ya tienes. Es una herramienta de claridad, no de organización."
+                },
+                {
+                  q: "¿Necesito conocimientos técnicos para usarlo?",
+                  a: "No. Todo está diseñado para ser usado de inmediato, sin curva de aprendizaje. Si puedes leer este párrafo, puedes usar Decide Fácil."
+                },
+                {
+                  q: "¿Qué pasa si no me funciona?",
+                  a: "Tienes 7 días de garantía de devolución total. Sin preguntas, sin complicaciones. Simplemente escríbenos y te devolvemos el 100% de tu inversión."
+                },
+                {
+                  q: "¿Tengo acceso de por vida?",
+                  a: "Sí. Es un pago único. Una vez que accedes, el contenido y las herramientas son tuyas para siempre, incluyendo todas las actualizaciones futuras."
+                }
+              ].map((faq, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="bg-white/[0.03] border border-white/10 rounded-xl overflow-hidden"
                 >
-                  <span className="font-bold text-white">{faq.q}</span>
-                  <ChevronDown className={`w-5 h-5 text-slate-400 transition-transform ${openFaq === i ? 'rotate-180' : ''}`} />
-                </button>
-                <AnimatePresence>
-                  {openFaq === i && (
-                    <motion.div 
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="px-6 pb-4 text-slate-400"
-                    >
-                      {faq.a}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+                  <button
+                    className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-white/[0.04] transition-colors"
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    data-testid={`faq-toggle-${i}`}
+                  >
+                    <span className="font-semibold text-white pr-4">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="px-6 pb-5 text-slate-400 text-sm leading-relaxed border-t border-white/[0.05] pt-4">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* 7. Final CTA Section */}
-        <section className="py-32 px-6 max-w-4xl mx-auto text-center relative">
-          <div className="absolute inset-0 bg-primary/5 blur-[100px] rounded-full pointer-events-none" />
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Recupera la claridad mental hoy mismo</h2>
-          <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto">
-            Cada minuto que pasas dudando es energía que le restas a tu vida.
-          </p>
-          <Button 
-            onClick={openCheckout}
-            size="lg" 
-            className="bg-orange-500 hover:bg-orange-400 text-white text-lg px-8 h-14 rounded-xl font-bold shadow-[0_0_40px_rgba(249,115,22,0.35)] hover:shadow-[0_0_60px_rgba(249,115,22,0.5)] transition-all mb-8"
-            data-testid="button-final-cta"
+        {/* Garantía Section */}
+        <section className="py-20 px-6 max-w-2xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/[0.03] border border-white/10 rounded-3xl p-10"
           >
-            ¡Quiero Decidir Sin Estrés Ahora!
-          </Button>
+            <div className="w-16 h-16 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mx-auto mb-6">
+              <Shield className="w-8 h-8 text-amber-400" />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+              Garantía de 7 Días — Cero Riesgo
+            </h2>
+            <p className="text-slate-400 leading-relaxed mb-6">
+              Prueba Decide Fácil durante 7 días completos. Si no sientes que tu capacidad de decisión ha mejorado, si no notas menos ansiedad al elegir, o simplemente no te gusta, te devolvemos el 100% de tu dinero. Sin preguntas, sin complicaciones.
+            </p>
+            <p className="text-primary font-semibold text-sm italic">
+              Tu única decisión difícil hoy es no intentarlo.
+            </p>
+          </motion.div>
+        </section>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
-              <ShieldCheck className="w-5 h-5 text-primary" />
-              Garantía de 7 Días
+        {/* Final CTA Section */}
+        <section className="py-28 px-6 max-w-4xl mx-auto text-center relative">
+          <div className="absolute inset-0 bg-orange-500/[0.03] blur-[120px] rounded-full pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">
+              ¿Listo para dejar de darle vueltas a todo?
+            </h2>
+            <p className="text-lg text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Cada día que pasa sin un sistema es un día más de parálisis, culpa y agotamiento mental. Decide Fácil te da las herramientas para cambiar eso hoy.
+            </p>
+            <Button
+              onClick={openCheckout}
+              size="lg"
+              className="bg-orange-500 hover:bg-orange-400 text-white text-lg px-10 h-14 rounded-xl font-bold shadow-[0_0_40px_rgba(249,115,22,0.35)] hover:shadow-[0_0_60px_rgba(249,115,22,0.5)] transition-all mb-4"
+              data-testid="button-final-cta"
+            >
+              Sí, Quiero Decidir con Claridad <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+            <p className="text-slate-500 text-sm italic mb-10">
+              *Porque mi paz mental no puede esperar más*
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-8 text-slate-400 text-sm">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-slate-500" />
+                Garantía 7 días
+              </div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-4 h-4 text-slate-500" />
+                Acceso inmediato
+              </div>
+              <div className="flex items-center gap-2">
+                <CreditCard className="w-4 h-4 text-slate-500" />
+                Pago único
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-sm font-medium text-slate-300">
-              <Database className="w-5 h-5 text-primary" />
-              Acceso de por vida
-            </div>
-          </div>
+          </motion.div>
         </section>
       </main>
 
-      {/* 8. Footer */}
-      <footer className="border-t border-white/10 bg-black/50 py-12 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col items-center md:items-start">
-            <div className="font-bold tracking-tight text-white flex items-center gap-2 mb-2">
-              <GitFork className="w-4 h-4 text-primary" />
-              DECIDE FÁCIL
+      {/* Footer */}
+      <footer className="border-t border-white/[0.06] bg-black/40 py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-8">
+            <div className="flex flex-col items-center md:items-start">
+              <div className="font-bold tracking-tight text-white flex items-center gap-2 mb-1">
+                <GitFork className="w-4 h-4 text-primary" />
+                DECIDE FÁCIL
+              </div>
+              <p className="text-slate-500 text-sm">Tu Asistente Personal de Decisiones</p>
             </div>
-            <p className="text-slate-500 text-sm">Simplificando tus elecciones diarias.</p>
+            <div className="flex items-center gap-6 text-sm text-slate-500">
+              <a href="#" className="hover:text-slate-300 transition-colors">Soporte</a>
+              <a href="#" className="hover:text-slate-300 transition-colors">Política de Privacidad</a>
+              <a href="#" className="hover:text-slate-300 transition-colors">Términos</a>
+            </div>
           </div>
-          
-          <div className="flex items-center gap-6 text-sm text-slate-400">
-            <a href="#" className="hover:text-white transition-colors">Privacidad</a>
-            <a href="#" className="hover:text-white transition-colors">Términos del Servicio</a>
-          </div>
-
-          <div className="text-slate-500 text-sm">
+          <div className="border-t border-white/[0.05] pt-6 text-center text-slate-600 text-xs">
             © 2026 Decide Fácil. Todos los derechos reservados.
           </div>
         </div>
