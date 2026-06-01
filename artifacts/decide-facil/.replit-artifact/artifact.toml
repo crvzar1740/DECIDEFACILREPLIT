@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Decide Fácil"
+version = "1.0.0"
+id = "artifacts/decide-facil"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24577
+
+[services.development]
+run = "pnpm --filter @workspace/decide-facil run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/decide-facil", "run", "build" ]
+publicDir = "artifacts/decide-facil/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24577"
+BASE_PATH = "/"

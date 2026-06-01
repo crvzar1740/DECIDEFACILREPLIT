@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decide Fácil — Supera la Fatiga de Decisión</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#0A0F1D',
+                        darkCard: 'rgba(255, 255, 255, 0.03)',
+                        borderGlass: 'rgba(255, 255, 255, 0.08)',
+                        brandAccent: '#38BDF8',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-darkBase text-slate-300 overflow-x-hidden antialiased">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="relative pt-24 pb-20 md:pt-36 md:pb-32 overflow-hidden border-b border-white/[0.05]">
+        <!-- Destellos de luz premium de fondo -->
+        <div class="absolute top-0 right-1/4 w-[500px] h-[500px] bg-brandAccent/10 rounded-full blur-[120px] -translate-y-1/2"></div>
+        
+        <div class="container relative z-10 max-w-5xl mx-auto px-4 text-center">
+            <p class="text-brandAccent font-semibold text-xs md:text-sm uppercase tracking-[0.2em] mb-4">
+                ¿Sientes que elegir te agota? Descubre el método definitivo[cite: 3]
+            </p>
+            <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+                Toma decisiones sin parálisis, <br class="hidden md:inline">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">sin culpa y con absoluta claridad.</span>[cite: 3]
+            </h1>
+            <p class="text-base md:text-lg text-slate-400 max-w-3xl mx-auto mb-10 leading-relaxed font-light">
+                Decide Fácil es la herramienta definitiva que reduce la complejidad, elimina la fatiga mental y te devuelve la confianza en tu criterio en cuestión de minutos[cite: 3].
+            </p>
+
+            <button onclick="openCheckout()" class="inline-flex items-center gap-3 px-8 py-4 bg-white hover:bg-slate-100 text-darkBase font-semibold text-base rounded-xl transition-all duration-300 transform active:scale-[0.98] shadow-2xl shadow-white/10 group">
+                ¡Quiero Decidir Sin Estrés Ahora!
+                <i data-lucide="arrow-right" class="w-4 h-4 transition-transform group-hover:translate-x-1"></i>
+            </button>
+            <p class="text-slate-500 text-xs mt-4 tracking-wide">
+                Acceso inmediato. Olvídate de la sobrecarga mental[cite: 3].
+            </p>
+
+            <!-- Mockup Original -->
+            <div class="mt-16 max-w-4xl mx-auto relative">
+                <div class="rounded-2xl border border-white/10 p-2 bg-white/[0.01] shadow-2xl shadow-brandAccent/5">
+                    <img src="/manus-storage/Mockup04_98126aec.png" alt="Interfaz Decide Fácil" class="w-full h-auto object-cover rounded-xl opacity-90" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN: METRICAS ===== -->
+    <section class="py-16 bg-black/20 border-b border-white/[0.05]">
+        <div class="container max-w-5xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="p-6">
+                    <p class="text-4xl font-extrabold text-white tracking-tight mb-2">2-3</p>
+                    <p class="text-xs uppercase tracking-widest text-slate-500">Opciones máximas recomendadas</p>
+                </div>
+                <div class="p-6 border-y md:border-y-0 md:border-x border-white/[0.08]">
+                    <p class="text-4xl font-extrabold text-brandAccent tracking-tight mb-2">&lt; 5 min</p>
+                    <p class="text-xs uppercase tracking-widest text-slate-500">Para resolver cualquier dilema</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-4xl font-extrabold text-white tracking-tight mb-2">100%</p>
+                    <p class="text-xs uppercase tracking-widest text-slate-500">Enfoque práctico y sin rodeos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN: EL PROBLEMA ===== -->
+    <section class="py-20 md:py-28 bg-darkBase">
+        <div class="container max-w-5xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-slate-500 font-medium text-xs uppercase tracking-[0.2em] mb-3">El Costo de la Indecisión</p>
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tight">¿Te identificas con alguna de estas situaciones?</h2>[cite: 3]
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Tarjetas Glassmorphism -->
+                <div class="bg-darkCard rounded-xl p-6 border border-borderGlass hover:border-white/20 transition-all duration-300">
+                    <div class="text-brandAccent mb-4"><i data-lucide="activity" class="w-5 h-5"></i></div>
+                    <h3 class="font-semibold text-white text-base mb-2">Parálisis por Análisis</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Pasas horas o días dando vueltas a una elección simple, buscando la "opción perfecta" que no existe[cite: 3].</p>
+                </div>
+                <div class="bg-darkCard rounded-xl p-6 border border-borderGlass hover:border-white/20 transition-all duration-300">
+                    <div class="text-brandAccent mb-4"><i data-lucide="battery-low" class="w-5 h-5"></i></div>
+                    <h3 class="font-semibold text-white text-base mb-2">Fatiga Mental Acumulada</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Llegas al final del día exhausto, incapaz de decidir algo tan sencillo como qué cenar o qué ver en televisión[cite: 3].</p>
+                </div>
+                <div class="bg-darkCard rounded-xl p-6 border border-borderGlass hover:border-white/20 transition-all duration-300">
+                    <div class="text-brandAccent mb-4"><i data-lucide="shield-alert" class="w-5 h-5"></i></div>
+                    <h3 class="font-semibold text-white text-base mb-2">Arrepentimiento Constante</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed">Incluso después de elegir, te persigue la duda de si deberías haber optado por el otro camino[cite: 3].</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN: SOLUCIONES FALLIDAS ===== -->
+    <section class="py-20 bg-black/10 border-y border-white/[0.05]">
+        <div class="container max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Por qué los métodos tradicionales no funcionan</h2>[cite: 3]
+            </div>
+
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl text-sm">
+                    <span class="text-slate-300 font-medium">Las listas de pros y contras</span>[cite: 3]
+                    <span class="text-slate-400 font-light text-right pl-4">Aumentan el ruido mental en lugar de simplificarlo[cite: 3].</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl text-sm">
+                    <span class="text-slate-300 font-medium">Los libros de productividad</span>[cite: 3]
+                    <span class="text-slate-400 font-light text-right pl-4">Te llenan de teoría pero te dejan solo ante el problema[cite: 3].</span>
+                </div>
+                <div class="flex items-center justify-between p-4 bg-white/[0.01] border border-white/[0.04] rounded-xl text-sm">
+                    <span class="text-slate-300 font-medium">Las aplicaciones complejas</span>[cite: 3]
+                    <span class="text-slate-400 font-light text-right pl-4">Te exigen aprender un nuevo sistema, sumando más estrés[cite: 3].</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN: LAS 4 HERRAMIENTAS PRINCIPALES ===== -->
+    <section class="py-20 md:py-28 bg-darkBase">
+        <div class="container max-w-5xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <p class="text-brandAccent font-medium text-xs uppercase tracking-[0.2em] mb-3">La Solución Todo en Uno</p>
+                <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tight">Todo lo que necesitas para recuperar el control</h2>[cite: 3]
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Herramienta 1 -->
+                <div class="bg-darkCard rounded-2xl p-8 border border-borderGlass hover:border-brandAccent/30 transition-all duration-300">
+                    <div class="w-12 h-12 bg-white/[0.03] rounded-xl flex items-center justify-center border border-white/10 mb-6 text-brandAccent">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Asistente de Filtrado de Opciones</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed mb-4">Elimina el ruido exterior y reduce tus alternativas a un máximo manejable de 2 o 3 opciones viables[cite: 3].</p>
+                    <div class="text-xs text-brandAccent font-medium flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Reduce el tiempo de decisión de horas a minutos[cite: 3].
+                    </div>
+                </div>
+                <!-- Herramienta 2 -->
+                <div class="bg-darkCard rounded-2xl p-8 border border-borderGlass hover:border-brandAccent/30 transition-all duration-300">
+                    <div class="w-12 h-12 bg-white/[0.03] rounded-xl flex items-center justify-center border border-white/10 mb-6 text-brandAccent">
+                        <i data-lucide="git-fork" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Frameworks de Elección Estructurada</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed mb-4">Aplica modelos de ponderación lógica para decisiones complejas, eliminando la incertidumbre[cite: 3].</p>
+                    <div class="text-xs text-brandAccent font-medium flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Mitiga el miedo a equivocarte en momentos clave[cite: 3].
+                    </div>
+                </div>
+                <!-- Herramienta 3 -->
+                <div class="bg-darkCard rounded-2xl p-8 border border-borderGlass hover:border-brandAccent/30 transition-all duration-300">
+                    <div class="w-12 h-12 bg-white/[0.03] rounded-xl flex items-center justify-center border border-white/10 mb-6 text-brandAccent">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Automatización de Decisiones Diarias</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed mb-4">Estandariza las elecciones repetitivas para guardar tu energía mental para lo que de verdad importa[cite: 3].</p>
+                    <div class="text-xs text-brandAccent font-medium flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Evita el desgaste mental acumulado en el día[cite: 3].
+                    </div>
+                </div>
+                <!-- Herramienta 4 -->
+                <div class="bg-darkCard rounded-2xl p-8 border border-borderGlass hover:border-brandAccent/30 transition-all duration-300">
+                    <div class="w-12 h-12 bg-white/[0.03] rounded-xl flex items-center justify-center border border-white/10 mb-6 text-brandAccent">
+                        <i data-lucide="terminal" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Módulo de Validación sin Culpa</h3>[cite: 3]
+                    <p class="text-slate-400 text-sm font-light leading-relaxed mb-4">Soporte y explicaciones psicológicas que te ayudan a confiar en tu elección y cerrar el ciclo[cite: 3].</p>
+                    <div class="text-xs text-brandAccent font-medium flex items-center gap-2">
+                        <i data-lucide="sliders" class="w-3.5 h-3.5"></i> Elimina el arrepentimiento y la duda posterior[cite: 3].
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECCIÓN: FAQ ===== -->
+    <section class="py-20 bg-black/10 border-t border-white/[0.05]">
+        <div class="container max-w-3xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-2xl md:text-3xl font-bold text-white tracking-tight">Preguntas Frecuentes</h2>[cite: 3]
+            </div>
+
+            <div class="space-y-3">
+                <div class="bg-darkCard rounded-xl border border-borderGlass overflow-hidden">
+                    <button onclick="toggleFaq(0)" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors">
+                        <span class="font-medium text-white text-sm">¿Cómo funciona la reducción de opciones?</span>[cite: 3]
+                        <i data-lucide="chevron-down" id="faq-icon-0" class="text-slate-500 shrink-0 w-4 h-4 transition-transform duration-200"></i>
+                    </button>
+                    <div id="faq-answer-0" class="hidden px-5 pb-5 text-sm font-light text-slate-400 border-t border-white/[0.02] pt-4">
+                        El sistema utiliza un enfoque estructurado para descartar las variables secundarias que saturan tu mente. Al enfocarte únicamente en los criterios esenciales, el camino correcto se vuelve evidente por sí mismo[cite: 3].
+                    </div>
+                </div>
+                <div class="bg-darkCard rounded-xl border border-borderGlass overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors">
+                        <span class="font-medium text-white text-sm">¿Cuánto tiempo tardaré en ver resultados?</span>[cite: 3]
+                        <i data-lucide="chevron-down" id="faq-icon-1" class="text-slate-500 shrink-0 w-4 h-4 transition-transform duration-200"></i>
+                    </button>
+                    <div id="faq-answer-1" class="hidden px-5 pb-5 text-sm font-light text-slate-400 border-t border-white/[0.02] pt-4">
+                        Los resultados son inmediatos. Desde el primer uso del asistente podrás destrabar ese dilema que te quita el sueño en menos de 5 minutos[cite: 3].
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA FINAL ===== -->
+    <section class="relative py-24 bg-gradient-to-b from-darkBase to-black text-center overflow-hidden border-t border-white/[0.05]">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(56,189,248,0.03),transparent_60%)]"></div>
+        <div class="container relative z-10 max-w-3xl mx-auto px-4">
+            <h2 class="text-2xl md:text-4xl font-bold text-white tracking-tight mb-6">Recupera la claridad mental hoy mismo</h2>[cite: 3]
+            <p class="text-slate-400 font-light text-base max-w-xl mx-auto mb-10 leading-relaxed">
+                Cada minuto que pasas dudando es energía que le restas a tu vida. Elige decidir con seguridad y sin remordimientos[cite: 3].
+            </p>
+
+            <button onclick="openCheckout()" class="inline-flex items-center gap-3 px-10 py-5 bg-white hover:bg-slate-100 text-darkBase font-semibold text-base rounded-xl transition-all duration-300 shadow-2xl shadow-white/5">
+                ¡Quiero Decidir Sin Estrés Ahora!
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+
+            <div class="flex items-center justify-center gap-6 mt-12 text-slate-500 text-xs tracking-wider uppercase font-medium">
+                <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-brandAccent"></i> Garantía de 7 Días</span>[cite: 3]
+                <span class="flex items-center gap-1.5"><i data-lucide="database" class="w-4 h-4 text-brandAccent"></i> Acceso de por vida</span>[cite: 3]
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="py-12 bg-black text-slate-600 text-xs border-t border-white/[0.03]">
+        <div class="container max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div>
+                <p class="text-slate-400 font-semibold tracking-wider">DECIDE FÁCIL</p>[cite: 3]
+                <p class="mt-1 font-light text-slate-600">Simplificando tus elecciones diarias[cite: 3].</p>
+            </div>
+            <div class="flex gap-6">
+                <a href="/privacy" class="hover:text-slate-400 transition-colors">Privacidad</a>[cite: 3]
+                <a href="/terms" class="hover:text-slate-400 transition-colors">Términos del Servicio</a>[cite: 3]
+            </div>
+            <p>© <span id="current-year"></span> Decide Fácil. Todos los derechos reservados.</p>[cite: 3]
+        </div>
+    </footer>
+
+    <!-- ===== CHECKOUT MODAL WINDOW ===== -->
+    <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="bg-[#0D1527] rounded-2xl max-w-md w-full p-8 border border-white/10 shadow-2xl relative animate-fade-in">
+            <button onclick="closeCheckout()" class="absolute top-5 right-5 text-slate-500 hover:text-white transition-colors">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center">
+                <div class="w-12 h-12 bg-brandAccent/10 text-brandAccent rounded-xl flex items-center justify-center mx-auto mb-5 border border-brandAccent/20">
+                    <i data-lucide="lock" class="w-5 h-5"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white mb-2">Redirección Segura</h3>
+                <p class="text-slate-400 text-sm font-light mb-6">Te estamos redirigiendo a Hotmart de forma segura para completar tu acceso...</p>
+                <button onclick="closeCheckout()" class="w-full py-3 bg-white hover:bg-slate-100 text-darkBase font-semibold rounded-xl transition-colors text-sm">
+                    Ir a la página de pago
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT LOGIC ===== -->
+    <script>
+        lucide.createIcons();
+        document.getElementById('current-year').innerText = new Date().getFullYear();
+
+        function openCheckout() {
+            document.getElementById('checkout-modal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCheckout() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        let activeFaqIndex = null;
+        function toggleFaq(index) {
+            const currentAnswer = document.getElementById(`faq-answer-${index}`);
+            const currentIcon = document.getElementById(`faq-icon-${index}`);
+
+            if (activeFaqIndex === index) {
+                currentAnswer.classList.add('hidden');
+                currentIcon.style.transform = 'rotate(0deg)';
+                activeFaqIndex = null;
+            } else {
+                if (activeFaqIndex !== null) {
+                    document.getElementById(`faq-answer-${activeFaqIndex}`).classList.add('hidden');
+                    document.getElementById(`faq-icon-${activeFaqIndex}`).style.transform = 'rotate(0deg)';
+                }
+                currentAnswer.classList.remove('hidden');
+                currentIcon.style.transform = 'rotate(180deg)';
+                activeFaqIndex = index;
+            }
+        }
+    </script>
+</body>
+</html>
