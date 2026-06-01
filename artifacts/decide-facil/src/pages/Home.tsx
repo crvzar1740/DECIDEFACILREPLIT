@@ -182,84 +182,141 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. Problem Section */}
+        {/* 3. Síntomas Section */}
         <section className="py-24 px-6 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">¿Te identificas con alguna de estas situaciones?</h2>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-orange-500 font-semibold text-xs uppercase tracking-[0.2em] mb-3">¿Te suena familiar?</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight mb-4">
+              La parálisis decisional te está robando la vida
+            </h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              Si experimentas alguno de estos síntomas, no estás solo. La fatiga de decisión afecta a millones de personas cada día.
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              {
-                title: "Parálisis por Análisis",
-                desc: "Pasas horas dando vueltas a una elección simple, buscando la opción perfecta que no existe.",
-                icon: GitFork
-              },
-              {
-                title: "Fatiga Mental Acumulada",
-                desc: "Llegas al final del día exhausto, incapaz de decidir algo tan sencillo como qué cenar.",
-                icon: BatteryLow
-              },
-              {
-                title: "Arrepentimiento Constante",
-                desc: "Incluso después de elegir, te persigue la duda de si deberías haber optado por el otro camino.",
-                icon: ShieldAlert
-              }
+              { emoji: "🤯", title: "Parálisis total", desc: "Te quedas congelado al intentar decidir entre opciones simples. Incluso elegir qué cenar se siente imposible." },
+              { emoji: "🧠", title: "Agotamiento mental", desc: "Antes del mediodía ya estás drenado mentalmente por la carga de decisiones acumuladas." },
+              { emoji: "😔", title: "Desconfianza en tu juicio", desc: "La saturación mental te ha hecho dudar de cada decisión que tomas. Ya no confías en ti mismo." },
+              { emoji: "⚡", title: "Carga mental invisible", desc: "Sientes un peso constante que nadie ve pero que afecta tu energía diaria y tus relaciones." },
+              { emoji: "💥", title: "Impulsividad y arrepentimiento", desc: "Cuando la fatiga gana, decides impulsivamente y luego te arrepientes durante días." },
+              { emoji: "🔄", title: "Procrastinación paralizante", desc: "El miedo a decidir incorrectamente te hace postergar todo. Las decisiones se acumulan." },
             ].map((item, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/[0.03] border border-white/[0.08] p-8 rounded-2xl hover:border-primary/50 transition-colors duration-300 group relative overflow-hidden"
+                transition={{ delay: i * 0.08 }}
+                className="bg-white/[0.03] border border-white/[0.08] p-6 rounded-2xl hover:border-orange-500/30 transition-colors duration-300"
+                data-testid={`card-symptom-${i}`}
               >
-                <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity">
-                  <item.icon className="w-32 h-32 text-primary" />
-                </div>
-                <item.icon className="w-8 h-8 text-primary mb-6" />
-                <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{item.desc}</p>
+                <span className="text-3xl mb-4 block">{item.emoji}</span>
+                <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
+                <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </section>
 
-        {/* 4. Failed Methods Section */}
+        {/* 4. Soluciones Fallidas Section */}
         <section className="py-24 px-6 bg-black/40 border-y border-white/5">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Por qué los métodos tradicionales no funcionan</h2>
-            
-            <div className="space-y-6">
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
+                Ya intentaste estas soluciones...{" "}
+                <span className="text-orange-500">y no funcionaron</span>
+              </h2>
+              <p className="text-slate-400">
+                No es tu culpa. Estas herramientas no están diseñadas para resolver la parálisis decisional.
+              </p>
+            </motion.div>
+
+            <div className="space-y-4">
               {[
-                {
-                  title: "Las listas de pros y contras",
-                  desc: "Aumentan el ruido mental en lugar de simplificarlo.",
-                  icon: Layers
-                },
-                {
-                  title: "Los libros de productividad",
-                  desc: "Te llenan de teoría pero te dejan solo ante el problema.",
-                  icon: Database
-                },
-                {
-                  title: "Las aplicaciones complejas",
-                  desc: "Te exigen aprender un nuevo sistema, sumando más estrés.",
-                  icon: Terminal
-                }
+                { title: "Apps de listas de tareas", desc: "No te ayudan a priorizar decisiones importantes. Solo agregan más ítems a tu carga mental." },
+                { title: "Cursos de productividad", desc: "Generan más opciones y expectativas. Terminas con más opciones, no menos." },
+                { title: "Libros de autoayuda", desc: "Se sienten irrelevantes cuando la fatiga mental es extrema. No puedes concentrarte para leerlos." },
+                { title: "Terapia tradicional", desc: "Puede ser costosa y no siempre aborda la toma de decisiones de forma práctica e inmediata." },
+                { title: "Meditación", desc: "Si bien es útil, no ofrece soluciones concretas para los problemas de decisión del día a día." },
               ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4 bg-background border border-white/10 p-6 rounded-xl">
-                  <div className="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-                    <item.icon className="w-6 h-6 text-slate-400" />
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className="flex items-start gap-4 bg-white/[0.02] border border-white/[0.06] p-5 rounded-xl"
+                  data-testid={`row-failed-solution-${i}`}
+                >
+                  <div className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                    <X className="w-4 h-4 text-red-500" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-white mb-1">{item.title}</h3>
-                    <p className="text-slate-400">{item.desc}</p>
+                    <span className="text-white font-semibold">{item.title}:</span>{" "}
+                    <span className="text-slate-400">{item.desc}</span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
+        </section>
+
+        {/* 5. Mecanismo Único Section */}
+        <section className="py-24 px-6 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-primary font-semibold text-xs uppercase tracking-[0.2em] mb-3">El mecanismo único</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+              Por qué{" "}
+              <span className="text-primary">Decide Fácil</span>{" "}
+              funciona cuando todo lo demás falla
+            </h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-white/[0.03] border border-white/[0.08] rounded-3xl p-8 md:p-10"
+          >
+            <p className="text-lg md:text-xl text-white leading-relaxed mb-6">
+              Decide Fácil aborda el problema de la parálisis decisional desde la raíz:{" "}
+              <span className="text-orange-500 font-semibold">el agotamiento del sistema nervioso.</span>
+            </p>
+            <p className="text-slate-400 leading-relaxed mb-10">
+              En lugar de simplemente brindarte más información (que puede resultar abrumadora) o darte un manual (que puede ser ignorado), Decide Fácil te proporciona un conjunto de herramientas prácticas que limitan tus opciones y te permiten tomar decisiones rápidas y efectivas.
+            </p>
+
+            <div className="grid grid-cols-3 gap-4 pt-8 border-t border-white/10">
+              {[
+                { value: "2-3", label: "Opciones máximas por decisión" },
+                { value: "< 5 min", label: "Para decidir con confianza" },
+                { value: "100%", label: "Práctico y accionable" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <p className="text-2xl md:text-3xl font-extrabold text-primary mb-1">{stat.value}</p>
+                  <p className="text-xs text-slate-500 uppercase tracking-wider">{stat.label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* 5. 4 Tools Section */}

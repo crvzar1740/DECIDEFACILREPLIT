@@ -1,0 +1,44 @@
+Reemplaza la sección que está justo después del primer mockup (las tarjetas de "¿Te identificas con alguna de estas situaciones?" y "Por qué los métodos tradicionales no funcionan") hasta antes de "Todo lo que necesitas para recuperar el control", e integra estas tres nuevas secciones secuenciales. 
+
+IMPORTANTE: Mantén estrictamente el diseño visual actual de la página (fondo oscuro, fuentes tipográficas, estilos de tarjetas oscuras con bordes sutiles y acentos azul/naranja donde corresponda). No uses fondos blancos.
+
+Aquí tienes el contenido texturizado para las nuevas secciones:
+
+---
+
+SECCIÓN 1: SÍNTOMAS (¿TE SUENA FAMILIAR?)
+- Kicker (texto pequeño arriba en naranja/rojo): ¿TE SUENA FAMILIAR?
+- Título principal: La parálisis decisional te está robando la vida
+- Subtítulo: Si experimentas alguno de estos síntomas, no estás solo. La fatiga de decisión afecta a millones de personas cada día.
+- Estructura: Grid de 6 tarjetas (fondo oscuro adaptado al tema actual) con iconos/emojis:
+  1. 🤯 Parálisis total: Te quedas congelado al intentar decidir entre opciones simples. Incluso elegir qué cenar se siente imposible.
+  2. 🧠 Agotamiento mental: Antes del mediodía ya estás drenado mentalmente por la carga de decisiones acumuladas.
+  3. 😔 Desconfianza en tu juicio: La saturación mental te ha hecho dudar de cada decisión que tomas. Ya no confías en ti mismo.
+  4. ⚡ Carga mental invisible: Sientes un peso constante que nadie ve pero que afecta tu energía diaria y tus relaciones.
+  5. 💥 Impulsividad y arrepentimiento: Cuando la fatiga gana, decides impulsivamente y luego te arrepientes durante días.
+  6. 🔄 Procrastinación paralizante: El miedo a decidir incorrectamente te hace postergar todo. Las decisiones se acumulan.
+
+---
+
+SECCIÓN 2: SOLUCIONES FALLIDAS
+- Título principal: Ya intentaste estas soluciones... y no funcionaron (Resalta "y no funcionaron" en el color de acento naranja/rojo)
+- Subtítulo: No es tu culpa. Estas herramientas no están diseñadas para resolver la parálisis decisional.
+- Estructura: Lista vertical de 5 bloques con un icono de una cruz roja (X) al inicio:
+  - [X] Apps de listas de tareas: No te ayudan a priorizar decisiones importantes. Solo agregan más ítems a tu carga mental.
+  - [X] Cursos de productividad: Generan más opciones y expectativas. Terminas con más opciones, no menos.
+  - [X] Libros de autoayuda: Se sienten irrelevantes cuando la fatiga mental es extrema. No puedes concentrarte para leerlos.
+  - [X] Terapia tradicional: Puede ser costosa y no siempre aborda la toma de decisiones de forma práctica e inmediata.
+  - [X] Meditación: Si bien es útil, no ofrece soluciones concretas para los problemas de decisión del día a día.
+
+---
+
+SECCIÓN 3: EL MECANISMO ÚNICO
+- Kicker (texto pequeño arriba en azul/celeste): EL MECANISMO ÚNICO
+- Título principal: Por qué Decide Fácil funciona cuando todo lo demás falla (Resalta "Decide Fácil" con el color azul de la marca)
+- Estructura: Una tarjeta destacada centralizada que contenga:
+  - Texto destacado: "Decide Fácil aborda el problema de la parálisis decisional desde la raíz: el agotamiento del sistema nervioso." (Resalta "el agotamiento del sistema nervioso" en naranja/rojo).
+  - Texto descriptivo: En lugar de simplemente brindarte más información (que puede resultar abrumadora) o darte un manual (que puede ser ignorado), Decide Fácil te proporciona un conjunto de herramientas prácticas que limitan tus opciones y te permiten tomar decisiones rápidas y efectivas.
+  - Bloque de 3 métricas o pilares en la parte inferior de la tarjeta:
+    * 2-3 (Opciones máximas por decisión)
+    * < 5 min (Para decidir con confianza)
+    * 100% (Práctico y accionable)
