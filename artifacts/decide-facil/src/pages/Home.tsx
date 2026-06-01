@@ -14,9 +14,11 @@ import {
   Database,
   Lock,
   X,
-  Sliders
+  Sliders,
+  CheckCircle2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import mockupImg from "@assets/Mockup04_1780280421469.png";
 
 const CheckoutModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) => {
   if (!isOpen) return null;
@@ -142,13 +144,15 @@ export default function Home() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
-            className="mt-20 w-full max-w-4xl aspect-[16/9] rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl flex items-center justify-center shadow-2xl relative overflow-hidden group"
+            className="mt-20 w-full max-w-5xl rounded-3xl border border-white/10 bg-white/[0.02] shadow-2xl shadow-primary/5 overflow-hidden relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="flex flex-col items-center gap-4 opacity-50">
-              <GitFork className="w-16 h-16 text-primary" />
-              <span className="text-xl font-mono text-slate-500">INTERFAZ DE DECISIÓN</span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+            <img
+              src={mockupImg}
+              alt="Decide Fácil en múltiples dispositivos"
+              className="w-full h-auto object-cover"
+              data-testid="img-hero-mockup"
+            />
           </motion.div>
         </section>
 
@@ -305,7 +309,109 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. FAQ Accordion */}
+        {/* 6. Mockup Section */}
+        <section className="py-24 px-6 max-w-6xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-2xl shadow-primary/5"
+          >
+            <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent pointer-events-none" />
+            <img
+              src={mockupImg}
+              alt="Decide Fácil en múltiples dispositivos"
+              className="w-full h-auto object-cover"
+              data-testid="img-mockup-devices"
+            />
+          </motion.div>
+        </section>
+
+        {/* 7. Testimonials Section */}
+        <section className="py-24 px-6 max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <p className="text-primary font-semibold text-xs uppercase tracking-[0.2em] mb-3">Resultados Reales</p>
+            <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+              Lo que dicen quienes ya decidieron cambiar
+            </h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: "Andrea M.",
+                age: "32 años",
+                quote: "Antes tardaba 40 minutos en decidir qué almorzar. Ahora uso el framework y en 2 minutos ya estoy comiendo. Mi energía mental cambió completamente.",
+                result: "De 40 min a 2 min para decidir"
+              },
+              {
+                name: "Roberto L.",
+                age: "38 años",
+                quote: "La saturación mental me tenía paralizado. No podía ni elegir qué serie ver sin sentir ansiedad. Decide Fácil me devolvió la confianza en mis propias decisiones.",
+                result: "Recuperó confianza en su juicio"
+              },
+              {
+                name: "Valentina S.",
+                age: "28 años",
+                quote: "La automatización de decisiones diarias fue un game changer. Ya no gasto energía en lo trivial y llego al final del día con claridad mental.",
+                result: "Energía mental hasta el final del día"
+              },
+              {
+                name: "Diego P.",
+                age: "41 años",
+                quote: "Pensé que necesitaba terapia costosa. Lo que necesitaba era un sistema práctico. En una semana ya estaba decidiendo sin culpa.",
+                result: "Resultados en 1 semana"
+              },
+              {
+                name: "Camila R.",
+                age: "35 años",
+                quote: "Lo mejor es que normaliza el problema. No estoy rota, solo necesitaba las herramientas correctas. Ahora decido y sigo adelante sin mirar atrás.",
+                result: "Dejó de sentirse culpable"
+              },
+              {
+                name: "Martín G.",
+                age: "29 años",
+                quote: "Mi pareja notó el cambio antes que yo. Dejé de pedir validación para cada decisión pequeña. Eso mejoró nuestra relación enormemente.",
+                result: "Mejoró su relación de pareja"
+              }
+            ].map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6 flex flex-col gap-4 hover:border-primary/30 transition-colors duration-300"
+                data-testid={`card-testimonial-${i}`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center shrink-0">
+                    <span className="text-primary font-bold text-sm">{t.name[0]}</span>
+                  </div>
+                  <div>
+                    <p className="text-white font-semibold text-sm leading-tight">{t.name}</p>
+                    <p className="text-slate-500 text-xs">{t.age}</p>
+                  </div>
+                </div>
+
+                <p className="text-slate-300 text-sm leading-relaxed flex-1">"{t.quote}"</p>
+
+                <div className="flex items-center gap-2 pt-2 border-t border-white/[0.06]">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" />
+                  <span className="text-primary text-xs font-medium">{t.result}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* 8. FAQ Accordion */}
         <section className="py-24 px-6 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold text-white mb-10 text-center">Preguntas Frecuentes</h2>
           <div className="space-y-4">
