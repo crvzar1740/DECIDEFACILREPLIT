@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Decide Fácil – Pack Premium VIP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  :root {
+    --gold: #F5C518;
+    --gold-light: #fde47a;
+    --bg: #111111;
+    --bg2: #1a1a1a;
+    --bg3: #222222;
+    --bg4: #2a2a2a;
+    --border: #333333;
+    --text: #e8e8e8;
+    --text-muted: #888;
+    --green: #4ade80;
+    --blue: #60a5fa;
+    --yellow: #fde047;
+    --red: #f87171;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+  }
+
+  .nav-brand {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--gold);
+    padding: 1rem 1.5rem 1rem 0;
+    border-right: 1px solid var(--border);
+    margin-right: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .nav-vip {
+    font-size: 0.6rem;
+    font-weight: 700;
+    background: var(--gold);
+    color: #111;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .nav-tab {
+    padding: 1rem 1rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ─── PAGES ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── HOME ─── */
+  .home-hero {
+    text-align: center;
+    padding: 4rem 2rem 2.5rem;
+    position: relative;
+  }
+
+  .vip-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: #111;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    padding: 0.35rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .home-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -1.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .home-hero p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .home-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  .home-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-align: left;
+  }
+
+  .home-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    background: var(--bg3);
+  }
+
+  .hc-num {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1.5px;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+  }
+
+  .home-card h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .home-card p {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .hc-arrow {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ─── TOOL LAYOUT ─── */
+  .tool-wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+
+  .tool-head { margin-bottom: 2rem; }
+
+  .tool-badge {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  .tool-head h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.75px;
+    margin-bottom: 0.35rem;
+  }
+
+  .tool-head p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.6;
+  }
+
+  .tool-body {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .tool-body { grid-template-columns: 1fr; }
+  }
+
+  /* ─── PANELS ─── */
+  .panel-left {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .panel-right {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: sticky;
+    top: 62px;
+  }
+
+  .section-block { margin-bottom: 2rem; }
+  .section-block:last-child { margin-bottom: 0; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+
+  /* ─── INPUTS ─── */
+  input[type="text"], textarea, select {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+    color: var(--text);
+    font-size: 0.875rem;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 0;
+  }
+
+  input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: var(--gold);
+  }
+
+  input[type="text"]::placeholder, textarea::placeholder { color: #444; }
+
+  textarea {
+    resize: vertical;
+    min-height: 90px;
+    line-height: 1.6;
+  }
+
+  /* ─── NUM BAR (Canva 1-10) ─── */
+  .num-bar {
+    display: flex;
+    background: var(--bg4);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 28px;
+  }
+
+  .num-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.68rem;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.15s;
+    border-right: 1px solid var(--bg);
+    user-select: none;
+    font-weight: 500;
+  }
+
+  .num-btn:last-child { border-right: none; }
+  .num-btn:hover { background: var(--bg3); color: var(--text); }
+  .num-btn.selected { background: var(--gold); color: #111; font-weight: 700; }
+
+  /* ─── ENERGY/CLARITY BAR ─── */
+  .energy-bar {
+    display: flex;
+    background: var(--bg4);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 32px;
+  }
+
+  .energy-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: #555;
+    transition: all 0.15s;
+    border-right: 1px solid var(--bg);
+    user-select: none;
+    font-weight: 500;
+  }
+
+  .energy-btn:last-child { border-right: none; }
+  .energy-btn:hover { background: var(--bg3); color: var(--text); }
+  .energy-btn.selected { background: var(--gold); color: #111; font-weight: 700; }
+
+  /* ─── SLIDER GROUP (3 cols) ─── */
+  .slider-group { margin-bottom: 1.25rem; }
+  .slider-group-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+  .slider-options-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
+  .slider-option-col { display: flex; flex-direction: column; gap: 0.3rem; }
+  .slider-option-name { font-size: 0.7rem; color: #666; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ─── CHECKBOX ─── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+  }
+
+  .check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.75rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .check-item:hover { border-color: var(--gold); }
+  .check-item.checked { border-color: var(--green); background: rgba(74,222,128,0.06); }
+
+  .check-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    accent-color: var(--gold);
+    cursor: pointer;
+    margin-top: 2px;
+  }
+
+  .check-item label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    line-height: 1.4;
+  }
+
+  .check-item.checked label { color: var(--text); }
+
+  /* ─── SCRIPT CARDS ─── */
+  .script-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .script-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .script-card:hover { border-color: var(--gold); }
+  .script-card.selected { border-color: var(--gold); background: rgba(245,197,24,0.07); }
+
+  .script-num {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+  }
+
+  .script-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .script-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  /* ─── DECISION ROW ─── */
+  .decision-row {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .decision-row label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  .time-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  /* ─── ENERGY WEEKLY GRID ─── */
+  .weekly-grid {
+    overflow-x: auto;
+  }
+
+  .weekly-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+  }
+
+  .weekly-table th {
+    padding: 0.5rem;
+    text-align: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .weekly-table th:first-child { text-align: left; }
+
+  .weekly-table td {
+    padding: 0.4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--bg4);
+  }
+
+  .weekly-table td:first-child {
+    text-align: left;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+    padding-right: 1rem;
+  }
+
+  .weekly-mini-bar {
+    display: flex;
+    height: 24px;
+    border-radius: 3px;
+    overflow: hidden;
+    background: var(--bg4);
+    min-width: 100px;
+  }
+
+  .weekly-mini-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    cursor: pointer;
+    color: #444;
+    border-right: 1px solid var(--bg);
+    user-select: none;
+    transition: all 0.1s;
+  }
+
+  .weekly-mini-btn:last-child { border-right: none; }
+  .weekly-mini-btn:hover { background: var(--bg3); color: var(--text); }
+  .weekly-mini-btn.selected { background: var(--gold); color: #111; font-weight: 700; }
+
+  /* ─── VALUES MAP ─── */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 0.6rem;
+  }
+
+  .value-chip {
+    padding: 0.6rem 0.75rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+    user-select: none;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .value-chip:hover { border-color: var(--gold); color: var(--text); }
+  .value-chip.selected { border-color: var(--gold); background: rgba(245,197,24,0.12); color: var(--gold); font-weight: 700; }
+
+  .rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .rank-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--bg3);
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .rank-num {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: var(--gold);
+    min-width: 24px;
+  }
+
+  .rank-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  /* ─── EVAL PANEL ─── */
+  .eval-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .eval-result {
+    background: var(--bg3);
+    border-radius: 8px;
+    padding: 0.85rem;
+    margin-bottom: 0.6rem;
+    border-left: 3px solid var(--border);
+    transition: all 0.3s;
+  }
+
+  .eval-result.best { border-left-color: var(--green); }
+
+  .eval-result-name {
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .eval-result-score {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .eval-result-text { font-size: 0.75rem; line-height: 1.4; }
+  .eval-result-text.green { color: var(--green); }
+  .eval-result-text.blue { color: var(--blue); }
+  .eval-result-text.yellow { color: var(--yellow); }
+  .eval-result-text.red { color: var(--red); }
+
+  .eval-single {
+    background: var(--bg3);
+    border-radius: 8px;
+    padding: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .eval-single-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.2rem;
+  }
+
+  .eval-single-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .eval-single-text { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+  .eval-single-text.green { color: var(--green); }
+  .eval-single-text.blue { color: var(--blue); }
+  .eval-single-text.yellow { color: var(--yellow); }
+  .eval-single-text.red { color: var(--red); }
+
+  .eval-legend { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+
+  .eval-legend-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+
+  .legend-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--bg4);
+  }
+
+  .legend-item:last-child { border-bottom: none; }
+
+  .legend-range {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 50px;
+  }
+
+  .legend-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.4;
+  }
+
+  .legend-desc strong { display: block; color: var(--text); font-weight: 600; }
+
+  .golden-rule {
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(245,197,24,0.07);
+    border: 1px solid rgba(245,197,24,0.25);
+    border-radius: 8px;
+  }
+
+  .golden-rule-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .golden-rule p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  /* ─── BUTTONS ─── */
+  .btn-download {
+    width: 100%;
+    padding: 0.85rem;
+    background: var(--gold);
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-download:hover { background: var(--gold-light); }
+
+  .btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 0.9rem;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-back:hover { border-color: var(--gold); color: var(--gold); }
+
+  .clarity-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-align: center;
+    margin: 0.5rem 0 0.25rem;
+  }
+
+  .tool-footer {
+    font-size: 0.68rem;
+    color: #444;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  /* ─── CHECKLIST PROGRESS ─── */
+  .check-progress {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .check-progress-dot {
+    flex: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--bg4);
+    transition: background 0.3s;
+  }
+
+  .check-progress-dot.done { background: var(--gold); }
+
+  /* ─── CONFIDENCE INDEX ─── */
+  .conf-big {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--gold);
+    text-align: center;
+    line-height: 1;
+    margin: 0.5rem 0;
+  }
+
+  .conf-sub {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ─── TEMPLATE CARDS (Tool 2) ─── */
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+  }
+
+  .template-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .template-card:hover { border-color: var(--gold); }
+  .template-card.selected { border-color: var(--gold); background: rgba(245,197,24,0.07); }
+
+  .template-card-num {
+    font-size: 0.62rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .template-card-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+
+  .template-card-criteria {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .template-scoring {
+    margin-top: 1.25rem;
+    background: var(--bg3);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--border);
+  }
+
+  .scoring-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .scoring-criterion {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .scoring-crit-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    min-width: 130px;
+  }
+
+  .scoring-crit-weight {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    min-width: 30px;
+  }
+
+  /* ─── COMM PREVIEW ─── */
+  .comm-preview {
+    margin-top: 1.25rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .comm-preview-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.6rem;
+  }
+
+  .comm-text {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  .comm-hint {
+    display: inline;
+    background: rgba(245,197,24,0.15);
+    border: 1px dashed rgba(245,197,24,0.4);
+    border-radius: 3px;
+    padding: 0 3px;
+    color: var(--gold);
+    font-style: normal;
+    font-size: 0.8rem;
+  }
+
+  .comm-checklist { margin-top: 1.25rem; }
+
+  .comm-check-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--bg4);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+  }
+
+  .comm-check-item:last-child { border-bottom: none; }
+  .comm-check-item input { accent-color: var(--gold); cursor: pointer; }
+  .comm-check-item.done { color: var(--green); }
+
+  /* diary */
+  .diary-score-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .diary-score-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .diary-score-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Decide Fácil <span class="nav-vip">VIP</span></div>
+  <div class="nav-tab active" onclick="goPage('home',this)">Inicio</div>
+  <div class="nav-tab" onclick="goPage('p1',this)">🛡️ Anti-Arrepentimiento</div>
+  <div class="nav-tab" onclick="goPage('p2',this)">⚡ Decisión Rápida</div>
+  <div class="nav-tab" onclick="goPage('p3',this)">📓 Diario</div>
+  <div class="nav-tab" onclick="goPage('p4',this)">🧭 Valores</div>
+  <div class="nav-tab" onclick="goPage('p5',this)">🔋 Energía</div>
+  <div class="nav-tab" onclick="goPage('p6',this)">💬 Comunicación</div>
+</nav>
+
+<!-- ══════ HOME ══════ -->
+<div id="home" class="page active">
+  <div class="home-hero">
+    <div class="vip-badge">✦ Pack Premium VIP</div>
+    <h1>Decide Fácil</h1>
+    <p>Seis herramientas avanzadas para decisiones importantes. Cada una diseñada para eliminar el arrepentimiento, la parálisis y la fatiga decisional.</p>
+  </div>
+  <div class="home-cards">
+    <div class="home-card" onclick="goPageById('p1')">
+      <div class="hc-num">Herramienta 1 de 6 · Premium</div>
+      <h3>🛡️ Protocolo Anti-Arrepentimiento</h3>
+      <p>8 checkpoints antes de decidir + Índice de Confianza Decisional. Si pasás todos, decidí sin mirar atrás.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+    <div class="home-card" onclick="goPageById('p2')">
+      <div class="hc-num">Herramienta 2 de 6 · Premium</div>
+      <h3>⚡ Plantillas de Decisión Rápida</h3>
+      <p>12 escenarios comunes con scoring ponderado. Trabajo, inversión, relaciones, lanzamientos y más.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+    <div class="home-card" onclick="goPageById('p3')">
+      <div class="hc-num">Herramienta 3 de 6 · Premium</div>
+      <h3>📓 Diario de Claridad Mental</h3>
+      <p>30 días de reflexión diaria con tracker semanal. Entrenás tu criterio decisional con consistencia.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+    <div class="home-card" onclick="goPageById('p4')">
+      <div class="hc-num">Herramienta 4 de 6 · Premium</div>
+      <h3>🧭 Mapa de Valores Personales</h3>
+      <p>Identificá y priorizás tus valores fundamentales. Tu brújula para cada decisión importante.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+    <div class="home-card" onclick="goPageById('p5')">
+      <div class="hc-num">Herramienta 5 de 6 · Premium</div>
+      <h3>🔋 Plan de Energía Decisional</h3>
+      <p>Mapeá tu energía mental por franja horaria. Decidí cosas importantes solo en tu ventana óptima.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+    <div class="home-card" onclick="goPageById('p6')">
+      <div class="hc-num">Herramienta 6 de 6 · Premium</div>
+      <h3>💬 Kit de Comunicación</h3>
+      <p>6 scripts probados para comunicar decisiones difíciles con claridad, firmeza y respeto.</p>
+      <div class="hc-arrow">Abrir →</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P1 – Protocolo Anti-Arrepentimiento
+══════════════════════════════════════ -->
+<div id="p1" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 1 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Protocolo Anti-Arrepentimiento</h2>
+      <p>Antes de decidir, completá estos 8 checkpoints. Si pasás todos, decidí sin mirar atrás.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div class="section-label">¿Sobre qué decisión trabajamos?</div>
+          <input type="text" id="p1-decision" placeholder="Describí la decisión que estás evaluando...">
+        </div>
+
+        <div class="section-block">
+          <div class="section-label">8 Checkpoints — marcá los que cumplís</div>
+          <div class="check-progress" id="p1-progress"></div>
+          <div class="check-grid">
+            <div class="check-item" id="p1-ci0" onclick="toggleCheck('p1',0)">
+              <input type="checkbox" id="p1-cb0">
+              <label for="p1-cb0">¿Tengo toda la información relevante?</label>
+            </div>
+            <div class="check-item" id="p1-ci1" onclick="toggleCheck('p1',1)">
+              <input type="checkbox" id="p1-cb1">
+              <label for="p1-cb1">¿Consideré el peor escenario realista?</label>
+            </div>
+            <div class="check-item" id="p1-ci2" onclick="toggleCheck('p1',2)">
+              <input type="checkbox" id="p1-cb2">
+              <label for="p1-cb2">¿Esta decisión es coherente con mis valores?</label>
+            </div>
+            <div class="check-item" id="p1-ci3" onclick="toggleCheck('p1',3)">
+              <input type="checkbox" id="p1-cb3">
+              <label for="p1-cb3">¿Estoy decidiendo desde la calma, no el miedo?</label>
+            </div>
+            <div class="check-item" id="p1-ci4" onclick="toggleCheck('p1',4)">
+              <input type="checkbox" id="p1-cb4">
+              <label for="p1-cb4">¿Consulté a alguien con experiencia?</label>
+            </div>
+            <div class="check-item" id="p1-ci5" onclick="toggleCheck('p1',5)">
+              <input type="checkbox" id="p1-cb5">
+              <label for="p1-cb5">¿Puedo vivir con las consecuencias a 5 años?</label>
+            </div>
+            <div class="check-item" id="p1-ci6" onclick="toggleCheck('p1',6)">
+              <input type="checkbox" id="p1-cb6">
+              <label for="p1-cb6">¿Mi yo futuro me agradecería esta decisión?</label>
+            </div>
+            <div class="check-item" id="p1-ci7" onclick="toggleCheck('p1',7)">
+              <input type="checkbox" id="p1-cb7">
+              <label for="p1-cb7">¿Estoy eligiendo, o solo evitando otra opción?</label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-block">
+          <div class="section-label">Índice de Confianza Decisional — Puntúa del 1 al 10</div>
+          <div class="diary-score-row">
+            <div class="diary-score-item">
+              <div class="diary-score-label">Claridad de la situación</div>
+              <div class="num-bar" id="p1-bar0"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Alineación con valores</div>
+              <div class="num-bar" id="p1-bar1"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Nivel de información</div>
+              <div class="num-bar" id="p1-bar2"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Calma emocional</div>
+              <div class="num-bar" id="p1-bar3"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Aceptación del riesgo</div>
+              <div class="num-bar" id="p1-bar4"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-footer">Herramienta 1 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Checkpoints completados</div>
+          <div class="eval-single-val" id="p1-checks-val">0 / 8</div>
+          <div class="eval-single-text" id="p1-checks-text">Completá los checkpoints.</div>
+        </div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Índice de Confianza</div>
+          <div class="conf-big" id="p1-conf-val">0</div>
+          <div class="conf-sub">/ 50 puntos</div>
+          <div class="eval-single-text" id="p1-conf-text">—</div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Checkpoints</div>
+          <div class="legend-item"><div class="legend-range">8/8</div><div class="legend-desc"><strong>Luz verde.</strong> Decidí con total confianza.</div></div>
+          <div class="legend-item"><div class="legend-range">6–7</div><div class="legend-desc"><strong>Luz amarilla.</strong> Atendé los puntos débiles.</div></div>
+          <div class="legend-item"><div class="legend-range">4–5</div><div class="legend-desc"><strong>Pausa.</strong> No decidás hoy.</div></div>
+          <div class="legend-item"><div class="legend-range">0–3</div><div class="legend-desc"><strong>Stop.</strong> Necesitás más información o calma.</div></div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Índice de Confianza</div>
+          <div class="legend-item"><div class="legend-range">40–50</div><div class="legend-desc"><strong>Alta.</strong> Actuá.</div></div>
+          <div class="legend-item"><div class="legend-range">30–39</div><div class="legend-desc"><strong>Moderada.</strong> Revisá dudas.</div></div>
+          <div class="legend-item"><div class="legend-range">20–29</div><div class="legend-desc"><strong>Baja.</strong> Esperá.</div></div>
+          <div class="legend-item"><div class="legend-range">10–19</div><div class="legend-desc"><strong>No decidís hoy.</strong></div></div>
+        </div>
+
+        <button class="btn-download" onclick="downloadP1()">↓ Descargar Resultados</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P2 – Plantillas de Decisión Rápida
+══════════════════════════════════════ -->
+<div id="p2" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 2 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Plantillas de Decisión Rápida</h2>
+      <p>12 escenarios comunes con scoring ponderado. Elegí el escenario, puntúa los criterios y obtenés tu resultado.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div class="section-label">1. Elegí tu escenario</div>
+          <div class="template-grid" id="p2-template-grid"></div>
+        </div>
+
+        <div id="p2-scoring-area" style="display:none;">
+          <div class="section-block">
+            <div class="section-label">2. Puntúa cada criterio (1–10)</div>
+            <div class="template-scoring">
+              <div class="scoring-title" id="p2-scoring-title">—</div>
+              <div id="p2-criteria-list"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-footer">Herramienta 2 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div id="p2-eval-empty" style="text-align:center;padding:2rem 0;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">⚡</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Elegí un escenario para ver tu puntuación.</div>
+        </div>
+
+        <div id="p2-eval-result" style="display:none;">
+          <div class="eval-single">
+            <div class="eval-single-label">Escenario</div>
+            <div class="eval-single-val" id="p2-scenario-name">—</div>
+          </div>
+          <div class="eval-single">
+            <div class="eval-single-label">Puntuación total</div>
+            <div class="conf-big" id="p2-score-val">0</div>
+            <div class="conf-sub">/ 100 puntos</div>
+            <div class="eval-single-text" id="p2-score-text">—</div>
+          </div>
+          <div id="p2-criteria-breakdown"></div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Interpretación</div>
+          <div class="legend-item"><div class="legend-range">80–100</div><div class="legend-desc"><strong>Decisión clara.</strong> Hacelo.</div></div>
+          <div class="legend-item"><div class="legend-range">60–79</div><div class="legend-desc"><strong>Buena opción.</strong> Validá un criterio más.</div></div>
+          <div class="legend-item"><div class="legend-range">40–59</div><div class="legend-desc"><strong>Dudoso.</strong> Necesitás más información.</div></div>
+          <div class="legend-item"><div class="legend-range">&lt;40</div><div class="legend-desc"><strong>No es el momento.</strong> Esperá.</div></div>
+        </div>
+
+        <div class="golden-rule">
+          <div class="golden-rule-title">Regla rápida</div>
+          <p>Si tardás más de 10 min en decidir algo reversible, estás sobreanalizando. Decidí y ajustá.</p>
+        </div>
+
+        <button class="btn-download" onclick="downloadP2()" style="display:none;" id="p2-dl-btn">↓ Descargar Resultados</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P3 – Diario de Claridad Mental
+══════════════════════════════════════ -->
+<div id="p3" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 3 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Diario de Claridad Mental</h2>
+      <p>30 días de reflexión diaria. Respondé cada pregunta con honestidad y puntúa tu claridad al final del día.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+            <div>
+              <div class="section-label">Día</div>
+              <input type="number" id="p3-day" min="1" max="30" value="1" placeholder="1–30" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.875rem;font-family:Inter,sans-serif;outline:none;width:100%;">
+            </div>
+            <div>
+              <div class="section-label">Fecha</div>
+              <input type="date" id="p3-date" style="background:var(--bg3);border:1px solid var(--border);border-radius:6px;padding:0.65rem 0.9rem;color:var(--text);font-size:0.875rem;font-family:Inter,sans-serif;outline:none;width:100%;">
+            </div>
+          </div>
+        </div>
+
+        <div class="section-block">
+          <div class="section-label">Registro diario</div>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">1. ¿Cuál fue la decisión más importante que tomaste hoy?</label>
+              <textarea id="p3-q1" placeholder="Escribí tu reflexión..."></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">2. ¿Qué emoción dominó tu proceso de decisión?</label>
+              <textarea id="p3-q2" placeholder="Escribí tu reflexión..."></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">3. ¿Decidiste desde tus valores o desde la presión externa?</label>
+              <textarea id="p3-q3" placeholder="Escribí tu reflexión..."></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">4. ¿Qué harías diferente si pudieras repetir el día?</label>
+              <textarea id="p3-q4" placeholder="Escribí tu reflexión..."></textarea>
+            </div>
+            <div>
+              <label style="display:block;font-size:0.82rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">5. ¿Qué aprendiste sobre vos mismo hoy?</label>
+              <textarea id="p3-q5" placeholder="Escribí tu reflexión..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-block">
+          <div class="section-label">Clarity Score del Día</div>
+          <div class="diary-score-row">
+            <div class="diary-score-item">
+              <div class="diary-score-label">Claridad mental</div>
+              <div class="num-bar" id="p3-bar0"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Confianza en mis decisiones</div>
+              <div class="num-bar" id="p3-bar1"></div>
+            </div>
+            <div class="diary-score-item">
+              <div class="diary-score-label">Alineación con valores</div>
+              <div class="num-bar" id="p3-bar2"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-footer">Herramienta 3 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Promedio diario</div>
+          <div class="clarity-num" id="p3-avg">—</div>
+          <div class="conf-sub">/ 10</div>
+          <div class="eval-single-text" id="p3-avg-text">Completá los scores para ver tu promedio.</div>
+        </div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Reflexiones completadas</div>
+          <div class="eval-single-val" id="p3-reflections">0 / 5</div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Tracker 30 días — Promedio semanal</div>
+          <div class="legend-item"><div class="legend-range">8–10</div><div class="legend-desc"><strong>Excepcional.</strong> Mejor momento decisional.</div></div>
+          <div class="legend-item"><div class="legend-range">6–7</div><div class="legend-desc"><strong>Buena.</strong> Identificá qué días bajan.</div></div>
+          <div class="legend-item"><div class="legend-range">4–5</div><div class="legend-desc"><strong>Media.</strong> Revisá rutina y descanso.</div></div>
+          <div class="legend-item"><div class="legend-range">1–3</div><div class="legend-desc"><strong>Alerta.</strong> Priorizá autocuidado.</div></div>
+        </div>
+
+        <button class="btn-download" onclick="downloadP3()">↓ Descargar Entrada del Día</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P4 – Mapa de Valores Personales
+══════════════════════════════════════ -->
+<div id="p4" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 4 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Mapa de Valores Personales</h2>
+      <p>Identificá y priorizás tus valores fundamentales. Estos van a guiar todas tus decisiones importantes.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div class="section-label">Paso 1 — Elegí tus valores más importantes (seleccioná los que resuenen)</div>
+          <div class="values-grid" id="p4-values-grid"></div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-block" id="p4-step2-block" style="display:none;">
+          <div class="section-label">Paso 2 — Ordená tus 5 valores principales (del más importante al menos)</div>
+          <div class="rank-list" id="p4-rank-list"></div>
+        </div>
+
+        <hr class="section-divider" id="p4-divider2" style="display:none;">
+
+        <div class="section-block" id="p4-step3-block" style="display:none;">
+          <div class="section-label">Paso 3 — Test de Alineación: ¿Cuánto vivís cada valor hoy? (1–10)</div>
+          <div class="diary-score-row" id="p4-align-bars"></div>
+        </div>
+
+        <div class="tool-footer">Herramienta 4 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Valores seleccionados</div>
+          <div class="eval-single-val" id="p4-selected-count">0</div>
+          <div class="eval-single-text" id="p4-selected-hint" style="color:var(--text-muted);">Seleccioná al menos 5 para continuar.</div>
+        </div>
+
+        <div id="p4-alignment-block" style="display:none;">
+          <div class="eval-single">
+            <div class="eval-single-label">Índice de Alineación</div>
+            <div class="conf-big" id="p4-align-val">0</div>
+            <div class="conf-sub">/ 50 puntos</div>
+            <div class="eval-single-text" id="p4-align-text">—</div>
+          </div>
+          <div id="p4-gaps-block"></div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Índice de Alineación</div>
+          <div class="legend-item"><div class="legend-range">45–50</div><div class="legend-desc"><strong>Alta alineación.</strong> Tus decisiones reflejan quién sos.</div></div>
+          <div class="legend-item"><div class="legend-range">35–44</div><div class="legend-desc"><strong>Buena.</strong> Identificá los gaps.</div></div>
+          <div class="legend-item"><div class="legend-range">25–34</div><div class="legend-desc"><strong>Moderada.</strong> Hay valores que no estás honrando.</div></div>
+          <div class="legend-item"><div class="legend-range">5–24</div><div class="legend-desc"><strong>Desconexión.</strong> Priorizá cambios.</div></div>
+        </div>
+
+        <div class="golden-rule">
+          <div class="golden-rule-title">Cómo usar este mapa</div>
+          <p>Antes de cada decisión importante preguntate: ¿Esta opción honra mis valores #1 y #2? Si la respuesta es no, probablemente no es la decisión correcta para vos.</p>
+        </div>
+
+        <button class="btn-download" onclick="downloadP4()">↓ Descargar Mapa de Valores</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P5 – Plan de Energía Decisional
+══════════════════════════════════════ -->
+<div id="p5" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 5 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Plan de Energía Decisional</h2>
+      <p>Optimizá cuándo tomás decisiones importantes. Tu energía mental fluctúa — usala a tu favor.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div class="section-label">Tu Mapa de Energía Semanal — Puntúa tu energía mental (1–10) en cada franja</div>
+          <div class="weekly-grid">
+            <table class="weekly-table" id="p5-weekly-table"></table>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-block">
+          <div class="section-label">Reglas de Timing Decisional</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div class="check-item" id="p5-rule0" onclick="toggleP5Rule(0)">
+              <input type="checkbox" id="p5-r0">
+              <label for="p5-r0">Decisiones irreversibles: solo en tu franja de máxima energía</label>
+            </div>
+            <div class="check-item" id="p5-rule1" onclick="toggleP5Rule(1)">
+              <input type="checkbox" id="p5-r1">
+              <label for="p5-r1">Decisiones reversibles: cualquier franja media o alta</label>
+            </div>
+            <div class="check-item" id="p5-rule2" onclick="toggleP5Rule(2)">
+              <input type="checkbox" id="p5-r2">
+              <label for="p5-r2">Decisiones rutinarias: automatizar (no gastar energía)</label>
+            </div>
+            <div class="check-item" id="p5-rule3" onclick="toggleP5Rule(3)">
+              <input type="checkbox" id="p5-r3">
+              <label for="p5-r3">Nunca decidir cuando estés cansado, hambriento o emocional</label>
+            </div>
+          </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <div class="section-block">
+          <div class="section-label">Mi Ventana Óptima de Decisión</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1rem;">
+            <div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.4rem;">Día</div>
+              <input type="text" id="p5-opt-day" placeholder="Ej: Martes">
+            </div>
+            <div>
+              <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:0.4rem;">Hora</div>
+              <input type="text" id="p5-opt-hour" placeholder="Ej: 10–13h">
+            </div>
+          </div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem;">Decisiones que reservo para esa ventana:</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <input type="text" id="p5-res1" placeholder="1.">
+            <input type="text" id="p5-res2" placeholder="2.">
+            <input type="text" id="p5-res3" placeholder="3.">
+          </div>
+        </div>
+
+        <div class="tool-footer">Herramienta 5 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Scoring de Energía Semanal</div>
+          <div class="conf-big" id="p5-score-val">0</div>
+          <div class="conf-sub">/ 70 puntos</div>
+          <div class="eval-single-text" id="p5-score-text">Completá el mapa semanal.</div>
+        </div>
+
+        <div class="eval-single">
+          <div class="eval-single-label">Tu pico de energía detectado</div>
+          <div class="eval-single-val" id="p5-peak">—</div>
+          <div class="eval-single-text" id="p5-peak-hint" style="color:var(--text-muted);">Completá al menos un día.</div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Scoring de Energía</div>
+          <div class="legend-item"><div class="legend-range">60–70</div><div class="legend-desc"><strong>Excelente.</strong> Aprovechá tus picos.</div></div>
+          <div class="legend-item"><div class="legend-range">45–59</div><div class="legend-desc"><strong>Buena.</strong> Protegé ventanas óptimas.</div></div>
+          <div class="legend-item"><div class="legend-range">30–44</div><div class="legend-desc"><strong>Moderada.</strong> Reducí decisiones no esenciales.</div></div>
+          <div class="legend-item"><div class="legend-range">&lt;30</div><div class="legend-desc"><strong>Baja.</strong> Priorizá descanso antes de decidir.</div></div>
+        </div>
+
+        <div class="golden-rule">
+          <div class="golden-rule-title">Optimización</div>
+          <p>
+            Dormir 7–8h → +2 puntos<br>
+            Ejercicio matutino → +1.5<br>
+            Ayuno de decisiones triviales → +1
+          </p>
+        </div>
+
+        <button class="btn-download" onclick="downloadP5()">↓ Descargar Plan de Energía</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     P6 – Kit de Comunicación de Decisiones
+══════════════════════════════════════ -->
+<div id="p6" class="page">
+  <div class="tool-wrap">
+    <button class="btn-back" onclick="goPageById('home')">← Inicio</button>
+    <div class="tool-head">
+      <div class="tool-badge">Herramienta 6 de 6 · Pack Premium VIP · Decide Fácil</div>
+      <h2>Kit de Comunicación de Decisiones</h2>
+      <p>Scripts probados para comunicar decisiones difíciles con claridad y respeto. Elegí el escenario y personalizá el guión.</p>
+    </div>
+
+    <div class="tool-body">
+      <div class="panel-left">
+
+        <div class="section-block">
+          <div class="section-label">1. Elegí el escenario</div>
+          <div class="script-grid" id="p6-scripts"></div>
+        </div>
+
+        <div id="p6-customize" style="display:none;">
+          <div class="section-block">
+            <div class="section-label">2. Personalizá tu mensaje</div>
+            <div class="comm-preview">
+              <div class="comm-preview-label">Tu script personalizado</div>
+              <div class="comm-text" id="p6-script-preview">—</div>
+            </div>
+            <div style="margin-top:1rem;display:flex;flex-direction:column;gap:0.5rem;" id="p6-fields"></div>
+          </div>
+
+          <div class="section-block">
+            <div class="section-label">3. Checklist pre-comunicación</div>
+            <div class="comm-checklist" id="p6-checklist">
+              <div class="comm-check-item" id="p6-cc0" onclick="toggleCommCheck(0)"><input type="checkbox" id="p6-cchk0"> ¿Estoy calmado/a?</div>
+              <div class="comm-check-item" id="p6-cc1" onclick="toggleCommCheck(1)"><input type="checkbox" id="p6-cchk1"> ¿Tengo claros mis motivos?</div>
+              <div class="comm-check-item" id="p6-cc2" onclick="toggleCommCheck(2)"><input type="checkbox" id="p6-cchk2"> ¿Elegí el momento adecuado?</div>
+              <div class="comm-check-item" id="p6-cc3" onclick="toggleCommCheck(3)"><input type="checkbox" id="p6-cchk3"> ¿Estoy preparado/a para preguntas?</div>
+              <div class="comm-check-item" id="p6-cc4" onclick="toggleCommCheck(4)"><input type="checkbox" id="p6-cchk4"> ¿Mi tono es firme pero respetuoso?</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-footer">Herramienta 6 de 6 · Pack Premium VIP · Decide Fácil</div>
+      </div>
+
+      <div class="panel-right">
+        <div class="eval-title">Evaluación</div>
+
+        <div id="p6-eval-empty" style="text-align:center;padding:2rem 0;">
+          <div style="font-size:2rem;margin-bottom:0.75rem;">💬</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);">Elegí un escenario para ver tu evaluación.</div>
+        </div>
+
+        <div id="p6-eval-result" style="display:none;">
+          <div class="eval-single">
+            <div class="eval-single-label">Escenario elegido</div>
+            <div class="eval-single-val" id="p6-scenario-name">—</div>
+          </div>
+
+          <div class="eval-single">
+            <div class="eval-single-label">Scoring de comunicación</div>
+            <div class="eval-single-val" id="p6-check-score">0 / 5</div>
+            <div class="eval-single-text" id="p6-check-text">—</div>
+          </div>
+        </div>
+
+        <div class="eval-legend">
+          <div class="eval-legend-title">Scoring de Comunicación</div>
+          <div class="legend-item"><div class="legend-range">5/5</div><div class="legend-desc"><strong>Comunicá ahora.</strong> Estás listo/a.</div></div>
+          <div class="legend-item"><div class="legend-range">3–4</div><div class="legend-desc"><strong>Casi listo/a.</strong> Trabajá los puntos pendientes.</div></div>
+          <div class="legend-item"><div class="legend-range">1–2</div><div class="legend-desc"><strong>Esperá.</strong> No es el momento.</div></div>
+        </div>
+
+        <div class="golden-rule">
+          <div class="golden-rule-title">Cómo usar los scripts</div>
+          <p>1. Elegí el escenario<br>2. Adaptá las palabras entre [corchetes]<br>3. Practicá en voz alta antes<br>4. Comunicá en persona cuando sea posible</p>
+        </div>
+
+        <button class="btn-download" onclick="downloadP6()" id="p6-dl-btn" style="display:none;">↓ Descargar Script</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════
+// NAV
+// ══════════════════════════════
+function goPage(id, tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(tab) tab.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function goPageById(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => {
+    t.classList.toggle('active', t.getAttribute('onclick') && t.getAttribute('onclick').includes("'"+id+"'"));
+  });
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ══════════════════════════════
+// NUM BAR
+// ══════════════════════════════
+const numBarState = {};
+
+function buildNumBar(containerId, defaultVal, onChange) {
+  numBarState[containerId] = defaultVal || 5;
+  renderNumBar(containerId, onChange);
+}
+
+function renderNumBar(containerId, onChange) {
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  for(let i=1;i<=10;i++){
+    const btn = document.createElement('div');
+    btn.className = 'num-btn' + (numBarState[containerId]===i?' selected':'');
+    btn.textContent = i;
+    btn.onclick = () => { numBarState[containerId]=i; renderNumBar(containerId,onChange); if(onChange) onChange(); };
+    wrap.appendChild(btn);
+  }
+}
+
+function buildEnergyBar(containerId, defaultVal, onChange) {
+  numBarState[containerId] = defaultVal||7;
+  const wrap = document.getElementById(containerId);
+  if(!wrap) return;
+  wrap.innerHTML='';
+  for(let i=1;i<=10;i++){
+    const btn=document.createElement('div');
+    btn.className='energy-btn'+(numBarState[containerId]===i?' selected':'');
+    btn.textContent=i;
+    btn.onclick=()=>{numBarState[containerId]=i;buildEnergyBar(containerId,null,onChange);if(onChange)onChange();};
+    wrap.appendChild(btn);
+  }
+}
+
+// ══════════════════════════════
+// P1 – PROTOCOLO ANTI-ARREPENTIMIENTO
+// ══════════════════════════════
+const p1State = { checks: [false,false,false,false,false,false,false,false], scores: [5,5,5,5,5] };
+
+function toggleCheck(tool, idx) {
+  if(tool==='p1') {
+    p1State.checks[idx] = !p1State.checks[idx];
+    const item = document.getElementById(`p1-ci${idx}`);
+    const cb = document.getElementById(`p1-cb${idx}`);
+    item.classList.toggle('checked', p1State.checks[idx]);
+    cb.checked = p1State.checks[idx];
+    calcP1();
+  }
+}
+
+function calcP1() {
+  const count = p1State.checks.filter(Boolean).length;
+  const confScore = p1State.scores.reduce((a,b)=>a+b,0);
+
+  // Progress dots
+  const pd = document.getElementById('p1-progress');
+  if(pd) {
+    pd.innerHTML = p1State.checks.map(c=>`<div class="check-progress-dot${c?' done':''}"></div>`).join('');
+  }
+
+  // Checks eval
+  let chkTxt='', chkCls='';
+  if(count===8){chkTxt='✅ Luz verde. Decidí con total confianza. No mires atrás.';chkCls='green';}
+  else if(count>=6){chkTxt='🟡 Luz amarilla. Podés decidir, pero atendé los puntos débiles.';chkCls='yellow';}
+  else if(count>=4){chkTxt='⏸ Pausa. No decidás hoy. Trabajá los gaps primero.';chkCls='yellow';}
+  else {chkTxt='🛑 Stop. No estás listo/a. Necesitás más información o calma.';chkCls='red';}
+
+  document.getElementById('p1-checks-val').textContent = `${count} / 8`;
+  const ct = document.getElementById('p1-checks-text');
+  ct.textContent = chkTxt;
+  ct.className = 'eval-single-text ' + chkCls;
+
+  // Confidence score
+  let confTxt='', confCls='';
+  if(confScore>=40){confTxt='Confianza alta. Actuá.';confCls='green';}
+  else if(confScore>=30){confTxt='Confianza moderada. Revisá dudas.';confCls='blue';}
+  else if(confScore>=20){confTxt='Confianza baja. Esperá.';confCls='yellow';}
+  else {confTxt='No decidís hoy. Priorizá calma y datos.';confCls='red';}
+
+  document.getElementById('p1-conf-val').textContent = confScore;
+  const cft = document.getElementById('p1-conf-text');
+  cft.textContent = confTxt;
+  cft.className = 'eval-single-text ' + confCls;
+}
+
+function initP1() {
+  ['p1-bar0','p1-bar1','p1-bar2','p1-bar3','p1-bar4'].forEach((id,i) => {
+    buildNumBar(id, 5, () => { p1State.scores[i] = numBarState[id]; calcP1(); });
+  });
+  calcP1();
+}
+
+function downloadP1() {
+  const dec = document.getElementById('p1-decision').value || '(sin especificar)';
+  const count = p1State.checks.filter(Boolean).length;
+  const conf = p1State.scores.reduce((a,b)=>a+b,0);
+  const checks = ['¿Tengo toda la información?','¿Consideré el peor escenario?','¿Coherente con mis valores?','¿Decido desde la calma?','¿Consulté con experiencia?','¿Puedo vivir las consecuencias a 5 años?','¿Mi yo futuro lo agradecería?','¿Estoy eligiendo, no evitando?'];
+  let txt = `DECIDE FÁCIL VIP – PROTOCOLO ANTI-ARREPENTIMIENTO\n${'='.repeat(52)}\n\nDecisión: ${dec}\n\nCHECKPOINTS (${count}/8):\n`;
+  checks.forEach((c,i)=>txt+=`[${p1State.checks[i]?'✓':' '}] ${c}\n`);
+  txt += `\nÍNDICE DE CONFIANZA: ${conf}/50\n`;
+  txt += `Dimensiones: Claridad(${p1State.scores[0]}) Valores(${p1State.scores[1]}) Info(${p1State.scores[2]}) Calma(${p1State.scores[3]}) Riesgo(${p1State.scores[4]})\n`;
+  dl('DecideFacil_AntiArrepentimiento.txt', txt);
+}
+
+// ══════════════════════════════
+// P2 – PLANTILLAS RÁPIDAS
+// ══════════════════════════════
+const p2Templates = [
+  { title:'¿Acepto este trabajo?', criteria:[{n:'Salario',w:3},{n:'Crecimiento',w:4},{n:'Balance',w:3}] },
+  { title:'¿Cambio de ciudad?', criteria:[{n:'Oportunidad',w:4},{n:'Red social',w:3},{n:'Costo',w:3}] },
+  { title:'¿Inicio este proyecto?', criteria:[{n:'Pasión',w:4},{n:'Viabilidad',w:3},{n:'Tiempo',w:3}] },
+  { title:'¿Termino esta relación?', criteria:[{n:'Bienestar',w:4},{n:'Valores',w:4},{n:'Futuro',w:2}] },
+  { title:'¿Invierto en esto?', criteria:[{n:'Retorno',w:4},{n:'Riesgo',w:3},{n:'Liquidez',w:3}] },
+  { title:'¿Renuncio hoy?', criteria:[{n:'Salud mental',w:4},{n:'Finanzas',w:3},{n:'Plan B',w:3}] },
+  { title:'¿Estudio esto?', criteria:[{n:'Interés',w:3},{n:'ROI',w:4},{n:'Tiempo',w:3}] },
+  { title:'¿Digo que sí?', criteria:[{n:'Energía',w:4},{n:'Alineación',w:3},{n:'Costo',w:3}] },
+  { title:'¿Compro esto?', criteria:[{n:'Necesidad',w:4},{n:'Presupuesto',w:3},{n:'Uso real',w:3}] },
+  { title:'¿Delego esta tarea?', criteria:[{n:'Mi tiempo',w:4},{n:'Calidad',w:3},{n:'Costo',w:3}] },
+  { title:'¿Pido ese aumento?', criteria:[{n:'Mérito',w:4},{n:'Timing',w:3},{n:'Alternativa',w:3}] },
+  { title:'¿Lanzo ahora?', criteria:[{n:'Preparación',w:4},{n:'Mercado',w:3},{n:'Recursos',w:3}] }
+];
+
+const p2State = { selected: -1, scores: {} };
+
+function initP2() {
+  const grid = document.getElementById('p2-template-grid');
+  grid.innerHTML = p2Templates.map((t,i)=>`
+    <div class="template-card" id="p2-tc${i}" onclick="selectTemplate(${i})">
+      <div class="template-card-num">Escenario ${i+1}</div>
+      <div class="template-card-title">${t.title}</div>
+      <div class="template-card-criteria">${t.criteria.map(c=>`${c.n} (×${c.w})`).join(' · ')}</div>
+    </div>
+  `).join('');
+}
+
+function selectTemplate(idx) {
+  p2State.selected = idx;
+  document.querySelectorAll('.template-card').forEach((c,i)=>c.classList.toggle('selected',i===idx));
+
+  const t = p2Templates[idx];
+  document.getElementById('p2-scoring-area').style.display='block';
+  document.getElementById('p2-scoring-title').textContent = t.title;
+
+  const cl = document.getElementById('p2-criteria-list');
+  cl.innerHTML = '';
+  t.criteria.forEach((c,ci)=>{
+    const barId = `p2-bar-${ci}`;
+    p2State.scores[ci] = 5;
+    cl.innerHTML += `
+      <div class="scoring-criterion">
+        <div class="scoring-crit-label">${c.n}</div>
+        <div class="scoring-crit-weight">×${c.w}</div>
+        <div class="num-bar" id="${barId}" style="flex:1;"></div>
+        <div style="font-size:0.75rem;color:var(--gold);font-weight:700;min-width:20px;text-align:right;" id="${barId}-val">5</div>
+      </div>`;
+  });
+
+  t.criteria.forEach((_,ci)=>{
+    const barId = `p2-bar-${ci}`;
+    buildNumBar(barId, 5, ()=>{ p2State.scores[ci]=numBarState[barId]; calcP2(); });
+  });
+
+  document.getElementById('p2-eval-empty').style.display='none';
+  document.getElementById('p2-eval-result').style.display='block';
+  document.getElementById('p2-dl-btn').style.display='block';
+  document.getElementById('p2-scenario-name').textContent = t.title;
+  calcP2();
+}
+
+function calcP2() {
+  const t = p2Templates[p2State.selected];
+  if(!t) return;
+  const total = t.criteria.reduce((sum,c,i)=>sum+(p2State.scores[i]||5)*c.w,0);
+  const maxPossible = t.criteria.reduce((sum,c)=>sum+10*c.w,0);
+  const pct = Math.round((total/maxPossible)*100);
+
+  let txt='', cls='';
+  if(pct>=80){txt='Decisión clara. Hacelo.';cls='green';}
+  else if(pct>=60){txt='Buena opción. Validá un criterio más.';cls='blue';}
+  else if(pct>=40){txt='Dudoso. Necesitás más información.';cls='yellow';}
+  else {txt='No es el momento. Esperá.';cls='red';}
+
+  document.getElementById('p2-score-val').textContent = pct;
+  const st = document.getElementById('p2-score-text');
+  st.textContent = txt; st.className='eval-single-text '+cls;
+
+  const breakdown = document.getElementById('p2-criteria-breakdown');
+  breakdown.innerHTML = t.criteria.map((c,i)=>{
+    const sc = p2State.scores[i]||5;
+    return `<div class="eval-single" style="margin-bottom:0.4rem;">
+      <div class="eval-single-label">${c.n} (×${c.w})</div>
+      <div style="font-size:1rem;font-weight:700;color:var(--gold);">${sc} × ${c.w} = ${sc*c.w} pts</div>
+    </div>`;
+  }).join('');
+}
+
+function downloadP2() {
+  const t = p2Templates[p2State.selected];
+  if(!t) return;
+  const total = t.criteria.reduce((sum,c,i)=>sum+(p2State.scores[i]||5)*c.w,0);
+  const maxP = t.criteria.reduce((sum,c)=>sum+10*c.w,0);
+  let txt=`DECIDE FÁCIL VIP – PLANTILLA DECISIÓN RÁPIDA\n${'='.repeat(48)}\n\n`;
+  txt+=`Escenario: ${t.title}\n\n`;
+  t.criteria.forEach((c,i)=>txt+=`${c.n} (×${c.w}): ${p2State.scores[i]||5} → ${(p2State.scores[i]||5)*c.w} pts\n`);
+  txt+=`\nTotal: ${total}/${maxP} (${Math.round((total/maxP)*100)}%)\n`;
+  dl('DecideFacil_PlantillaRapida.txt',txt);
+}
+
+// ══════════════════════════════
+// P3 – DIARIO DE CLARIDAD
+// ══════════════════════════════
+const p3State = { scores: [5,5,5] };
+
+function initP3() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('p3-date').value = today;
+  ['p3-bar0','p3-bar1','p3-bar2'].forEach((id,i)=>{
+    buildNumBar(id,5,()=>{ p3State.scores[i]=numBarState[id]; calcP3(); });
+  });
+  ['p3-q1','p3-q2','p3-q3','p3-q4','p3-q5'].forEach(id=>{
+    document.getElementById(id).oninput=calcP3;
+  });
+  calcP3();
+}
+
+function calcP3() {
+  const avg = (p3State.scores.reduce((a,b)=>a+b,0)/3).toFixed(1);
+  const qs = ['p3-q1','p3-q2','p3-q3','p3-q4','p3-q5'];
+  const done = qs.filter(id=>document.getElementById(id).value.trim().length>5).length;
+
+  let txt='',cls='';
+  const n=parseFloat(avg);
+  if(n>=8){txt='Claridad excepcional. Estás en tu mejor momento decisional.';cls='green';}
+  else if(n>=6){txt='Buena claridad. Identificá qué días bajan y por qué.';cls='blue';}
+  else if(n>=4){txt='Claridad media. Revisá tu rutina y descanso.';cls='yellow';}
+  else {txt='Alerta. Reducí decisiones importantes y priorizá autocuidado.';cls='red';}
+
+  document.getElementById('p3-avg').textContent = avg;
+  const at=document.getElementById('p3-avg-text');
+  at.textContent=txt; at.className='eval-single-text '+cls;
+  document.getElementById('p3-reflections').textContent=`${done} / 5`;
+}
+
+function downloadP3() {
+  const day=document.getElementById('p3-day').value;
+  const date=document.getElementById('p3-date').value;
+  const avg=(p3State.scores.reduce((a,b)=>a+b,0)/3).toFixed(1);
+  let txt=`DECIDE FÁCIL VIP – DIARIO DE CLARIDAD MENTAL\n${'='.repeat(48)}\n\nDía: ${day} | Fecha: ${date}\n\n`;
+  ['¿Decisión más importante de hoy?','¿Emoción dominante?','¿Desde valores o presión externa?','¿Qué harías diferente?','¿Qué aprendiste sobre vos?'].forEach((q,i)=>{
+    txt+=`${i+1}. ${q}\n${document.getElementById(`p3-q${i+1}`).value||'(sin respuesta)'}\n\n`;
+  });
+  txt+=`CLARITY SCORE:\nClaridad: ${p3State.scores[0]}/10\nConfianza: ${p3State.scores[1]}/10\nAlineación: ${p3State.scores[2]}/10\nPromedio: ${avg}/10\n`;
+  dl(`DecideFacil_Diario_Dia${day}.txt`,txt);
+}
+
+// ══════════════════════════════
+// P4 – MAPA DE VALORES
+// ══════════════════════════════
+const allValues = ['Libertad','Seguridad','Familia','Crecimiento','Salud','Creatividad','Honestidad','Impacto','Aventura','Conexión','Liderazgo','Equilibrio','Autonomía','Excelencia','Propósito','Disfrute'];
+const p4State = { selected:[], ranked:[], alignScores:{} };
+
+function initP4() {
+  const grid=document.getElementById('p4-values-grid');
+  grid.innerHTML=allValues.map(v=>`<div class="value-chip" id="p4-v-${v}" onclick="toggleValue('${v}')">${v}</div>`).join('');
+}
+
+function toggleValue(val) {
+  const idx=p4State.selected.indexOf(val);
+  if(idx>-1) p4State.selected.splice(idx,1);
+  else p4State.selected.push(val);
+  document.getElementById(`p4-v-${val}`).classList.toggle('selected',p4State.selected.includes(val));
+  updateP4();
+}
+
+function updateP4() {
+  const cnt=p4State.selected.length;
+  document.getElementById('p4-selected-count').textContent=cnt;
+
+  const hint=document.getElementById('p4-selected-hint');
+  if(cnt<5) { hint.textContent=`Seleccioná al menos ${5-cnt} más para continuar.`; hint.style.color='var(--text-muted)'; }
+  else { hint.textContent='¡Listo! Ahora ordená tus 5 principales.'; hint.style.color='var(--green)'; }
+
+  if(cnt>=5) {
+    document.getElementById('p4-step2-block').style.display='block';
+    document.getElementById('p4-divider2').style.display='block';
+    // Show top 5 ranked
+    const top5=p4State.selected.slice(0,5);
+    document.getElementById('p4-rank-list').innerHTML=top5.map((v,i)=>`
+      <div class="rank-item">
+        <div class="rank-num">#${i+1}</div>
+        <div class="rank-name">${v}</div>
+      </div>`).join('');
+
+    document.getElementById('p4-step3-block').style.display='block';
+    const alignBars=document.getElementById('p4-align-bars');
+    alignBars.innerHTML=top5.map((v,i)=>`
+      <div class="diary-score-item">
+        <div class="diary-score-label">${v}</div>
+        <div class="num-bar" id="p4-align-${i}"></div>
+      </div>`).join('');
+    top5.forEach((_,i)=>{
+      buildNumBar(`p4-align-${i}`,p4State.alignScores[i]||5,()=>{
+        p4State.alignScores[i]=numBarState[`p4-align-${i}`]; calcP4Alignment(top5);
+      });
+    });
+    calcP4Alignment(top5);
+    document.getElementById('p4-alignment-block').style.display='block';
+  } else {
+    document.getElementById('p4-step2-block').style.display='none';
+    document.getElementById('p4-divider2').style.display='none';
+    document.getElementById('p4-step3-block').style.display='none';
+    document.getElementById('p4-alignment-block').style.display='none';
+  }
+}
+
+function calcP4Alignment(top5) {
+  const total=top5.reduce((_,v,i)=>_+(p4State.alignScores[i]||5),0);
+  document.getElementById('p4-align-val').textContent=total;
+
+  let txt='',cls='';
+  if(total>=45){txt='Vida altamente alineada. Tus decisiones reflejan quién sos.';cls='green';}
+  else if(total>=35){txt='Buena alineación. Identificá los gaps y trabajá en ellos.';cls='blue';}
+  else if(total>=25){txt='Desalineación moderada. Hay valores importantes que no estás honrando.';cls='yellow';}
+  else {txt='Desconexión significativa. Priorizá cambios en las áreas con menor puntuación.';cls='red';}
+
+  const at=document.getElementById('p4-align-text');
+  at.textContent=txt; at.className='eval-single-text '+cls;
+
+  // Gaps
+  const gaps=top5.filter((_,i)=>(p4State.alignScores[i]||5)<=5);
+  const gb=document.getElementById('p4-gaps-block');
+  gb.innerHTML=gaps.length?`<div class="golden-rule"><div class="golden-rule-title">Valores a reforzar</div><p>${gaps.join(', ')}</p></div>`:'';
+}
+
+function downloadP4() {
+  const top5=p4State.selected.slice(0,5);
+  let txt=`DECIDE FÁCIL VIP – MAPA DE VALORES PERSONALES\n${'='.repeat(50)}\n\nVALORES SELECCIONADOS:\n`;
+  p4State.selected.forEach(v=>txt+=`· ${v}\n`);
+  txt+='\nTOP 5 PRINCIPALES:\n';
+  top5.forEach((v,i)=>txt+=`#${i+1} ${v} — Alineación actual: ${p4State.alignScores[i]||5}/10\n`);
+  const total=top5.reduce((_,v,i)=>_+(p4State.alignScores[i]||5),0);
+  txt+=`\nÍndice de Alineación: ${total}/50\n`;
+  dl('DecideFacil_MapaValores.txt',txt);
+}
+
+// ══════════════════════════════
+// P5 – PLAN DE ENERGÍA
+// ══════════════════════════════
+const days=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+const slots=['6–10h','10–13h','13–17h','17–21h'];
+const p5State={grid:{},rules:[false,false,false,false]};
+
+function initP5() {
+  // Build weekly table
+  const table=document.getElementById('p5-weekly-table');
+  let html=`<thead><tr><th>Franja</th>${days.map(d=>`<th>${d}</th>`).join('')}</tr></thead><tbody>`;
+  slots.forEach((slot,si)=>{
+    html+=`<tr><td style="color:var(--gold);font-size:0.72rem;font-weight:700;">${slot}</td>`;
+    days.forEach((_,di)=>{
+      const id=`p5-g${si}-${di}`;
+      html+=`<td><div class="weekly-mini-bar" id="${id}"></div></td>`;
+    });
+    html+='</tr>';
+  });
+  html+='</tbody>';
+  table.innerHTML=html;
+
+  slots.forEach((_,si)=>{
+    days.forEach((_,di)=>{
+      const id=`p5-g${si}-${di}`;
+      p5State.grid[id]=5;
+      buildMiniBar(id,5,()=>{ p5State.grid[id]=numBarState[id]; calcP5(); });
+    });
+  });
+  calcP5();
+}
+
+function buildMiniBar(id, def, cb) {
+  numBarState[id]=def;
+  const wrap=document.getElementById(id);
+  if(!wrap) return;
+  wrap.innerHTML='';
+  for(let i=1;i<=10;i++){
+    const b=document.createElement('div');
+    b.className='weekly-mini-btn'+(numBarState[id]===i?' selected':'');
+    b.textContent=i;
+    b.onclick=()=>{numBarState[id]=i;buildMiniBar(id,null,cb);if(cb)cb();};
+    wrap.appendChild(b);
+  }
+}
+
+function toggleP5Rule(idx) {
+  p5State.rules[idx]=!p5State.rules[idx];
+  document.getElementById(`p5-rule${idx}`).classList.toggle('checked',p5State.rules[idx]);
+  document.getElementById(`p5-r${idx}`).checked=p5State.rules[idx];
+}
+
+function calcP5() {
+  // Sum of max per day
+  let totalScore=0;
+  let peakSlot='',peakVal=0;
+  days.forEach((_,di)=>{
+    let dayMax=0;
+    slots.forEach((_,si)=>{
+      const id=`p5-g${si}-${di}`;
+      const v=numBarState[id]||5;
+      if(v>dayMax) { dayMax=v; }
+    });
+    totalScore+=dayMax;
+  });
+
+  // Find peak slot (average across days)
+  let bestSlotIdx=0, bestSlotAvg=0;
+  slots.forEach((_,si)=>{
+    const avg=days.reduce((s,_,di)=>s+(numBarState[`p5-g${si}-${di}`]||5),0)/7;
+    if(avg>bestSlotAvg){ bestSlotAvg=avg; bestSlotIdx=si; }
+  });
+
+  document.getElementById('p5-score-val').textContent=totalScore;
+  let stxt='',scls='';
+  if(totalScore>=60){stxt='Energía decisional excelente. Aprovechá tus picos.';scls='green';}
+  else if(totalScore>=45){stxt='Energía buena. Protegé tus ventanas óptimas.';scls='blue';}
+  else if(totalScore>=30){stxt='Energía moderada. Reducí decisiones no esenciales.';scls='yellow';}
+  else {stxt='Energía baja. Priorizá descanso antes de decidir.';scls='red';}
+  const st=document.getElementById('p5-score-text');
+  st.textContent=stxt; st.className='eval-single-text '+scls;
+
+  document.getElementById('p5-peak').textContent=slots[bestSlotIdx];
+  document.getElementById('p5-peak-hint').textContent=`Promedio de ${bestSlotAvg.toFixed(1)}/10 en esa franja. Reservá esta ventana para tus decisiones más importantes.`;
+}
+
+function downloadP5() {
+  const optDay=document.getElementById('p5-opt-day').value;
+  const optHour=document.getElementById('p5-opt-hour').value;
+  let txt=`DECIDE FÁCIL VIP – PLAN DE ENERGÍA DECISIONAL\n${'='.repeat(50)}\n\nMapa semanal:\n\n`;
+  slots.forEach((slot,si)=>{
+    txt+=`${slot}: `;
+    txt+=days.map((_,di)=>numBarState[`p5-g${si}-${di}`]||5).join(' | ')+'\n';
+  });
+  txt+=`\nVentana óptima: ${optDay||'—'} · ${optHour||'—'}\n`;
+  txt+=`Decisiones reservadas:\n`;
+  ['p5-res1','p5-res2','p5-res3'].forEach((id,i)=>{
+    txt+=`${i+1}. ${document.getElementById(id).value||'—'}\n`;
+  });
+  dl('DecideFacil_PlanEnergia.txt',txt);
+}
+
+// ══════════════════════════════
+// P6 – KIT DE COMUNICACIÓN
+// ══════════════════════════════
+const p6Scripts = [
+  {
+    title:'Decir NO a un proyecto',
+    fields:['nombre_proyecto','razón_principal'],
+    template:'Agradezco la oportunidad con [nombre_proyecto]. Después de evaluarlo con mis prioridades actuales, no puedo comprometerme al nivel que merece. [razón_principal]. Prefiero ser honesto/a ahora que fallar después.'
+  },
+  {
+    title:'Comunicar un cambio de rumbo',
+    fields:['cambio','reflexión'],
+    template:'He tomado la decisión de [cambio]. Sé que puede sorprender, pero después de reflexionar sobre mis valores y objetivos, es lo más coherente para mí. [reflexión]'
+  },
+  {
+    title:'Pedir tiempo para decidir',
+    fields:['plazo','impacto'],
+    template:'Necesito [plazo] para tomar esta decisión con la claridad que merece. No es indecisión, es respeto por el impacto que tiene: [impacto].'
+  },
+  {
+    title:'Establecer un límite',
+    fields:['límite','valor_protegido'],
+    template:'Valoro nuestra relación, y por eso necesito ser directo/a: [límite]. No es negociable porque protege [valor_protegido], algo fundamental para mí.'
+  },
+  {
+    title:'Comunicar una decisión impopular',
+    fields:['decisión','criterios'],
+    template:'Entiendo que esto no es lo que esperabas. Tomé esta decisión considerando [criterios]. Estoy abierto/a a escuchar tu perspectiva, pero la decisión está tomada.'
+  },
+  {
+    title:'Renegociar un compromiso',
+    fields:['tema','alternativa'],
+    template:'Necesito ajustar nuestro acuerdo sobre [tema]. Las circunstancias cambiaron y quiero ser transparente contigo. Propongo [alternativa] como solución.'
+  }
+];
+
+const p6State = { selected:-1, fields:{}, checks:[false,false,false,false,false] };
+
+function initP6() {
+  const grid=document.getElementById('p6-scripts');
+  grid.innerHTML=p6Scripts.map((s,i)=>`
+    <div class="script-card" id="p6-sc${i}" onclick="selectScript(${i})">
+      <div class="script-num">Escenario ${i+1}</div>
+      <div class="script-title">${s.title}</div>
+      <div class="script-text">"${s.template.substring(0,60)}..."</div>
+    </div>`).join('');
+}
+
+function selectScript(idx) {
+  p6State.selected=idx;
+  p6State.fields={};
+  document.querySelectorAll('.script-card').forEach((c,i)=>c.classList.toggle('selected',i===idx));
+  document.getElementById('p6-customize').style.display='block';
+  document.getElementById('p6-eval-empty').style.display='none';
+  document.getElementById('p6-eval-result').style.display='block';
+  document.getElementById('p6-dl-btn').style.display='block';
+  document.getElementById('p6-scenario-name').textContent=p6Scripts[idx].title;
+
+  const s=p6Scripts[idx];
+  const fieldsDiv=document.getElementById('p6-fields');
+  fieldsDiv.innerHTML=s.fields.map(f=>`
+    <div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.3rem;text-transform:capitalize;">${f.replace(/_/g,' ')}</div>
+      <input type="text" id="p6-f-${f}" placeholder="Completá este campo..." oninput="updateP6Script()">
+    </div>`).join('');
+
+  updateP6Script();
+  calcP6();
+}
+
+function updateP6Script() {
+  const idx=p6State.selected;
+  if(idx<0) return;
+  const s=p6Scripts[idx];
+  let text=s.template;
+  s.fields.forEach(f=>{
+    const val=document.getElementById(`p6-f-${f}`)?.value;
+    if(val&&val.trim()) {
+      text=text.replace(`[${f}]`,`<strong style="color:var(--text)">${val}</strong>`);
+    } else {
+      text=text.replace(`[${f}]`,`<span class="comm-hint">[${f.replace(/_/g,' ')}]</span>`);
+    }
+  });
+  document.getElementById('p6-script-preview').innerHTML=text;
+}
+
+function toggleCommCheck(idx) {
+  p6State.checks[idx]=!p6State.checks[idx];
+  document.getElementById(`p6-cc${idx}`).classList.toggle('done',p6State.checks[idx]);
+  document.getElementById(`p6-cchk${idx}`).checked=p6State.checks[idx];
+  calcP6();
+}
+
+function calcP6() {
+  const count=p6State.checks.filter(Boolean).length;
+  document.getElementById('p6-check-score').textContent=`${count} / 5`;
+  let txt='',cls='';
+  if(count===5){txt='✅ Comunicá ahora. Estás listo/a. Hacelo con confianza.';cls='green';}
+  else if(count>=3){txt='🟡 Casi listo/a. Trabajá los puntos pendientes.';cls='yellow';}
+  else {txt='⏸ Esperá. No es el momento. Preparate más.';cls='red';}
+  const ct=document.getElementById('p6-check-text');
+  ct.textContent=txt; ct.className='eval-single-text '+cls;
+}
+
+function downloadP6() {
+  const idx=p6State.selected;
+  if(idx<0) return;
+  const s=p6Scripts[idx];
+  let script=s.template;
+  s.fields.forEach(f=>{
+    const val=document.getElementById(`p6-f-${f}`)?.value||`[${f}]`;
+    script=script.replace(`[${f}]`,val);
+  });
+  const count=p6State.checks.filter(Boolean).length;
+  let txt=`DECIDE FÁCIL VIP – KIT DE COMUNICACIÓN\n${'='.repeat(42)}\n\nEscenario: ${s.title}\n\nSCRIPT FINAL:\n"${script}"\n\nChecklist pre-comunicación: ${count}/5\n`;
+  dl('DecideFacil_KitComunicacion.txt',txt);
+}
+
+// ══════════════════════════════
+// DOWNLOAD UTIL
+// ══════════════════════════════
+function dl(filename, content) {
+  const a=document.createElement('a');
+  a.href='data:text/plain;charset=utf-8,'+encodeURIComponent(content);
+  a.download=filename;
+  a.click();
+}
+
+// ══════════════════════════════
+// INIT
+// ══════════════════════════════
+window.addEventListener('load',()=>{
+  initP1();
+  initP2();
+  initP3();
+  initP4();
+  initP5();
+  initP6();
+});
+</script>
+</body>
+</html>

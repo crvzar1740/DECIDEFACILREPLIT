@@ -6,6 +6,7 @@ import Home from "@/pages/Home";
 import Upsell from "@/pages/Upsell";
 import Downsell from "@/pages/Downsell";
 import Gracias from "@/pages/Gracias";
+import PackVIP from "@/pages/PackVIP";
 import NotFound from "@/pages/not-found";
 
 const queryClient = new QueryClient();
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/upsell" component={Upsell} />
       <Route path="/downsell" component={Downsell} />
       <Route path="/gracias" component={Gracias} />
+      <Route path="/vip" component={PackVIP} />
       <Route component={NotFound} />
     </Switch>
   );
