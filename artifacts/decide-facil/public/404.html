@@ -1,1 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Redirecting...</title>
+  <script>
+    const path = location.pathname.replace(
+      '/DECIDEFACILREPLIT',
+      ''
+    );
 
+    location.replace(
+      '/DECIDEFACILREPLIT/?redirect=' +
+      encodeURIComponent(path + location.search + location.hash)
+    );
+  </script>
+</head>
+<body>
+  Redirecting...
+</body>
+</html>
