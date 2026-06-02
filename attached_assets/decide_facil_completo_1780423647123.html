@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decide Fácil — Sistema Operativo de Decisiones</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#0A0F1D',
+                        darkCard: 'rgba(255, 255, 255, 0.03)',
+                        borderGlass: 'rgba(255, 255, 255, 0.08)',
+                        brandAccent: '#38BDF8',
+                        brandGold: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .inner-tab-content { display: none; }
+        .inner-tab-content.active { display: block; }
+        
+        /* Premium custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0A0F1D; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+    </style>
+</head>
+<body class="min-h-screen bg-darkBase text-slate-300 overflow-x-hidden antialiased">
+
+    <!-- ===== NAVBAR SUPERIOR ===== -->
+    <nav class="border-b border-white/[0.05] bg-black/40 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-8">
+                <span class="text-brandGold font-black tracking-tight text-xl cursor-pointer" onclick="switchTab('inicio')">Decide Fácil</span>
+                <div class="md:flex items-center gap-1 text-sm font-medium">
+                    <button id="nav-inicio" onclick="switchTab('inicio')" class="nav-btn px-4 py-2 rounded-lg text-white bg-white/5 transition-all">Inicio</button>
+                    <button id="nav-asistente" onclick="switchTab('asistente')" class="nav-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-orange-400"></i> Asistente</button>
+                    <button id="nav-frameworks" onclick="switchTab('frameworks')" class="nav-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5"><i data-lucide="columns" class="w-3.5 h-3.5 text-blue-400"></i> Frameworks</button>
+                    <button id="nav-automatizacion" onclick="switchTab('automatizacion')" class="nav-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5"><i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-purple-400"></i> Automatización</button>
+                    <button id="nav-educativo" onclick="switchTab('educativo')" class="nav-btn px-4 py-2 rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-1.5"><i data-lucide="book-open" class="w-3.5 h-3.5 text-emerald-400"></i> Educativo</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== CONTENEDOR CENTRAL ===== -->
+    <main class="max-w-7xl mx-auto px-4 py-10">
+
+        <!-- ==================== PESTAÑA: INICIO ==================== -->
+        <div id="tab-inicio" class="tab-content active space-y-12">
+            <div class="text-center py-8 space-y-4">
+                <h1 class="text-4xl md:text-5xl font-black text-white tracking-tight">Decide Fácil</h1>
+                <p class="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-light">
+                    Optimiza tu energía cognitiva. Un entorno diseñado para filtrar la indecisión diaria, activar el Sistema 2 analítico y recuperar tu tiempo libre.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <div class="bg-darkCard border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-orange-500/40 transition-all cursor-pointer" onclick="switchTab('asistente')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-orange-400 mb-3">Herramienta 1</p>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2"><i data-lucide="zap" class="w-4 h-4 text-orange-400"></i> Asistente Dinámico</h3>
+                        <p class="text-slate-400 text-sm font-light leading-relaxed">Filtros interactivos para comidas, rutinas, ocio y decisiones imprevistas de forma inmediata.</p>
+                    </div>
+                    <span class="text-orange-400 text-sm font-medium inline-flex items-center gap-1 mt-6">Abrir Asistente &rarr;</span>
+                </div>
+
+                <div class="bg-darkCard border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-blue-400/40 transition-all cursor-pointer" onclick="switchTab('frameworks')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-blue-400 mb-3">Herramienta 2</p>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2"><i data-lucide="columns" class="w-4 h-4 text-blue-400"></i> Frameworks de Decisión</h3>
+                        <p class="text-slate-400 text-sm font-light leading-relaxed">Estructuras analíticas avanzadas: Matriz Ponderada y Modelo Racional basado en Evidencia (EBDM).</p>
+                    </div>
+                    <span class="text-blue-400 text-sm font-medium inline-flex items-center gap-1 mt-6">Ver Frameworks &rarr;</span>
+                </div>
+
+                <div class="bg-darkCard border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-purple-400/40 transition-all cursor-pointer" onclick="switchTab('automatizacion')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-purple-400 mb-3">Herramienta 3</p>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2"><i data-lucide="refresh-cw" class="w-4 h-4 text-purple-400"></i> Automatización</h3>
+                        <p class="text-slate-400 text-sm font-light leading-relaxed">Reglas fijas preestablecidas para eliminar decisiones repetitivas de tu rutina semanal.</p>
+                    </div>
+                    <span class="text-purple-400 text-sm font-medium inline-flex items-center gap-1 mt-6">Configurar &rarr;</span>
+                </div>
+
+                <div class="bg-darkCard border border-white/10 rounded-2xl p-6 flex flex-col justify-between hover:border-emerald-400/40 transition-all cursor-pointer" onclick="switchTab('educativo')">
+                    <div>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-3">Herramienta 4</p>
+                        <h3 class="text-lg font-bold text-white flex items-center gap-2 mb-2"><i data-lucide="book-open" class="w-4 h-4 text-emerald-400"></i> Contenido Educativo</h3>
+                        <p class="text-slate-400 text-sm font-light leading-relaxed">Reflexiones guiadas y bitácora clínica adaptada para fortalecer tu autoconciencia decisional.</p>
+                    </div>
+                    <span class="text-emerald-400 text-sm font-medium inline-flex items-center gap-1 mt-6">Explorar &rarr;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PESTAÑA 1: ASISTENTE DE DECISIONES ==================== -->
+        <div id="tab-asistente" class="tab-content space-y-6 max-w-6xl mx-auto">
+            <div class="space-y-1">
+                <p class="text-xs font-bold text-brandGold tracking-wider uppercase">Herramienta 1 &bull; Decide Fácil</p>
+                <h2 class="text-3xl font-black text-white tracking-tight">Asistente de Decisiones</h2>
+                <p class="text-sm text-slate-400 font-light">Configura tus filtros o gamifica tus elecciones diarias para mitigar el sobreanálisis.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6 pt-4">
+                <!-- PANEL IZQUIERDO: SELECCIÓN CATEGORÍAS -->
+                <div class="lg:col-span-2 bg-darkCard border border-white/10 rounded-2xl p-6 space-y-6">
+                    <h3 class="text-xs font-bold text-brandGold uppercase tracking-wide">1. ¿En qué área necesitás decidir hoy?</h3>
+                    <div class="grid sm:grid-cols-2 gap-3" id="asistente-categorias">
+                        <div onclick="selectAsistenteCat('comida')" id="btn-cat-comida" class="cat-btn p-4 rounded-xl border border-white/10 bg-white/[0.01] hover:border-brandGold/40 transition-all flex items-center gap-3 cursor-pointer">
+                            <span class="text-xl">🍽️</span><div><p class="text-sm font-semibold text-white">¿Qué comer?</p><p class="text-[11px] text-slate-500">Variables de ingredientes, energía y plato estructurado.</p></div>
+                        </div>
+                        <div onclick="selectAsistenteCat('tiempo')" id="btn-cat-tiempo" class="cat-btn p-4 rounded-xl border border-white/10 bg-white/[0.01] hover:border-brandGold/40 transition-all flex items-center gap-3 cursor-pointer">
+                            <span class="text-xl">🔮</span><div><p class="text-sm font-semibold text-white">Gestión del tiempo</p><p class="text-[11px] text-slate-500">Sistemas de productividad e imprevistos.</p></div>
+                        </div>
+                        <div onclick="selectAsistenteCat('ocio')" id="btn-cat-ocio" class="cat-btn p-4 rounded-xl border border-white/10 bg-white/[0.01] hover:border-brandGold/40 transition-all flex items-center gap-3 cursor-pointer">
+                            <span class="text-xl">🎬</span><div><p class="text-sm font-semibold text-white">Ocio y entertainment</p><p class="text-[11px] text-slate-500">Estrategias anti-scroll y gamificación.</p></div>
+                        </div>
+                        <div onclick="selectAsistenteCat('otra')" id="btn-cat-otra" class="cat-btn p-4 rounded-xl border border-white/10 bg-white/[0.01] hover:border-brandGold/40 transition-all flex items-center gap-3 cursor-pointer">
+                            <span class="text-xl">✏️</span><div><p class="text-sm font-semibold text-white">Otra decisión</p><p class="text-[11px] text-slate-500">Protocolo F.A.S.T. de filtrado rápido.</p></div>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO COMIDA -->
+                    <div id="wrapper-comida" class="hidden space-y-6 pt-6 border-t border-white/10">
+
+                        <!-- 1. Menú Rotativo Semanal -->
+                        <div class="space-y-3">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brandGold"></i> 1. El Menú Rotativo (Ejemplo Semanal)</h4>
+                            <p class="text-xs text-slate-400 font-light">Establecé un ciclo de 7 días para optimizar tus compras. Hacé clic en un día para cargarlo en el evaluador:</p>
+                            <div class="flex flex-wrap gap-1.5" id="semana-tabs">
+                                <button onclick="cargarDiaMenu('Lunes')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Lu</button>
+                                <button onclick="cargarDiaMenu('Martes')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Ma</button>
+                                <button onclick="cargarDiaMenu('Miércoles')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Mi</button>
+                                <button onclick="cargarDiaMenu('Jueves')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Ju</button>
+                                <button onclick="cargarDiaMenu('Viernes')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Vi</button>
+                                <button onclick="cargarDiaMenu('Sábado')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Sá</button>
+                                <button onclick="cargarDiaMenu('Domingo')" class="px-3 py-1.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-medium text-white transition-all">Do</button>
+                            </div>
+                        </div>
+
+                        <!-- 2. Constructor de Plato Inteligente -->
+                        <div class="space-y-3 pt-2">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="pie-chart" class="w-3.5 h-3.5 text-brandAccent"></i> 2. Construí tu Plato Inteligente</h4>
+                            <p class="text-xs text-slate-400 font-light">Proporciones macrobióticas ideales para tu correcto funcionamiento neuro-cognitivo:</p>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <div class="p-3 bg-black/40 border border-white/5 rounded-xl space-y-2">
+                                    <span class="text-[10px] font-bold text-emerald-400 block">50% VEGETALES (Fibra)</span>
+                                    <select id="plato-veg" onchange="auditarPlato()" class="w-full bg-darkBase text-xs text-slate-200 border border-white/10 rounded p-1.5 focus:outline-none focus:border-brandGold">
+                                        <option value="">-- Selecciona --</option>
+                                        <option value="Hojas verdes (Espinaca, rúcula)">Hojas verdes</option>
+                                        <option value="Vegetales fibrosos (Brócoli, coliflor)">Fibrosos (Brócoli/Zanahoria)</option>
+                                    </select>
+                                </div>
+                                <div class="p-3 bg-black/40 border border-white/5 rounded-xl space-y-2">
+                                    <span class="text-[10px] font-bold text-orange-400 block">25% PROTEÍNAS (Saciedad)</span>
+                                    <select id="plato-prot" onchange="auditarPlato()" class="w-full bg-darkBase text-xs text-slate-200 border border-white/10 rounded p-1.5 focus:outline-none focus:border-brandGold">
+                                        <option value="">-- Selecciona --</option>
+                                        <option value="Pollo / Pavo magro">Pollo / Pavo</option>
+                                        <option value="Pescado (Salmón/Atún)">Pescado</option>
+                                        <option value="Huevos">Huevos</option>
+                                        <option value="Legumbres / Tofu">Legumbres o Tofu</option>
+                                    </select>
+                                </div>
+                                <div class="p-3 bg-black/40 border border-white/5 rounded-xl space-y-2">
+                                    <span class="text-[10px] font-bold text-blue-400 block">25% CARBOHIDRATOS (Energía)</span>
+                                    <select id="plato-carb" onchange="auditarPlato()" class="w-full bg-darkBase text-xs text-slate-200 border border-white/10 rounded p-1.5 focus:outline-none focus:border-brandGold">
+                                        <option value="">-- Selecciona --</option>
+                                        <option value="Arroz integral / Quinoa">Arroz integral / Quinoa</option>
+                                        <option value="Papa / Batata al horno">Papa / Batata</option>
+                                        <option value="Avena / Legumbres complejas">Avena</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Auditoría de Alacena y Nevera -->
+                        <div class="space-y-3 pt-2">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="check-square" class="w-3.5 h-3.5 text-purple-400"></i> 3. Auditoría de Supervivencia (¿Qué hay disponible?)</h4>
+                            <div class="grid sm:grid-cols-3 gap-2">
+                                <label class="flex items-center gap-2.5 p-2.5 bg-black/30 border border-white/5 rounded-xl cursor-pointer select-none">
+                                    <input type="checkbox" id="audit-prot" onchange="verificarAuditoria()" class="w-4 h-4 rounded accent-brandGold">
+                                    <span class="text-xs text-slate-300">Tengo una Proteína</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 bg-black/30 border border-white/5 rounded-xl cursor-pointer select-none">
+                                    <input type="checkbox" id="audit-veg" onchange="verificarAuditoria()" class="w-4 h-4 rounded accent-brandGold">
+                                    <span class="text-xs text-slate-300">Tengo Vegetales</span>
+                                </label>
+                                <label class="flex items-center gap-2.5 p-2.5 bg-black/30 border border-white/5 rounded-xl cursor-pointer select-none">
+                                    <input type="checkbox" id="audit-carb" onchange="verificarAuditoria()" class="w-4 h-4 rounded accent-brandGold">
+                                    <span class="text-xs text-slate-300">Tengo Carbohidratos</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Acceso rápido original conservado -->
+                        <div class="space-y-2 pt-2 border-t border-white/5">
+                            <span class="text-[10px] font-bold text-slate-500 uppercase block">¿Bloqueo total? Evita pensar con un clic:</span>
+                            <div class="grid sm:grid-cols-2 gap-2.5">
+                                <button onclick="ejecutarComidaRapida('ruleta')" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white text-left transition-all flex items-center justify-between"><span>🍕 Ruleta de Menú Rotativo</span><span class="text-[10px] bg-brandGold/20 text-brandGold px-2 py-0.5 rounded">Azar</span></button>
+                                <button onclick="ejecutarComidaRapida('regla')" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white text-left transition-all flex items-center justify-between"><span>🥗 Regla Geométrica del Plato</span><span class="text-[10px] bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded">Estructura</span></button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- MÓDULO GESTIÓN DEL TIEMPO -->
+                    <div id="wrapper-tiempo" class="hidden space-y-6 pt-6 border-t border-white/10">
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="sliders" class="w-3.5 h-3.5 text-brandGold"></i> 1. Selector de Sistemas de Productividad</h4>
+                            <div class="grid sm:grid-cols-3 gap-2">
+                                <button onclick="ejecutarTiempo('eisenhower')" class="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white transition-all">Matriz Eisenhower</button>
+                                <button onclick="ejecutarTiempo('ivy')" class="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white transition-all">Método Ivy Lee</button>
+                                <button onclick="ejecutarTiempo('sapo')" class="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white transition-all">Comerse el Sapo</button>
+                            </div>
+                        </div>
+                        <div class="space-y-3 bg-black/20 border border-white/5 rounded-xl p-4">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="calendar" class="w-3.5 h-3.5 text-brandAccent"></i> 2. Bloques Estrictos de Tiempo</h4>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <input type="text" id="bloque-matutino" oninput="actualizarBloquesTiempo()" placeholder="🌅 Matutino / Acción Profunda..." class="w-full bg-darkBase border border-white/10 text-xs rounded p-2 text-slate-200 focus:outline-none focus:border-orange-400">
+                                <input type="text" id="bloque-gestion" oninput="actualizarBloquesTiempo()" placeholder="📊 Gestión / Reactivo..." class="w-full bg-darkBase border border-white/10 text-xs rounded p-2 text-slate-200 focus:outline-none focus:border-blue-400">
+                                <input type="text" id="bloque-deep" oninput="actualizarBloquesTiempo()" placeholder="🚀 Deep Work de Cierre..." class="w-full bg-darkBase border border-white/10 text-xs rounded p-2 text-slate-200 focus:outline-none focus:border-purple-400">
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="alert-circle" class="w-3.5 h-3.5 text-red-400"></i> 3. Filtro de Imprevistos y Urgencias</h4>
+                            <div class="p-4 bg-black/30 border border-white/5 rounded-xl space-y-3">
+                                <div class="grid grid-cols-3 items-center gap-2">
+                                    <label class="col-span-2 text-xs text-slate-300"><b>¿Toma menos de 2 minutos?</b></label>
+                                    <select id="imprevisto-dosmin" onchange="calcularFiltroImprevistos()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5 focus:outline-none focus:border-brandAccent">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option value="si">Sí, de inmediato (&lt; 2 min)</option>
+                                        <option value="no">No, requiere más tiempo</option>
+                                    </select>
+                                </div>
+                                <div class="grid grid-cols-3 items-center gap-2 pt-2 border-t border-white/[0.03]">
+                                    <label class="col-span-2 text-xs text-slate-300"><b>¿Pertenece al 20% estratégico? (Pareto)</b></label>
+                                    <select id="imprevisto-pareto" onchange="calcularFiltroImprevistos()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5 focus:outline-none focus:border-brandAccent">
+                                        <option value="">-- Seleccionar --</option>
+                                        <option value="si">Sí, es estratégico (80/20)</option>
+                                        <option value="no">No, es secundario operativo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO OCIO Y ENTRETENIMIENTO -->
+                    <div id="wrapper-ocio" class="hidden space-y-5 pt-6 border-t border-white/10">
+                        <div class="space-y-2">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="dices" class="w-3.5 h-3.5 text-brandGold"></i> Métodos de Selección Rápida</h4>
+                            <div class="grid sm:grid-cols-2 gap-2.5">
+                                <button onclick="lanzarDadoGeneros()" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white flex items-center justify-between"><span>🎲 Lanzar el Dado de Géneros</span><span class="bg-brandGold/20 text-brandGold text-[10px] px-2 py-0.5 rounded">Azar</span></button>
+                                <button onclick="aplicarMetodoOcio('segunda')" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white flex items-center justify-between"><span>✌️ Regla de la "Segunda Opción"</span><span class="bg-blue-500/20 text-blue-400 text-[10px] px-2 py-0.5 rounded">Algoritmo</span></button>
+                                <button onclick="aplicarMetodoOcio('filtro3')" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white flex items-center justify-between"><span>⏳ El Filtro de las 3 Opciones</span><span class="bg-purple-500/20 text-purple-400 text-[10px] px-2 py-0.5 rounded">Tiempo</span></button>
+                                <a href="https://wheelofnames.com/es/" target="_blank" class="p-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-xs font-semibold text-white flex items-center justify-between"><span>🎡 Ruleta Aleatoria Externa</span><i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-500"></i></a>
+                            </div>
+                        </div>
+                        <div class="space-y-2 pt-1">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="tv" class="w-3.5 h-3.5 text-brandAccent"></i> Atajos de Catálogo Estructurado</h4>
+                            <div class="grid grid-cols-3 gap-2">
+                                <a href="https://www.netflix.com/tudum/top10" target="_blank" class="p-2 bg-black/40 border border-white/5 hover:border-red-500/40 rounded-xl text-xs flex items-center justify-center text-slate-300">🔴 Netflix Top 10</a>
+                                <a href="https://www.imdb.com/chart/top/" target="_blank" class="p-2 bg-black/40 border border-white/5 hover:border-amber-500/40 rounded-xl text-xs flex items-center justify-center text-slate-300">🟡 IMDb Top 250</a>
+                                <a href="https://letterboxd.com/films/by/rating/" target="_blank" class="p-2 bg-black/40 border border-white/5 hover:border-emerald-500/40 rounded-xl text-xs flex items-center justify-center text-slate-300">🟢 Letterboxd</a>
+                            </div>
+                        </div>
+                        <div class="space-y-2 pt-1">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="eye-off" class="w-3.5 h-3.5 text-purple-400"></i> Desconexión Analógica</h4>
+                            <button onclick="obtenerPlanNoPantalla()" class="w-full py-2.5 bg-purple-500/10 hover:bg-purple-500/20 border border-purple-500/20 rounded-xl text-xs font-bold text-purple-300">🌲 Sugerir Actividad Analógica Aleatoria</button>
+                        </div>
+                    </div>
+
+                    <!-- MÓDULO OTRA DECISIÓN (PROTOCOLO F.A.S.T.) -->
+                    <div id="wrapper-fast" class="hidden space-y-4 pt-6 border-t border-white/10">
+                        <div class="space-y-1">
+                            <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="shield-check" class="w-3.5 h-3.5 text-brandGold"></i> Protocolo de los 4 Filtros (F.A.S.T.)</h4>
+                        </div>
+                        <div class="bg-black/30 border border-white/5 rounded-xl p-4 space-y-3">
+                            <div class="grid grid-cols-3 items-center gap-2">
+                                <label class="col-span-2 text-xs text-slate-300"><b>1. ¿Es Fatídica?</b> (Irreversible/Alto riesgo)</label>
+                                <select id="fast-fatidica" onchange="calcularProtocoloFast()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="no">No, es reversible</option>
+                                    <option value="si">Sí, es irreversible</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 items-center gap-2 pt-2 border-t border-white/[0.03]">
+                                <label class="col-span-2 text-xs text-slate-300"><b>2. ¿Se Alinea a largo plazo?</b></label>
+                                <select id="fast-alinea" onchange="calcularProtocoloFast()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="si">Sí, apoya mis metas</option>
+                                    <option value="no">No, es distracción</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 items-center gap-2 pt-2 border-t border-white/[0.03]">
+                                <label class="col-span-2 text-xs text-slate-300"><b>3. ¿Solución predeterminada existente?</b></label>
+                                <select id="fast-solucion" onchange="calcularProtocoloFast()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="no">No, requiere decisión</option>
+                                    <option value="si">Sí, aplicar regla/delegar</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 items-center gap-2 pt-2 border-t border-white/[0.03]">
+                                <label class="col-span-2 text-xs text-slate-300"><b>4. ¿Trae Tranquilidad o Tensión?</b></label>
+                                <select id="fast-tranquilidad" onchange="calcularProtocoloFast()" class="bg-darkBase text-xs border border-white/10 text-slate-200 rounded p-1.5">
+                                    <option value="">-- Seleccionar --</option>
+                                    <option value="tranquilidad">Tranquilidad / Alivio</option>
+                                    <option value="tension">Tensión / Incomodidad</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PANEL DERECHO ASISTENTE -->
+                <div class="bg-darkCard border border-white/10 rounded-2xl p-6 flex flex-col justify-start text-left space-y-4" id="asistente-eval-box">
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide">EVALUACIÓN</h3>
+                    <div class="flex flex-col items-center justify-center text-center py-12 space-y-3" id="eval-placeholder">
+                        <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400"><i data-lucide="target" class="w-6 h-6"></i></div>
+                        <p class="text-xs text-slate-400 max-w-[200px] font-light">Elige una categoría de la izquierda e interactúa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PESTAÑA 2: FRAMEWORKS DE DECISIÓN ==================== -->
+        <div id="tab-frameworks" class="tab-content space-y-6 max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/5 pb-5">
+                <div class="space-y-1">
+                    <p class="text-xs font-bold text-blue-400 tracking-wider uppercase">HERRAMIENTA 2 DE 4 &bull; DECIDE FÁCIL</p>
+                    <h2 class="text-3xl font-black text-white tracking-tight">Frameworks de Decisión</h2>
+                    <p class="text-sm text-slate-400 font-light">Estructuras analíticas para pausar el Sistema 1 intuitivo y forzar al Sistema 2 analítico.</p>
+                </div>
+                <div class="bg-black/40 border border-white/10 p-1 rounded-xl flex items-center gap-1">
+                    <button onclick="switchInnerFramework('matriz')" id="btn-inner-matriz" class="px-3 py-1.5 text-xs font-medium rounded-lg text-white bg-white/5 transition-all">Matriz Ponderada</button>
+                    <button onclick="switchInnerFramework('ebdm')" id="btn-inner-ebdm" class="px-3 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all">Modelo Racional EBDM</button>
+                </div>
+            </div>
+
+            <!-- SUB-TAB A: MATRIZ PONDERADA -->
+            <div id="inner-framework-matriz" class="inner-tab-content active">
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-darkCard border border-white/10 rounded-2xl p-6 space-y-6">
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-brandGold uppercase tracking-wide">1. DEFINE TUS CRITERIOS DE DECISIÓN (MÁX 4)</h3>
+                            <div class="space-y-2">
+                                <div class="grid grid-cols-4 gap-2 items-center">
+                                    <input type="text" id="crit-1" value="Crecimiento" oninput="updateMatrixLabels(); calculateMatrix();" class="col-span-3 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none">
+                                    <select id="weight-1" onchange="calculateMatrix()" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-slate-300"><option value="1">Peso 1</option><option value="2">Peso 2</option><option value="3" selected>Peso 3</option><option value="4">Peso 4</option><option value="5">Peso 5</option></select>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 items-center">
+                                    <input type="text" id="crit-2" value="Libertad" oninput="updateMatrixLabels(); calculateMatrix();" class="col-span-3 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none">
+                                    <select id="weight-2" onchange="calculateMatrix()" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-slate-300"><option value="1">Peso 1</option><option value="2">Peso 2</option><option value="3" selected>Peso 3</option><option value="4">Peso 4</option><option value="5">Peso 5</option></select>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 items-center">
+                                    <input type="text" id="crit-3" value="Estabilidad" oninput="updateMatrixLabels(); calculateMatrix();" class="col-span-3 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none">
+                                    <select id="weight-3" onchange="calculateMatrix()" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-slate-300"><option value="1">Peso 1</option><option value="2">Peso 2</option><option value="3" selected>Peso 3</option><option value="4">Peso 4</option><option value="5">Peso 5</option></select>
+                                </div>
+                                <div class="grid grid-cols-4 gap-2 items-center">
+                                    <input type="text" id="crit-4" value="Impacto" oninput="updateMatrixLabels(); calculateMatrix();" class="col-span-3 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none">
+                                    <select id="weight-4" onchange="calculateMatrix()" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-slate-300"><option value="1">Peso 1</option><option value="2">Peso 2</option><option value="3" selected>Peso 3</option><option value="4">Peso 4</option><option value="5">Peso 5</option></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <h3 class="text-xs font-bold text-brandGold uppercase tracking-wide">2. OPCIONES A EVALUAR</h3>
+                            <div class="grid grid-cols-3 gap-3">
+                                <input type="text" id="op-name-A" value="Opción A" oninput="updateMatrixLabels(); calculateMatrix();" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white">
+                                <input type="text" id="op-name-B" value="Opción B" oninput="updateMatrixLabels(); calculateMatrix();" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white">
+                                <input type="text" id="op-name-C" value="Opción C" oninput="updateMatrixLabels(); calculateMatrix();" class="bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white">
+                            </div>
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            <h3 class="text-xs font-bold text-brandGold uppercase tracking-wide">3. PUNTÚA CADA OPCIÓN POR CRITERIO (1-10)</h3>
+                            <div class="overflow-x-auto border border-white/5 rounded-xl bg-black/20">
+                                <table class="w-full text-left text-xs border-collapse">
+                                    <thead>
+                                        <tr class="border-b border-white/10 text-[10px] font-bold text-slate-500 uppercase bg-black/40">
+                                            <th class="p-3 w-1/4">Criterio</th>
+                                            <th class="p-3 text-center" id="th-opA">Opción A</th>
+                                            <th class="p-3 text-center" id="th-opB">Opción B</th>
+                                            <th class="p-3 text-center" id="th-opC">Opción C</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-white/[0.03]">
+                                        <tr>
+                                            <td class="p-3 font-semibold text-white"><span id="lbl-crit-1">Crecimiento</span><div class="text-[10px] text-slate-500">Peso: <span id="lbl-w-1">3</span></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-1-A"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-1-B"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-1-C"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-white"><span id="lbl-crit-2">Libertad</span><div class="text-[10px] text-slate-500">Peso: <span id="lbl-w-2">3</span></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-2-A"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-2-B"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-2-C"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-white"><span id="lbl-crit-3">Estabilidad</span><div class="text-[10px] text-slate-500">Peso: <span id="lbl-w-3">3</span></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-3-A"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-3-B"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-3-C"></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold text-white"><span id="lbl-crit-4">Impacto</span><div class="text-[10px] text-slate-500">Peso: <span id="lbl-w-4">3</span></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-4-A"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-4-B"></div></td>
+                                            <td class="p-3 text-center"><div class="flex justify-center gap-0.5" id="score-container-4-C"></div></td>
+                                        </tr>
+                                        <tr class="bg-black/30 font-bold border-t border-white/10">
+                                            <td class="p-3 text-brandGold uppercase text-[10px]">TOTAL PONDERADO</td>
+                                            <td class="p-3 text-center text-sm text-white font-black" id="total-val-A">60</td>
+                                            <td class="p-3 text-center text-sm text-white font-black" id="total-val-B">60</td>
+                                            <td class="p-3 text-center text-sm text-white font-black" id="total-val-C">60</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-darkCard border border-white/10 rounded-2xl p-6 space-y-4">
+                            <h3 class="text-xs font-bold text-white uppercase tracking-wide">Evaluación</h3>
+                            <div class="space-y-2" id="matrix-eval-cards"></div>
+                            <div class="p-3 bg-amber-500/5 border border-brandGold/20 rounded-xl"><span class="text-[10px] font-bold text-brandGold block uppercase">REGLA CLAVE</span><p class="text-[11px] text-slate-300 font-light">Si la diferencia es menor al 10%, elige la opción que te genere más energía.</p></div>
+                            <button onclick="alert('Matriz descargada')" class="w-full py-2.5 bg-brandGold text-black font-bold text-xs rounded-xl shadow-lg"><i data-lucide="download" class="w-3.5 h-3.5 inline"></i> Descargar Resultados</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUB-TAB B: MODELO RACIONAL EBDM -->
+            <div id="inner-framework-ebdm" class="inner-tab-content space-y-6">
+                <div class="grid lg:grid-cols-3 gap-6">
+                    <div class="lg:col-span-2 bg-darkCard border border-white/10 rounded-2xl p-6 space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-white uppercase block">1. Definir el problema (Identificación y Alcance)</label>
+                            <input type="text" id="ebdm-p1" oninput="evaluarEBDM()" placeholder="Describe el problema en una sola oración objetiva. Separa hechos de emociones..." class="w-full bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white focus:outline-none">
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            <label class="text-xs font-bold text-white uppercase block">2. Recopilar la mejor evidencia disponible (Los 3 Pilares)</label>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <textarea id="ebdm-p2-datos" oninput="evaluarEBDM()" placeholder="Datos objetivos / Métricas..." class="w-full h-24 bg-darkBase border border-white/10 rounded-lg p-2 text-xs text-white resize-none"></textarea>
+                                <textarea id="ebdm-p2-exp" oninput="evaluarEBDM()" placeholder="Experiencia profesional previa..." class="w-full h-24 bg-darkBase border border-white/10 rounded-lg p-2 text-xs text-white resize-none"></textarea>
+                                <textarea id="ebdm-p2-valores" oninput="evaluarEBDM()" placeholder="Valores, prioridades y límites reales..." class="w-full h-24 bg-darkBase border border-white/10 rounded-lg p-2 text-xs text-white resize-none"></textarea>
+                            </div>
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            <label class="text-xs font-bold text-white uppercase block">3. Generar al menos tres alternativas estructurales</label>
+                            <input type="text" id="ebdm-alt-1" oninput="evaluarEBDM()" value="Opción Obvia / Tradicional" class="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white mb-2">
+                            <input type="text" id="ebdm-alt-2" oninput="evaluarEBDM()" value="Opción Alternativa Disruptiva" class="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white mb-2">
+                            <input type="text" id="ebdm-alt-3" oninput="evaluarEBDM()" value="No hacer absolutamente nada (Mantener statu quo)" class="w-full bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white">
+                        </div>
+                        <div class="space-y-3 pt-2">
+                            <label class="text-xs font-bold text-white uppercase block">4. Sopesar Consecuencias (Análisis Temporal 10-10-10)</label>
+                            <div class="grid sm:grid-cols-3 gap-3">
+                                <input type="text" id="ebdm-t1" oninput="evaluarEBDM()" placeholder="¿En 10 minutos?" class="w-full bg-black/40 border border-white/10 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="ebdm-t2" oninput="evaluarEBDM()" placeholder="¿En 10 meses?" class="w-full bg-black/40 border border-white/10 rounded-xl p-2 text-xs text-white">
+                                <input type="text" id="ebdm-t3" oninput="evaluarEBDM()" placeholder="¿En 10 años?" class="w-full bg-black/40 border border-white/10 rounded-xl p-2 text-xs text-white">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-darkCard border border-white/10 rounded-2xl p-6 space-y-4">
+                            <h3 class="text-xs font-bold text-white uppercase tracking-wide">Veredicto Racional</h3>
+                            <div id="ebdm-diagnostic-box" class="p-4 rounded-xl space-y-3"></div>
+                            <button onclick="alert('Plan EBDM Compilado')" class="w-full py-2.5 bg-emerald-500 text-black font-bold text-xs rounded-xl hover:bg-emerald-400 transition-all shadow-lg"><i data-lucide="check-square" class="w-3.5 h-3.5 inline"></i> 5. Decidir y Evaluar Plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PESTAÑA 3: POLÍTICAS DE AUTOMATIZACIÓN ==================== -->
+        <div id="tab-automatizacion" class="tab-content space-y-6 max-w-7xl mx-auto">
+            <div class="space-y-1 border-b border-white/5 pb-5">
+                <p class="text-xs font-bold text-purple-400 tracking-wider uppercase">HERRAMIENTA 3 DE 4 &bull; DECIDE FÁCIL</p>
+                <h2 class="text-3xl font-black text-white tracking-tight">Automatización Diaria (Modelo EBP)</h2>
+                <p class="text-sm text-slate-400 font-light">Reduce la fatiga decisional del lóbulo frontal. Pre-decide tus rutinas e inyecta alertas automatizadas de IA.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6 pt-2">
+                <div class="lg:col-span-2 bg-darkCard border border-white/10 rounded-2xl p-6 space-y-6">
+                    <!-- Mañana -->
+                    <div class="space-y-4">
+                        <h3 class="text-xs font-bold text-orange-400 uppercase tracking-wider flex items-center gap-1.5"><span>🌅 Mañana</span><span class="text-[9px] bg-orange-500/10 text-orange-400 px-1.5 py-0.5 rounded border border-orange-500/20 font-mono">Ask & Acquire</span></h3>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Qué desayunar?</label><input type="text" id="auto-desayuno" oninput="calcularAutomatizacion()" value="Café negro + Huevos revueltos (Fijo)" class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Qué ropa usar?</label><input type="text" id="auto-ropa" oninput="calcularAutomatizacion()" placeholder="Ej: Uniforme de stock..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Qué tarea priorizar?</label><input type="text" id="auto-tarea" oninput="calcularAutomatizacion()" placeholder="Ej: Intervención más efectiva según datos recientes..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                        </div>
+                    </div>
+                    <hr class="border-white/5">
+                    <!-- Tarde -->
+                    <div class="space-y-4">
+                        <h3 class="text-xs font-bold text-brandAccent uppercase tracking-wider flex items-center gap-1.5"><span>☀️ Tarde</span><span class="text-[9px] bg-blue-500/10 text-brandAccent px-1.5 py-0.5 rounded border border-blue-500/20 font-mono">Appraise & Apply</span></h3>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Qué almorzar?</label><input type="text" id="auto-almuerzo" oninput="calcularAutomatizacion()" placeholder="Ej: Menú estructural guardado..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Seguir o cambiar?</label>
+                                <select id="auto-filtro-calidad" onchange="calcularAutomatizacion()" class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none">
+                                    <option value="">-- Seleccionar Protocolo Metodológico --</option>
+                                    <option value="cochrane">Filtrar evidencia con Metaanálisis de Centro Cochrane (Appraise)</option>
+                                    <option value="epistemonikos">Estructurar políticas con Epistemonikos (Apply)</option>
+                                </select>
+                            </div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Reunión o profundo?</label><input type="text" id="auto-reunion" oninput="calcularAutomatizacion()" placeholder="Ej: Bloque Fijo de Cierre..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                        </div>
+                    </div>
+                    <hr class="border-white/5">
+                    <!-- Noche -->
+                    <div class="space-y-4">
+                        <h3 class="text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-1.5"><span>🌙 Noche</span><span class="text-[9px] bg-purple-500/10 text-purple-400 px-1.5 py-0.5 rounded border border-purple-500/20 font-mono">Assess & Cierre</span></h3>
+                        <div class="space-y-3">
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Qué cenar?</label><input type="text" id="auto-cena" oninput="calcularAutomatizacion()" placeholder="Ej: Proteína magra limpia..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Pantalla o descanso?</label><input type="text" id="auto-pantalla" oninput="calcularAutomatizacion()" value="Desconexión analógica sugerida aleatoria" class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                            <div class="grid grid-cols-3 items-center gap-2"><label class="text-xs text-slate-300">¿Preparar mañana?</label><input type="text" id="auto-preparar" oninput="calcularAutomatizacion()" placeholder="Ej: Listar 6 tareas clave de Ivy Lee..." class="col-span-2 bg-black/40 border border-white/10 rounded-xl p-2.5 text-xs text-white focus:outline-none"></div>
+                        </div>
+                    </div>
+                    <hr class="border-white/5">
+                    <!-- Check-in -->
+                    <div class="space-y-3 bg-black/20 border border-white/5 p-4 rounded-xl">
+                        <h4 class="text-xs font-bold text-white uppercase flex items-center gap-1"><i data-lucide="battery-charging" class="w-4 h-4 text-brandGold"></i> CHECK-IN DE ENERGÍA</h4>
+                        <div class="flex items-center justify-between gap-1" id="energy-selector-container"></div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-darkCard border border-white/10 rounded-2xl p-6 space-y-5">
+                        <h3 class="text-xs font-bold text-white uppercase tracking-wide">Evaluación</h3>
+                        <div class="p-4 bg-white/[0.02] border border-white/5 rounded-xl space-y-1">
+                            <span class="text-[10px] font-bold text-slate-400 block uppercase">TU NIVEL DE AUTOMATIZACIÓN</span>
+                            <div class="text-xl font-black text-white" id="auto-score-display">1 / 9</div>
+                            <p class="text-[11px] text-slate-400 font-light mt-1" id="auto-feedback-text">Alerta. La fatiga decisional te está frenando.</p>
+                        </div>
+                        <div class="p-4 bg-white/[0.02] border border-white/5 rounded-xl space-y-1">
+                            <span class="text-[10px] font-bold text-slate-400 block uppercase">TU ENERGÍA HOY</span>
+                            <div class="text-xl font-black text-brandGold" id="auto-energy-display">7 / 10</div>
+                            <p class="text-[11px] text-purple-400 font-medium mt-1" id="auto-energy-feedback">Mantén rutinas, evita lo nuevo.</p>
+                        </div>
+                        <div class="border-t border-white/5 pt-4 space-y-1 text-xs">
+                            <div class="flex justify-between items-center"><span class="font-bold text-purple-400">9/9</span><span class="text-slate-400">Nivel Experto.</span></div>
+                            <div class="flex justify-between items-center"><span class="font-bold text-brandAccent">6–8</span><span class="text-slate-400">Buen nivel.</span></div>
+                            <div class="flex justify-between items-center"><span class="font-bold text-brandGold">3–5</span><span class="text-slate-400">Nivel medio.</span></div>
+                            <div class="flex justify-between items-center"><span class="font-bold text-red-400">0–2</span><span class="text-slate-400">Alerta fatiga.</span></div>
+                        </div>
+                        <button onclick="alert('Políticas consolidadas.')" class="w-full py-2.5 bg-brandGold text-black font-bold text-xs rounded-xl shadow-lg"><i data-lucide="download" class="w-3.5 h-3.5 inline"></i> Descargar Resultados</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PESTAÑA 4: CONTENIDO EDUCATIVO ==================== -->
+        <div id="tab-educativo" class="tab-content space-y-6 max-w-7xl mx-auto">
+            <div class="space-y-1 border-b border-white/5 pb-5">
+                <p class="text-xs font-bold text-emerald-400 tracking-wider uppercase">HERRAMIENTA 4 DE 4 &bull; DECIDE FÁCIL</p>
+                <h2 class="text-3xl font-black text-white tracking-tight">Contenido Educativo</h2>
+                <p class="text-sm text-slate-400 font-light">Reflexiones guiadas para fortalecer tu criterio decisional. Responde con honestidad.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-6 pt-2">
+                <div class="lg:col-span-2 bg-darkCard border border-white/10 rounded-2xl p-6 space-y-6">
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-white uppercase block">1. ¿Cuál fue la mejor decisión que tomaste este mes? ¿Por qué funcionó?</label>
+                        <textarea id="edu-q1" oninput="calcularEducativo()" placeholder="Escribe tu reflexión..." class="w-full h-24 bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white resize-none focus:outline-none"></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-white uppercase block">2. ¿Qué patrón repites cuando estás bajo presión? (postergar, impulsividad, delegar)</label>
+                        <textarea id="edu-q2" oninput="calcularEducativo()" placeholder="Escribe tu reflexión..." class="w-full h-24 bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white resize-none focus:outline-none"></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-white uppercase block">3. ¿Qué decisión estás evitando ahora mismo? ¿Qué te frena?</label>
+                        <textarea id="edu-q3" oninput="calcularEducativo()" placeholder="Escribe tu reflexión..." class="w-full h-24 bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white resize-none focus:outline-none"></textarea>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs font-bold text-white uppercase block">4. Si pudieras mejorar UNA cosa de cómo decides, ¿cuál sería?</label>
+                        <textarea id="edu-q4" oninput="calcularEducativo()" placeholder="Escribe tu reflexión..." class="w-full h-24 bg-black/40 border border-white/10 rounded-xl p-3 text-xs text-white resize-none focus:outline-none"></textarea>
+                    </div>
+                    <div class="space-y-3 pt-2">
+                        <label class="text-xs font-bold text-white uppercase block">5. Autoevalúa tu claridad decisional hoy</label>
+                        <div class="flex items-center justify-between gap-1 bg-black/20 p-2 border border-white/5 rounded-xl" id="clarity-selector-container"></div>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="bg-darkCard border border-white/10 rounded-2xl p-6 space-y-5">
+                        <h3 class="text-xs font-bold text-white uppercase tracking-wide">Evaluación</h3>
+                        <div class="p-4 bg-white/[0.02] border border-white/5 rounded-xl text-center space-y-1">
+                            <span class="text-[10px] font-bold text-slate-500 block uppercase tracking-wider">TU NIVEL DE AUTOCONCIENCIA</span>
+                            <div class="text-4xl font-black text-brandGold py-1" id="edu-clarity-display">7</div>
+                            <span class="text-[10px] text-slate-500 block">claridad / 10</span>
+                            <p class="text-xs text-brandAccent font-medium mt-3 px-2 leading-relaxed" id="edu-feedback-text">Nivel funcional. Identifica tus patrones bajo presión y trabaja en ellos.</p>
+                        </div>
+                        <div class="border-t border-white/5 pt-4 space-y-2 text-xs">
+                            <span class="text-[10px] font-bold text-slate-500 block uppercase tracking-wider">CLARIDAD DECISIONAL</span>
+                            <div class="flex justify-between items-start"><span class="font-bold text-emerald-400 w-12">8–10</span><span class="text-slate-400 text-right"><b>Alta autoconciencia.</b><br><span class="text-[10px] text-slate-500">Criterio claro.</span></span></div>
+                            <div class="flex justify-between items-start border-t border-white/[0.02] pt-2"><span class="font-bold text-brandAccent w-12">5–7</span><span class="text-slate-400 text-right"><b>Nivel funcional.</b><br><span class="text-[10px] text-slate-500">Trabaja tus patrones.</span></span></div>
+                            <div class="flex justify-between items-start border-t border-white/[0.02] pt-2"><span class="font-bold text-red-400 w-12">1–4</span><span class="text-slate-400 text-right"><b>Baja claridad.</b><br><span class="text-[10px] text-slate-500">Necesitas estructura.</span></span></div>
+                        </div>
+                        <div class="p-4 bg-amber-500/5 border border-brandGold/10 rounded-xl space-y-2">
+                            <span class="text-[10px] font-bold text-brandGold block uppercase tracking-wide">SEÑALES DE ALERTA</span>
+                            <ul class="space-y-1 list-disc pl-3 text-[11px] text-slate-400 font-light"><li>No puedes nombrar tu patrón.</li><li>Llevas semanas evitando una decisión.</li><li>No recuerdas tu última buena decisión.</li></ul>
+                        </div>
+                        <button onclick="alert('Bitácora guardada')" class="w-full py-2.5 bg-brandGold text-black font-bold text-xs rounded-xl hover:bg-amber-500 transition-all shadow-lg"><i data-lucide="download" class="w-3.5 h-3.5 inline"></i> Descargar Resultados</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===== LOGICA DE CONTROL INTERACTIVO GENERAL (VANILLA JS) ===== -->
+    <script>
+        // Inicialización de Iconos Globales al arrancar
+        lucide.createIcons();
+
+        // CONTROL DE PESTAÑAS PRINCIPALES (SPA)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('text-white', 'bg-white/5');
+                b.classList.add('text-slate-400');
+            });
+            
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            const navBtn = document.getElementById(`nav-${tabId}`);
+            if (navBtn) {
+                navBtn.classList.remove('text-slate-400');
+                navBtn.classList.add('text-white', 'bg-white/5');
+            }
+            
+            // Gatillos reactivos estructurales al entrar a pestañas específicas
+            if (tabId === 'frameworks') { initMatrixScores(); calculateMatrix(); evaluarEBDM(); }
+            if (tabId === 'automatizacion') { initEnergySelector(); calcularAutomatizacion(); }
+            if (tabId === 'educativo') { initClaritySelector(); calcularEducativo(); }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // CONTROL SUBS-FRAMEWORKS (INNER TABS)
+        function switchInnerFramework(subId) {
+            document.querySelectorAll('.inner-tab-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`inner-framework-${subId}`).classList.add('active');
+            const btnMatriz = document.getElementById('btn-inner-matriz');
+            const btnEbdm = document.getElementById('btn-inner-ebdm');
+            if (subId === 'matriz') {
+                btnMatriz.className = "px-3 py-1.5 text-xs font-medium rounded-lg text-white bg-white/5 transition-all";
+                btnEbdm.className = "px-3 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all";
+            } else {
+                btnEbdm.className = "px-3 py-1.5 text-xs font-medium rounded-lg text-white bg-white/5 transition-all";
+                btnMatriz.className = "px-3 py-1.5 text-xs font-medium rounded-lg text-slate-400 hover:text-white transition-all";
+            }
+            lucide.createIcons();
+        }
+
+        // ====================================================================================
+        // ============================ LÓGICA COMPLETA: ASISTENTE ============================
+        // ====================================================================================
+        function selectAsistenteCat(cat) {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('border-brandGold', 'bg-white/5'));
+            document.getElementById(`btn-cat-${cat}`).classList.add('border-brandGold', 'bg-white/5');
+
+            document.getElementById('wrapper-comida').classList.add('hidden');
+            document.getElementById('wrapper-tiempo').classList.add('hidden');
+            document.getElementById('wrapper-ocio').classList.add('hidden');
+            document.getElementById('wrapper-fast').classList.add('hidden');
+
+            restaurarEvaluacionVacia();
+
+            if (cat === 'comida') { document.getElementById('wrapper-comida').classList.remove('hidden'); mostrarIndicacionInicialComida(); }
+            if (cat === 'tiempo') { document.getElementById('wrapper-tiempo').classList.remove('hidden'); actualizarBloquesTiempo(); }
+            if (cat === 'ocio') { document.getElementById('wrapper-ocio').classList.remove('hidden'); mostrarProtocoloInicialOcio(); }
+            if (cat === 'otra') { document.getElementById('wrapper-fast').classList.remove('hidden'); mostrarResumenInicialFast(); }
+        }
+
+        function restaurarEvaluacionVacia() {
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">EVALUACIÓN</h3>
+                <div class="flex flex-col items-center justify-center text-center py-12 space-y-3">
+                    <div class="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400"><i data-lucide="target" class="w-6 h-6"></i></div>
+                    <p class="text-xs text-slate-400 max-w-[200px] font-light">Interactúa con los controles de la izquierda para generar veredicto.</p>
+                </div>`;
+            lucide.createIcons();
+        }
+
+        function actualizarEval(titulo, cuerpo, claseCaja, claseColor) {
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">EVALUACIÓN</h3>
+                <div class="p-4 rounded-xl space-y-1.5 ${claseCaja}">
+                    <span class="text-xs font-bold block uppercase tracking-wide ${claseColor}">${titulo}</span>
+                    <p class="text-xs text-slate-300 font-light leading-relaxed">${cuerpo}</p>
+                </div>`;
+            lucide.createIcons();
+        }
+
+        // Base de datos del menú rotativo semanal
+        const baseMenuSemanal = {
+            Lunes: {
+                meta: "Inicio de semana - Energía",
+                almuerzo: "Pechuga de pollo a la plancha con puré de calabaza y ensalada de espinaca.",
+                cena: "Pescado al horno con espárragos y quinoa."
+            },
+            Martes: {
+                meta: "Vegetariano - Antioxidantes",
+                almuerzo: "Salteado de tofu (o seitán) con brócoli, pimientos y arroz integral.",
+                cena: "Crema de verduras (zapallo, zanahoria, puerro) con semillas de calabaza."
+            },
+            Miércoles: {
+                meta: "Proteína magra y legumbres",
+                almuerzo: "Lentejas guisadas con vegetales y huevo duro.",
+                cena: "Ensalada mediterránea (tomate, pepino, aceitunas, queso feta) con pollo desmenuzado."
+            },
+            Jueves: {
+                meta: "Salud cerebral / Omega-3",
+                almuerzo: "Salmón (o caballa) al vapor con batata al horno.",
+                cena: "Ensalada de hojas verdes, nueces, palta y aderezo de aceite de oliva."
+            },
+            Viernes: {
+                meta: "Práctico",
+                almuerzo: "Pasta integral con salsa de tomate natural, carne magra picada y champiñones.",
+                cena: "Tortilla de espinaca y cebolla con ensalada de rúcula."
+            },
+            Sábado: {
+                meta: "Flexible / Social",
+                almuerzo: "Wrap de pollo con vegetales y hummus.",
+                cena: "Pizza de masa madre con vegetales y proteína magra (opción libre)."
+            },
+            Domingo: {
+                meta: "Preparación y Comfort",
+                almuerzo: "Bife de carne roja magra con ensalada fresca y papas al horno.",
+                cena: "Sopa de pollo desmenuzado con fideos integrales y vegetales."
+            }
+        };
+
+        function mostrarIndicacionInicialComida() {
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">EVALUACIÓN</h3>
+                <div class="space-y-4">
+                    <div class="p-3.5 bg-white/[0.02] border border-white/5 rounded-xl">
+                        <p class="text-[10px] font-bold text-brandGold uppercase">💡 Filosofía Nutricional</p>
+                        <p class="text-xs text-slate-300 font-light mt-1 leading-relaxed">Para evitar la fatiga por decisión y nutrir tu cuerpo de manera objetiva, lo ideal es implementar un <b>Menú Rotativo</b> o la <b>Fórmula de Plato Inteligente</b>.</p>
+                    </div>
+                    <div class="p-3.5 bg-blue-500/5 border border-blue-500/10 rounded-xl text-xs font-light text-slate-400">
+                        Seleccioná un día de la semana o configurá los elementos de tu alacena a la izquierda para armar tu orden.
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function cargarDiaMenu(dia) {
+            const info = baseMenuSemanal[dia];
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">EVALUACIÓN &bull; ${dia.toUpperCase()}</h3>
+                <p class="text-[11px] font-bold text-brandGold uppercase tracking-wide">Foco: ${info.meta}</p>
+                <div class="space-y-3 mt-2">
+                    <div class="p-3 bg-black/40 border border-white/5 rounded-xl">
+                        <span class="text-[10px] font-bold text-brandAccent block">🌞 ALMUERZO RECOMENDADO</span>
+                        <p class="text-xs text-white font-medium mt-1">${info.almuerzo}</p>
+                    </div>
+                    <div class="p-3 bg-black/40 border border-white/5 rounded-xl">
+                        <span class="text-[10px] font-bold text-purple-400 block">🌙 CENA RECOMENDADA</span>
+                        <p class="text-xs text-white font-medium mt-1">${info.cena}</p>
+                    </div>
+                </div>
+                <div class="pt-2 border-t border-white/5 text-[10px] text-slate-500 font-light leading-relaxed">
+                    Nota: Ante dudas sobre deficiencias, inflamación o salud mental, consultá con un nutricionista matriculado. Podés usar la <a href="https://www.mayoclinic.org/es/healthy-lifestyle/weight-loss/in-depth/calorie-calculator/itt-20407575" target="_blank" class="text-brandGold underline">Calculadora de Mayo Clinic</a> para tus calorías.
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function auditarPlato() {
+            const veg = document.getElementById('plato-veg').value;
+            const prot = document.getElementById('plato-prot').value;
+            const carb = document.getElementById('plato-carb').value;
+            if (!veg && !prot && !carb) return;
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">MÉTRICA DEL PLATO</h3>
+                <div class="space-y-3">
+                    <div class="p-3 bg-white/[0.02] border border-white/5 rounded-xl space-y-1.5">
+                        <div class="flex justify-between text-[11px] font-medium">
+                            <span class="text-emerald-400">🥗 Vegetales (50%):</span>
+                            <span class="text-white">${veg ? 'Asignado ✓' : 'Faltante ✗'}</span>
+                        </div>
+                        <div class="flex justify-between text-[11px] font-medium">
+                            <span class="text-orange-400">🍗 Proteínas (25%):</span>
+                            <span class="text-white">${prot ? 'Asignado ✓' : 'Faltante ✗'}</span>
+                        </div>
+                        <div class="flex justify-between text-[11px] font-medium">
+                            <span class="text-blue-400">🥔 Carbohidratos (25%):</span>
+                            <span class="text-white">${carb ? 'Asignado ✓' : 'Faltante ✗'}</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-amber-500/5 border border-amber-500/10 rounded-xl">
+                        <span class="text-[10px] font-bold text-brandGold block">🧠 EL EXTRA MENTAL (Grasas Saludables):</span>
+                        <p class="text-xs text-slate-300 font-light mt-0.5">No olvides añadir Aceite de oliva virgen extra, palta o nueces. ¡Son vitales para tu concentración y estado de ánimo!</p>
+                    </div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function verificarAuditoria() {
+            const p = document.getElementById('audit-prot').checked;
+            const v = document.getElementById('audit-veg').checked;
+            const c = document.getElementById('audit-carb').checked;
+            if (p && v && c) {
+                document.getElementById('asistente-eval-box').innerHTML = `
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wide">AUDITORÍA: ¡TENÉS TODO!</h3>
+                    <div class="p-4 bg-emerald-500/5 border border-emerald-500/10 rounded-xl space-y-2">
+                        <div class="flex items-center gap-2 text-emerald-400 font-bold text-xs">
+                            <i data-lucide="check-circle" class="w-4 h-4"></i> Criterio Mínimo Cubierto
+                        </div>
+                        <p class="text-xs text-slate-300 font-light leading-relaxed">
+                            No gastes energía pensando en recetas complejas. Combínalos usando la <b>Técnica del Bowl</b> (todo mezclado) o el <b>Plato Único</b> (todo separado). Añadí aceite de oliva, sal, pimienta y almorzá sin fatiga mental.
+                        </p>
+                    </div>
+                `;
+                lucide.createIcons();
+            }
+        }
+
+        function ejecutarComidaRapida(tipo) {
+            if (tipo === 'ruleta') actualizarEval("🍕 MENÚ RULETA", "El azar ha dictaminado: Salteado rápido de Pollo/Tofu con vegetales. Cerrá aplicaciones de delivery.", "bg-amber-500/5 border-amber-500/10", "text-brandGold");
+            else actualizarEval("🥗 REGLA GEOMÉTRICA", "Dividí el plato de inmediato: 50% vegetales verdes, 25% proteína magra, 25% carbohidratos complejos.", "bg-emerald-500/5 border-emerald-500/10", "text-emerald-400");
+        }
+
+        function ejecutarTiempo(tipo) {
+            if (tipo === 'eisenhower') actualizarEval("📊 MATRIZ EISENHOWER", "1. Urgente e Importante (Haz ya). 2. Importante No Urgente (Agenda). 3. Urgente No Importante (Delega). 4. Elimina distractores.", "bg-blue-500/5 border-blue-500/10", "text-blue-400");
+            if (tipo === 'ivy') actualizarEval("📝 MÉTODO IVY LEE", "Escribe estrictamente 6 tareas cruciales para mañana ordenadas por relevancia. Trabaja en la 1 de forma exclusiva sin pasar a la 2.", "bg-purple-500/5 border-purple-500/10", "text-purple-400");
+            if (tipo === 'sapo') actualizarEval("🐸 COMERSE EL SAPO", "Identifica la tarea más compleja, pesada e incómoda del día y ejecútala de forma obligatoria a primera hora de la mañana.", "bg-orange-500/5 border-orange-500/10", "text-orange-400");
+        }
+
+        function actualizarBloquesTiempo() {
+            const m = document.getElementById('bloque-matutino').value || "Vacío";
+            const g = document.getElementById('bloque-gestion').value || "Vacío";
+            const d = document.getElementById('bloque-deep').value || "Vacío";
+            document.getElementById('asistente-eval-box').innerHTML = `
+                <h3 class="text-xs font-bold text-white uppercase tracking-wide">CRONOGRAMA DE BLOQUES</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="p-2 bg-orange-500/5 border border-orange-500/10 rounded">🌅 Matutino: ${m}</div>
+                    <div class="p-2 bg-blue-500/5 border border-blue-500/10 rounded">📊 Gestión: ${g}</div>
+                    <div class="p-2 bg-purple-500/5 border border-purple-500/10 rounded">🚀 Deep: ${d}</div>
+                </div>`;
+        }
+
+        function calcularFiltroImprevistos() {
+            const d = document.getElementById('imprevisto-dosmin').value;
+            const p = document.getElementById('imprevisto-pareto').value;
+            if (d === 'si') actualizarEval("⚡ ACCIÓN INMEDIATA", "Toma menos de 2 minutos. Ejecútalo ya sin agendar ni procesar.", "bg-emerald-500/5 border-emerald-500/10", "text-emerald-400");
+            else if (p === 'si') actualizarEval("🎯actividad 80/20", "Pertenece al 20% estratégico. Muévelo al frente de tu próximo bloque Deep Work.", "bg-brandAccent/5 border-brandAccent/10", "text-brandAccent");
+            else if (d === 'no' && p === 'no') actualizarEval("⏳ RECHAZADO A BLOQUE REACTIVO", "No es estratégico ni rápido. Agenda estricta para el bloque reactivo de la tarde.", "bg-purple-500/5 border-purple-500/10", "text-purple-300");
+        }
+
+        function mostrarProtocoloInicialOcio() { actualizarEval("💡 REGLA DE ORO", "Limita tu búsqueda de streaming a un máximo de 5 minutos. Si superas el límite usa herramientas lógicas de la izquierda.", "bg-amber-500/5 border-amber-500/10", "text-brandGold"); }
+        function lanzarDadoGeneros() {
+            const gens = ["🎭 Comedia ligera", "👻 Terror o Suspenso", "💥 Acción o Aventura", "🎬 Drama Histórico", "🚀 Ciencia Ficción"];
+            const r = gens[Math.floor(Math.random() * gens.length)];
+            actualizarEval("🎲 DADO DE GÉNEROS", `El azar ha dictaminado reproducir: <b>${r}</b>. Abre tu catálogo, filtra ese género y pon la primera opción que aparezca.`, "bg-white/5 border-white/10", "text-brandGold");
+        }
+        function aplicarMetodoOcio(tipo) {
+            if (tipo === 'segunda') actualizarEval("✌️ SEGUNDA OPCIÓN", "Cuando dudes entre una lista reducida de películas, descarta instantáneamente tu primera alternativa y ve directo a la segunda.", "bg-blue-500/5 border-blue-500/10", "text-blue-400");
+            else actualizarEval("⏳ FILTRO DE 3 OPCIONES", "Busca únicamente 3 opciones. Si en 5 minutos no te convencen, descártalas en bloque y busca un lote nuevo de 3. Evita el scroll global.", "bg-purple-500/5 border-purple-500/10", "text-purple-400");
+        }
+        function obtenerPlanNoPantalla() {
+            const acts = ["📖 Lee un capítulo completo de un libro físico.", "🎙️ Escucha un pódcast temático haciendo estiramientos manuales.", "🃏 Juega una partida rápida analógica de solitario de cartas."];
+            actualizarEval("🌲 ACTIVIDAD ANALÓGICA", acts[Math.floor(Math.random() * acts.length)], "bg-purple-500/5 border-purple-500/10", "text-purple-300");
+        }
+
+        function mostrarResumenInicialFast() { actualizarEval("⚡ FILOSOFÍA F.A.S.T.", "Si tu problema cotidiano no es crítico ni destructivo, acelera. La ejecución rápida supera al análisis exhaustivo.", "bg-white/5 border-white/10", "text-brandGold"); }
+        function calcularProtocoloFast() {
+            const f = document.getElementById('fast-fatidica').value;
+            const a = document.getElementById('fast-alinea').value;
+            const s = document.getElementById('fast-solucion').value;
+            const t = document.getElementById('fast-tranquilidad').value;
+            if (f === 'si') desplegarVeredicto("🛑 DETENTE E INVESTIGA", "Consecuencias irreversibles. No uses protocolos rápidos. Reserva un bloque estructurado.", "text-red-400", "bg-red-500/5 border-red-500/10");
+            else if (a === 'no') desplegarVeredicto("❌ DESCÁRTALO INMEDIATAMENTE", "Te desvía de tus prioridades anuales establecidas. Di que no de inmediato.", "text-amber-500", "bg-amber-500/5 border-amber-500/10");
+            else if (s === 'si') desplegarVeredicto("⚙️ APLICA SISTEMA EXISTENTE", "Ya cuentas con una regla o política. Ejecuta y libera ancho de banda.", "text-brandAccent", "bg-blue-500/5 border-blue-500/10");
+            else if (t === 'tension') desplegarVeredicto("✋ RECHAZADO POR INTUICIÓN", "Te genera tensión visceral interna. Ante la duda en bajo riesgo, la respuesta es NO.", "text-orange-400", "bg-orange-500/5 border-orange-500/10");
+            else if (f === 'no' && a === 'si' && s === 'no' && t === 'tranquilidad') desplegarVeredicto("🚀 ¡EJECUTA DE INMEDIATO!", "Aprobado. Luz verde absoluta. Actúa ahora sin retrasar más el proceso.", "text-emerald-400", "bg-emerald-500/5 border-emerald-500/10");
+        }
+        function desplegarVeredicto(t, c, cc, cb) { actualizarEval(t, c, cb, cc); }
+
+        // ====================================================================================
+        // =========================== LÓGICA COMPLETA: FRAMEWORKS ============================
+        // ====================================================================================
+        let matrixScores = {
+            '1-A': 5, '1-B': 5, '1-C': 5, '2-A': 5, '2-B': 5, '2-C': 5,
+            '3-A': 5, '3-B': 5, '3-C': 5, '4-A': 5, '4-B': 5, '4-C': 5
+        };
+
+        function initMatrixScores() {
+            for(let c=1; c<=4; c++) {
+                ['A', 'B', 'C'].forEach(op => {
+                    const container = document.getElementById(`score-container-${c}-${op}`);
+                    if (!container) return;
+                    let html = '';
+                    for(let i=1; i<=10; i++) {
+                        const isSelected = matrixScores[`${c}-${op}`] === i;
+                        const bgClass = isSelected ? 'bg-brandGold text-black font-bold scale-110' : 'bg-white/5 text-slate-500 hover:bg-white/10';
+                        html += `<button onclick="setMatrixScore(${c}, '${op}', ${i})" class="w-5 h-5 text-[9px] rounded flex items-center justify-center transition-all ${bgClass}">${i}</button>`;
+                    }
+                    container.innerHTML = html;
+                });
+            }
+        }
+
+        function setMatrixScore(critNum, optionLetter, scoreValue) {
+            matrixScores[`${critNum}-${optionLetter}`] = scoreValue;
+            initMatrixScores();
+            calculateMatrix();
+        }
+
+        function updateMatrixLabels() {
+            for(let i=1; i<=4; i++) {
+                document.getElementById(`lbl-crit-${i}`).innerText = document.getElementById(`crit-${i}`).value || `Criterio ${i}`;
+                document.getElementById(`lbl-w-${i}`).innerText = document.getElementById(`weight-${i}`).value;
+            }
+            document.getElementById('th-opA').innerText = document.getElementById('op-name-A').value || 'Opción A';
+            document.getElementById('th-opB').innerText = document.getElementById('op-name-B').value || 'Opción B';
+            document.getElementById('th-opC').innerText = document.getElementById('op-name-C').value || 'Opción C';
+        }
+
+        function calculateMatrix() {
+            const w1 = parseInt(document.getElementById('weight-1').value);
+            const w2 = parseInt(document.getElementById('weight-2').value);
+            const w3 = parseInt(document.getElementById('weight-3').value);
+            const w4 = parseInt(document.getElementById('weight-4').value);
+            
+            let totalA = (matrixScores['1-A']*w1) + (matrixScores['2-A']*w2) + (matrixScores['3-A']*w3) + (matrixScores['4-A']*w4);
+            let totalB = (matrixScores['1-B']*w1) + (matrixScores['2-B']*w2) + (matrixScores['3-B']*w3) + (matrixScores['4-B']*w4);
+            let totalC = (matrixScores['1-C']*w1) + (matrixScores['2-C']*w2) + (matrixScores['3-C']*w3) + (matrixScores['4-C']*w4);
+            
+            document.getElementById('total-val-A').innerText = totalA;
+            document.getElementById('total-val-B').innerText = totalB;
+            document.getElementById('total-val-C').innerText = totalC;
+            
+            const renderCard = (name, pts) => {
+                let text = "Opción mediocre. Reconsidera.", border = "border-amber-500/20 bg-amber-500/5", textCol = "text-brandGold";
+                if (pts >= 150) { text = "Decisión excelente. Alta alineación."; border = "border-emerald-500/30 bg-emerald-500/5"; textCol = "text-emerald-400"; }
+                else if (pts >= 100) { text = "Buena opción. Revisa criterios."; border = "border-blue-500/20 bg-blue-500/5"; textCol = "text-blue-400"; }
+                else if (pts < 50) { text = "Descarta. No alineada."; border = "border-red-500/20 bg-red-500/5"; textCol = "text-red-400"; }
+                return `<div class="p-3 rounded-xl border ${border} font-medium text-xs"><div class="flex justify-between"><span>${name} ✓</span><span class="${textCol} font-black">${pts} pts</span></div><span class="text-[10px] text-slate-400 block mt-0.5">${text}</span></div>`;
+            };
+
+            document.getElementById('matrix-eval-cards').innerHTML = 
+                renderCard(document.getElementById('op-name-A').value || 'Opción A', totalA) + 
+                renderCard(document.getElementById('op-name-B').value || 'Opción B', totalB) + 
+                renderCard(document.getElementById('op-name-C').value || 'Opción C', totalC);
+        }
+
+        function evaluarEBDM() {
+            const p1 = document.getElementById('ebdm-p1').value;
+            const p2d = document.getElementById('ebdm-p2-datos').value;
+            const container = document.getElementById('ebdm-diagnostic-box');
+            if (!container) return;
+
+            if (!p1 || !p2d) {
+                container.className = "p-4 rounded-xl bg-white/[0.02] border border-white/5 space-y-1";
+                container.innerHTML = `<span class="text-xs font-bold block uppercase text-brandGold">📊 DIAGNÓSTICO EN ESPERA</span><p class="text-xs text-slate-400 font-light">Completa definición del problema y datos objetivos.</p>`;
+                return;
+            }
+            let score = 50;
+            if (document.getElementById('ebdm-p2-exp').value) score += 25;
+            if (document.getElementById('ebdm-p2-valores').value) score += 25;
+
+            container.className = "p-4 rounded-xl border border-emerald-500/10 bg-emerald-500/5 space-y-1";
+            container.innerHTML = `<div class="flex justify-between items-center"><span class="text-xs font-bold text-emerald-400">Robustez Cognitiva</span><span class="font-mono text-white text-xs font-black">${score}%</span></div><p class="text-[11px] text-slate-300 font-light mt-1">Lógica activa. Has pausado el Sistema 1 intuitivo. Las 3 opciones y el mapa 10-10-10 están mitigando sesgos adaptativos.</p>`;
+        }
+
+        // ====================================================================================
+        // ========================= LÓGICA COMPLETA: AUTOMATIZACIÓN =========================
+        // ====================================================================================
+        let currentEnergy = 7;
+
+        function initEnergySelector() {
+            const container = document.getElementById('energy-selector-container');
+            if (!container) return;
+            let html = '';
+            for (let i = 1; i <= 10; i++) {
+                const isSelected = currentEnergy === i;
+                const bgClass = isSelected ? 'bg-brandGold text-black font-black scale-110' : 'bg-white/5 text-slate-400 hover:bg-white/10';
+                html += `<button onclick="setEnergyLevel(${i})" class="flex-1 py-2 text-xs font-mono rounded-lg transition-all ${bgClass}">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function setEnergyLevel(level) { currentEnergy = level; initEnergySelector(); calcularAutomatizacion(); }
+
+        function calcularAutomatizacion() {
+            const fields = ['auto-desayuno', 'auto-ropa', 'auto-tarea', 'auto-almuerzo', 'auto-filtro-calidad', 'auto-reunion', 'auto-cena', 'auto-pantalla', 'auto-preparar'];
+            let filled = 0;
+            fields.forEach(id => { if(document.getElementById(id) && document.getElementById(id).value.trim() !== "") filled++; });
+            
+            document.getElementById('auto-score-display').innerText = `${filled} / 9`;
+            const fb = document.getElementById('auto-feedback-text');
+            if (filled === 9) { fb.innerText = "Nivel Experto. Piloto automático."; fb.className = "text-[11px] text-purple-400 font-bold mt-1"; }
+            else if (filled >= 6) { fb.innerText = "Buen nivel. Optimiza 1-2 áreas."; fb.className = "text-[11px] text-brandAccent font-semibold mt-1"; }
+            else { fb.innerText = "Alerta. La fatiga decisional te está frenando."; fb.className = "text-[11px] text-red-400 mt-1"; }
+
+            document.getElementById('auto-energy-display').innerText = `${currentEnergy} / 10`;
+            const efb = document.getElementById('auto-energy-feedback');
+            if (currentEnergy >= 8) { efb.innerText = "Día de decisiones grandes. Lóbulo óptimo."; efb.className = "text-[11px] text-emerald-400 font-bold mt-1"; }
+            else if (currentEnergy >= 5) { efb.innerText = "Mantén rutinas, evita lo nuevo (EBP)."; efb.className = "text-[11px] text-purple-400 font-medium mt-1"; }
+            else { efb.innerText = "Solo esencial. Delega o pospón de inmediato."; efb.className = "text-[11px] text-red-400 font-bold mt-1"; }
+        }
+
+        // ====================================================================================
+        // =========================== LÓGICA COMPLETA: EDUCATIVO =============================
+        // ====================================================================================
+        let currentClarity = 7;
+
+        function initClaritySelector() {
+            const container = document.getElementById('clarity-selector-container');
+            if (!container) return;
+            let html = '';
+            for (let i = 1; i <= 10; i++) {
+                const isSelected = currentClarity === i;
+                const bgClass = isSelected ? 'bg-brandGold text-black font-black scale-110' : 'bg-white/5 text-slate-400 hover:bg-white/10';
+                html += `<button onclick="setClarityLevel(${i})" class="flex-1 py-2 text-xs font-mono rounded-lg transition-all ${bgClass}">${i}</button>`;
+            }
+            container.innerHTML = html;
+        }
+
+        function setClarityLevel(level) { currentClarity = level; initClaritySelector(); calcularEducativo(); }
+
+        function calcularEducativo() {
+            document.getElementById('edu-clarity-display').innerText = currentClarity;
+            let chars = 0;
+            ['edu-q1', 'edu-q2', 'edu-q3', 'edu-q4'].forEach(id => { chars += (document.getElementById(id)?.value.trim().length || 0); });
+            
+            const fb = document.getElementById('edu-feedback-text');
+            if (currentClarity >= 8) {
+                fb.innerText = chars > 50 ? "Alta autoconciencia. Criterio analítico claro (Sistema 2 activo)." : "Alta autoconciencia. Criterio claro. Se recomienda escribir más.";
+                fb.className = "text-xs text-emerald-400 font-bold mt-3 px-2";
+            } else if (currentClarity >= 5) {
+                fb.innerText = "Nivel funcional. Identifica tus patrones bajo presión y trabaja en ellos.";
+                fb.className = "text-xs text-brandAccent font-medium mt-3 px-2";
+            } else {
+                fb.innerText = "Baja claridad decisional. Alerta de fatiga frontal detectada. Necesitas estructura.";
+                fb.className = "text-xs text-red-400 font-bold mt-3 px-2";
+            }
+        }
+    </script>
+</body>
+</html>
