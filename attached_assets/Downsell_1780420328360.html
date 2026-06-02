@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decide Fácil — Oferta Especial Downsell</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBase: '#0A0F1D',
+                        darkCard: 'rgba(255, 255, 255, 0.03)',
+                        borderGlass: 'rgba(255, 255, 255, 0.06)',
+                        brandAccent: '#38BDF8',
+                        brandGold: '#F59E0B',
+                        brandCoral: '#FF6B4A',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-darkBase text-slate-300 overflow-x-hidden antialiased py-16 px-4">
+
+    <div class="max-w-3xl mx-auto space-y-12">
+        
+        <!-- ===== ENCABEZADO DE EMPATÍA COGNITIVA ===== -->
+        <div class="text-center space-y-4">
+            <div class="w-10 h-10 rounded-full bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-brandAccent mx-auto">
+                <i data-lucide="heart" class="w-5 h-5"></i>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black text-white tracking-tight leading-tight">
+                ¿El dinero fue un problema? <span class="text-brandAccent">Te entiendo perfectamente</span>
+            </h1>
+            <p class="text-slate-400 text-xs md:text-sm max-w-xl mx-auto font-light leading-relaxed">
+                Sé lo que es querer mejorar pero sentir que el presupuesto no alcanza. Por eso preparé algo especial para ti. No quiero que el dinero sea la razón por la que sigas paralizado.
+            </p>
+        </div>
+
+        <!-- ===== TARJETA DE OFERTA ANCLA AL 50% ===== -->
+        <div class="bg-black/40 border border-white/10 rounded-3xl p-6 md:p-8 text-center space-y-4 shadow-2xl relative overflow-hidden max-w-2xl mx-auto">
+            <div class="absolute -top-10 -right-10 w-24 h-24 bg-brandCoral/5 rounded-full blur-xl"></div>
+            
+            <div class="inline-block bg-brandCoral/10 text-brandCoral border border-brandCoral/20 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                OFERTA ESPECIAL — 50% DE DESCUENTO
+            </div>
+            
+            <h2 class="text-xl md:text-2xl font-black text-white tracking-tight">
+                El Pack Premium Completo por la mitad del precio
+            </h2>
+            
+            <div class="flex items-center justify-center gap-3">
+                <span class="text-slate-500 text-base font-medium line-through">$19.99</span>
+                <span class="text-4xl md:text-5xl font-black text-brandCoral tracking-tight">$9.99</span>
+            </div>
+            
+            <div class="text-[11px] text-slate-400 space-y-0.5 font-light">
+                <p>Pago único — Acceso de por vida — Mismo contenido completo</p>
+                <p class="text-brandAccent font-medium">Las mismas 6 herramientas premium que otros pagan $19.99</p>
+            </div>
+
+            <button onclick="alert('Redirigiendo de forma segura a la oferta de $9.99...')" class="w-full max-w-md mx-auto py-3.5 bg-brandCoral text-white font-black text-xs rounded-xl hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 shadow-lg shadow-brandCoral/20 uppercase tracking-wider">
+                Sí, Quiero el Pack Premium por $9.99 &rarr;
+            </button>
+        </div>
+
+        <!-- ===== SECCIÓN: PONLO EN PERSPECTIVA ===== -->
+        <div class="space-y-4 text-center">
+            <h3 class="text-sm font-bold text-white uppercase tracking-wider">Ponlo en perspectiva</h3>
+            
+            <div class="grid grid-cols-3 gap-3 max-w-2xl mx-auto">
+                <div class="bg-darkCard border border-borderGlass rounded-2xl p-3.5 text-center space-y-1">
+                    <span class="text-lg block">☕</span>
+                    <span class="text-[11px] font-bold text-white block leading-tight">2 cafés de especialidad</span>
+                    <span class="text-[10px] text-slate-500 font-mono">$10</span>
+                </div>
+                <div class="bg-darkCard border border-borderGlass rounded-2xl p-3.5 text-center space-y-1">
+                    <span class="text-lg block">🍕</span>
+                    <span class="text-[11px] font-bold text-white block leading-tight">1 pizza mediana</span>
+                    <span class="text-[10px] text-slate-500 font-mono">$12</span>
+                </div>
+                <div class="bg-darkCard border border-borderGlass rounded-2xl p-3.5 text-center space-y-1">
+                    <span class="text-lg block">📺</span>
+                    <span class="text-[11px] font-bold text-white block leading-tight">1 mes de streaming</span>
+                    <span class="text-[10px] text-slate-500 font-mono">$15</span>
+                </div>
+            </div>
+
+            <div class="bg-darkCard border border-borderGlass rounded-xl p-3 max-w-2xl mx-auto text-xs text-slate-400 font-light leading-relaxed">
+                Por menos que cualquiera de esas cosas, obtienes:<br>
+                <b class="text-brandAccent font-bold">6 herramientas que transforman tu capacidad de decisión para siempre</b>
+            </div>
+        </div>
+
+        <!-- ===== LISTADO REDUCIDO DE LOS 6 MÓDULOS INCLUIDOS ===== -->
+        <div class="max-w-2xl mx-auto space-y-3">
+            <h3 class="text-sm font-bold text-white text-center uppercase tracking-wider">Todo lo que incluye el Pack Premium</h3>
+            
+            <div class="space-y-2 text-xs">
+                <!-- Ítem 1 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">El Caminito de Decisiones Simples</span>
+                            <span class="text-[11px] text-slate-400 font-light">Crea rutas decisionales simples para el día a día</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-blue-500/10 text-brandAccent px-2 py-0.5 rounded border border-blue-500/20 shrink-0">Guía paso a paso</span>
+                </div>
+
+                <!-- Ítem 2 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">La Caja de Herramientas Mentales</span>
+                            <span class="text-[11px] text-slate-400 font-light">Estrategias para relajarte en situaciones de alta presión</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-brandGold/10 text-brandGold px-2 py-0.5 rounded border border-brandGold/20 shrink-0">Checklist interactiva</span>
+                </div>
+
+                <!-- Ítem 3 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">Estableciendo Límites Decisionales</span>
+                            <span class="text-[11px] text-slate-400 font-light">Aprende a poner límites en la toma de decisiones</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded border border-purple-500/20 shrink-0">Workbook</span>
+                </div>
+
+                <!-- Ítem 4 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">El Jugador de Energía Mental</span>
+                            <span class="text-[11px] text-slate-400 font-light">Gestiona tu energía y pide apoyo sin culpa</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/20 shrink-0">Hoja de ruta</span>
+                </div>
+
+                <!-- Ítem 5 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">Reingeniería de Hábitos Decisionales</span>
+                            <span class="text-[11px] text-slate-400 font-light">Transforma hábitos perjudiciales en sostenibles</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded border border-orange-500/20 shrink-0">Plan de acción</span>
+                </div>
+
+                <!-- Ítem 6 -->
+                <div class="bg-darkCard border border-borderGlass rounded-xl p-3.5 flex items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brandAccent shrink-0"></i>
+                        <div>
+                            <span class="font-bold text-white block">Rutas de Decisión en Comunidad</span>
+                            <span class="text-[11px] text-slate-400 font-light">Crea lazos de apoyo para decisiones complejas</span>
+                        </div>
+                    </div>
+                    <span class="text-[9px] font-bold uppercase tracking-wide bg-pink-500/10 text-pink-400 px-2 py-0.5 rounded border border-pink-500/20 shrink-0">Guía paso a paso</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== BLOQUES DE COCCIONES FINALES Y CIERRE ===== -->
+        <div class="max-w-2xl mx-auto space-y-6 pt-4 border-t border-white/5">
+            
+            <!-- Bloque de Garantía -->
+            <div class="bg-darkCard border border-white/5 rounded-2xl p-6 text-center space-y-2">
+                <span class="text-xs font-bold text-brandGold uppercase tracking-wider flex items-center justify-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4"></i> Garantía de 7 Días — Cero Riesgo
+                </span>
+                <p class="text-xs text-slate-400 font-light leading-relaxed max-w-md mx-auto">
+                    Si no te convence, te devolvemos cada centavo. Sin preguntas, sin formularios largos, sin complicaciones. Tu satisfacción es lo primero.
+                </p>
+            </div>
+
+            <!-- Bloque de Urgencia -->
+            <div class="bg-orange-500/5 border border-orange-500/10 rounded-2xl p-4 text-center">
+                <p class="text-xs text-orange-400 font-semibold leading-relaxed">
+                    ⚠️ <b>Esta oferta solo está disponible en esta página</b><br>
+                    <span class="text-[11px] text-slate-400 font-light">Si cierras esta ventana, el precio vuelve a $19.99. Esta es tu única oportunidad de obtener el Pack Premium completo por $9.99.</span>
+                </p>
+            </div>
+
+            <!-- Llamado a la acción final -->
+            <div class="text-center space-y-4 pt-2">
+                <h4 class="text-lg font-bold text-white tracking-tight">Tu claridad mental vale más que $9.99</h4>
+                
+                <button onclick="alert('Checkout express de $9.99 activado...')" class="w-full max-w-md py-4 bg-brandCoral text-white font-black text-sm rounded-2xl hover:bg-opacity-90 transition-all shadow-xl shadow-brandCoral/10 uppercase tracking-wide">
+                    Quiero el Pack Premium por $9.99 &rarr;
+                </button>
+                
+                <p class="text-[11px] text-slate-500 italic">"Porque mi paz mental no tiene precio, pero $9.99 es una ganga"</p>
+                
+                <div>
+                    <a href="#" class="text-[10px] text-slate-500 hover:text-white underline transition-all">No gracias, continuar sin el Pack Premium &rarr;</a>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Inicializador de Iconos Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
