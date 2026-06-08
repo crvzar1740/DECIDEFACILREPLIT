@@ -920,7 +920,7 @@ function Home({ onSelect }: { onSelect: (t: Tab) => void }) {
               <Lock className="w-3.5 h-3.5" /> SECCIÓN BLOQUEADA
             </button>
             <a 
-              href="https://pay.hotmart.com/K106051077A" 
+              href="https://pay.hotmart.com/R106064311H" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="flex-1 px-4 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white text-xs font-bold rounded-xl flex items-center justify-center gap-1.5 shadow-lg shadow-purple-900/20 transition-all transform hover:-translate-y-0.5"
