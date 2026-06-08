@@ -888,8 +888,8 @@ function Home({ onSelect }: { onSelect: (t: Tab) => void }) {
           </h2>
         </div>
 
-        {/* Cuadrícula de Contenido Premium Con Filtro Blur */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 select-none pointer-events-none opacity-20 blur-[3px]">
+       {/* Cuadrícula de Contenido Premium Nítida */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-5 border border-white/[0.02] rounded-2xl p-2 bg-purple-500/[0.01]">
           {PREMIUM_TOOLS.map((item, i) => (
             <div 
               key={i} 
