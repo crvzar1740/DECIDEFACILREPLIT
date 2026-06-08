@@ -53,7 +53,6 @@ function EvalBox({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ── EvalStat ───────────────────────────────────────────────────────────────────
 function EvalStat({ label, value, sub, note, color = "text-amber-400" }: { label: string; value: string | number; sub?: string; note?: string; color?: string }) {
   return (
     <div className="bg-black/30 border border-white/[0.05] rounded-xl p-3">
@@ -69,7 +68,7 @@ function EvalStat({ label, value, sub, note, color = "text-amber-400" }: { label
 // TOOL 1 — ASISTENTE DE DECISIONES
 // ─────────────────────────────────────────────────────────────────────────────
 function Asistente({ onBack }: { onBack: () => void }) {
-  const [cat, setCat] = useState<AsisCat Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem>("");
+  const [cat, setCat] = useState<AsisCat>("");
   const [evalContent, setEvalContent] = useState<React.ReactNode>(
     <div className="flex flex-col items-center justify-center py-10 text-center space-y-3">
       <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400"><Target className="w-6 h-6" /></div>
@@ -576,7 +575,7 @@ function Frameworks({ onBack }: { onBack: () => void }) {
             <div>
               <label className="text-xs font-bold text-white uppercase block mb-2">4. Análisis Temporal 10-10-10</label>
               <div className="grid sm:grid-cols-3 gap-3">
-                {["¿En 10 minutos?", "¿En 10 meses?", "¿En 10 años?"].map((ph, i) => (
+                {["¿En 10 minutos?", "__¿En 10 meses?", "__¿En 10 años?"].map((ph, i) => (
                   <input key={i} value={ebdmT[i]} onChange={e => { const t = [...ebdmT]; t[i] = e.target.value; setEbdmT(t); }} placeholder={ph} className="w-full bg-black/40 border border-white/10 rounded-xl p-2 text-xs text-white outline-none focus:border-sky-400/40 transition-colors" />
                 ))}
               </div>
