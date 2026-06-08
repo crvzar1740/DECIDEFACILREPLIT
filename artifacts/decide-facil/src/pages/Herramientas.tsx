@@ -53,6 +53,7 @@ function EvalBox({ children }: { children: React.ReactNode }) {
   );
 }
 
+// ── EvalStat ───────────────────────────────────────────────────────────────────
 function EvalStat({ label, value, sub, note, color = "text-amber-400" }: { label: string; value: string | number; sub?: string; note?: string; color?: string }) {
   return (
     <div className="bg-black/30 border border-white/[0.05] rounded-xl p-3">
@@ -68,7 +69,7 @@ function EvalStat({ label, value, sub, note, color = "text-amber-400" }: { label
 // TOOL 1 — ASISTENTE DE DECISIONES
 // ─────────────────────────────────────────────────────────────────────────────
 function Asistente({ onBack }: { onBack: () => void }) {
-  const [cat, setCat] = useState<AsisCat>("");
+  const [cat, setCat] = useState<AsisCat Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem Freem>("");
   const [evalContent, setEvalContent] = useState<React.ReactNode>(
     <div className="flex flex-col items-center justify-center py-10 text-center space-y-3">
       <div className="w-12 h-12 rounded-full bg-orange-500/10 flex items-center justify-center text-orange-400"><Target className="w-6 h-6" /></div>
@@ -838,7 +839,7 @@ const PREMIUM_TOOLS = [
   { 
     icon: RefreshCw, 
     badge: "PLAN DE ACCIÓN", 
-    title: "Reingeniería de Habits Decisionales", 
+    title: "Reingeniería de Hábitos Decisionales", 
     resolve: "Mantenimiento de energía mental", 
     desc: "Plan secuencial enfocado en el rediseño de tus conductas diarias automáticas. Migración hacia sistemas de bajo desgaste cognitivo y alta durabilidad.", 
     img: "/premium/Reingenieria_de_habitos_decisionales.png" 
@@ -942,7 +943,7 @@ function Home({ onSelect }: { onSelect: (t: Tab) => void }) {
                 <img 
                   src={item.img} 
                   alt={item.title} 
-                  className="object-cover w-full h-full filter grayscale contrast-125"
+                  className="object-cover w-full h-full hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg border border-white/10 flex items-center gap-1">
                   <item.icon className="w-3.5 h-3.5 text-purple-400" />
