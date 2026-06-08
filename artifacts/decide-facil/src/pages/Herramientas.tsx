@@ -803,12 +803,54 @@ const TOOLS_HOME = [
 ];
 
 const PREMIUM_TOOLS = [
-  { icon: Map, badge: "GUÍA PASO A PASO", title: "El Caminito de Decisiones Simples", resolve: "Recaídas en la parálisis por análisis", desc: "Un framework interactivo diseñado para trazar rutas decisionales cotidianas ultra-efectivas. Automatiza elecciones repetitivas para que nunca vuelvas a congelarte.", img: "/api/placeholder/400/250" },
-  { icon: Layers, badge: "CHECKLIST INTERACTIVO", title: "La Caja de Herramientas Mentales", resolve: "Estrés por sobrecarga mental", desc: "Colección modular de estrategias ejecutivas y ejercicios de descompresión para momentos de alta presión. Tu kit de primeros auxilios mentales.", img: "/api/placeholder/400/250" },
-  { icon: ShieldAlert, badge: "WORKBOOK", title: "Estableciendo Límites Decisionales", resolve: "Dificultades para establecer límites", desc: "Cuaderno analítico para auditar y segmentar las fronteras de tu buffer. Aprende a decir 'esto no es mi decisión' sin culpa.", img: "/api/placeholder/400/250" },
-  { icon: Sparkles, badge: "HOJA DE RUTA", title: "El Jugador de Energía Mental", resolve: "Culpa al pedir ayuda en decisiones", desc: "Estructura cartográfica que redefine el apalancamiento de opiniones externas. Delegar y recolectar perspectivas no es vulnerabilidad; es estrategia.", img: "/api/placeholder/400/250" },
-  { icon: RefreshCw, badge: "PLAN DE ACCIÓN", title: "Reingeniería de Hábitos Decisionales", resolve: "Mantenimiento de energía mental", desc: "Plan secuencial enfocado en el rediseño de tus conductas diarias automáticas. Migración hacia sistemas de bajo desgaste cognitivo y alta durabilidad.", img: "/api/placeholder/400/250" },
-  { icon: HeartHandshake, badge: "GUÍA PASO A PASO", title: "Rutas de Decisión en Comunidad", resolve: "Soporte para decisiones complejas", desc: "La guía para crear lazos con otros, compartiendo experiencias de decisiones y apoyándose mutuamente. No tienes que hacerlo solo.", img: "/api/placeholder/400/250" },
+  { 
+    icon: Map, 
+    badge: "GUÍA PASO A PASO", 
+    title: "El Caminito de Decisiones Simples", 
+    resolve: "Recaídas en la parálisis por análisis", 
+    desc: "Un framework interactivo diseñado para trazar rutas decisionales cotidianas ultra-efectivas. Automatiza elecciones repetitivas para que nunca vuelvas a congelarte.", 
+    img: "/premium/elcaminito_de_decisiones_simples.png" 
+  },
+  { 
+    icon: Layers, 
+    badge: "CHECKLIST INTERACTIVO", 
+    title: "La Caja de Herramientas Mentales", 
+    resolve: "Estrés por sobrecarga mental", 
+    desc: "Colección modular de estrategias ejecutivas y ejercicios de descompresión para momentos de alta presión. Tu kit de primeros auxilios mentales.", 
+    img: "/premium/La_caja_de_herramientas_mentales.png" 
+  },
+  { 
+    icon: ShieldAlert, 
+    badge: "WORKBOOK", 
+    title: "Estableciendo Límites Decisionales", 
+    resolve: "Dificultades para establecer límites", 
+    desc: "Cuaderno analítico para auditar y segmentar las fronteras de tu buffer. Aprende a decir 'esto no es mi decisión' sin culpa.", 
+    img: "/premium/Estableciendo_limites_decisionales.png" 
+  },
+  { 
+    icon: Sparkles, 
+    badge: "HOJA DE RUTA", 
+    title: "El Jugador de Energía Mental", 
+    resolve: "Culpa al pedir ayuda en decisiones", 
+    desc: "Estructura cartográfica que redefine el apalancamiento de opiniones externas. Delegar y recolectar perspectivas no es vulnerabilidad; es estrategia.", 
+    img: "/premium/El_jugador_de_energia_mental.png" 
+  },
+  { 
+    icon: RefreshCw, 
+    badge: "PLAN DE ACCIÓN", 
+    title: "Reingeniería de Habits Decisionales", 
+    resolve: "Mantenimiento de energía mental", 
+    desc: "Plan secuencial enfocado en el rediseño de tus conductas diarias automáticas. Migración hacia sistemas de bajo desgaste cognitivo y alta durabilidad.", 
+    img: "/premium/Reingenieria_de_habitos_decisionales.png" 
+  },
+  { 
+    icon: HeartHandshake, 
+    badge: "GUÍA PASO A PASO", 
+    title: "Rutas de Decisión en Comunidad", 
+    resolve: "Soporte para decisiones complejas", 
+    desc: "La guía para crear lazos con otros, compartiendo experiencias de decisiones y apoyándose mutuamente. No tienes que hacerlo solo.", 
+    img: "/premium/Rutas_de_decision_en_comunidad.png" 
+  },
 ];
 
 function Home({ onSelect }: { onSelect: (t: Tab) => void }) {
